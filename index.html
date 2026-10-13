@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- FavIcon Link -->
-    <link rel="shortcut icon" href="https://ingreso.fhycs.unam.edu.ar/assets/images/favicon.png" type="image/gif" sizes="16x16">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/gif" sizes="16x16">
 
     <!-- Google Fonts Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -30,8 +30,111 @@
     <!-- Main Style CSS Link -->
     <link rel="stylesheet" type="text/css" href="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/style_AVHt.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+    <style>
+        /* Fuente Roboto (homologada con todo el sitio) */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        body, h1, h2, h3, h4, h5, h6, p, a, button, span, li, div, input, textarea, select { font-family: 'Roboto', sans-serif !important; }
 
+        /* Título de "Encontrá tu carrera ideal": corrido a la derecha y más arriba */
+        @media (min-width: 992px) {
+            .apply-now-text { margin-left: 150px; transform: translateY(-40px); }
+        }
+
+        /* Más contraste en Preguntas Frecuentes */
+        .faq-category-title .h3-title { color: #123a6d !important; }
+        .accordion-item { border: 1px solid #d8e2f0 !important; box-shadow: 0 3px 12px rgba(18,58,109,.10) !important; }
+        .accordion-button { background: #eef4fb; color: #16345c; }
+        .accordion-button.collapsed { background: #eef4fb; color: #16345c; }
+        .accordion-button:not(.collapsed) { background: #1b6ec2; color: #ffffff; }
+        .accordion-body { color: #3d4d63; }
+
+        /* Cartelito "Te esperamos": flota solo y corrido para no tapar la cara */
+        .congra-box {
+            animation: flotar-suave 3s ease-in-out infinite;
+            margin-left: 120px;
+            margin-top: 240px;
+        }
+        @keyframes flotar-suave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        /* Ocultar las descripciones de las tarjetas de carreras */
+        .top-course-sec .client-review-text { display: none !important; }
+        /* Botón FAQ del banner: solo en celu */
+        .btn-faq-movil { display: none; }
+        /* Tarjetas compactas + "Ver Más" como botón azul centrado */
+        .top-course-sec .common-post-card { height: auto !important; }
+        .top-course-sec .post-author-review-info { margin-top: 15px !important; margin-bottom: 5px; justify-content: center !important; width: 100%; }
+        .top-course-sec .post-author-info { width: 100%; }
+        .top-course-sec .post-author-name { width: 100%; text-align: center; }
+        .top-course-sec .post-author-name a {
+            display: inline-block;
+            background: #1b6ec2;
+            color: #ffffff !important;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background .3s ease;
+        }
+        .top-course-sec .post-author-name a:hover { background: #123a6d; }
+
+        /* Grilla de carreras: sin espacios vacíos, tarjetas parejas */
+        .top-course-sec .grid { height: auto !important; display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .top-course-sec .grid-item { position: static !important; left: auto !important; top: auto !important; width: 100% !important; height: auto !important; }
+        @media (max-width: 991px) { .top-course-sec .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .top-course-sec .grid { grid-template-columns: 1fr; } }               
+        /* ===== FAQ dinámico: pasos, fechas, tabla, contactos ===== */
+        .pasos-faq { display: grid; gap: 12px; margin: 12px 0; }
+        .paso-faq { display: flex; gap: 12px; background: #f4f8fd; border: 1px solid #d8e2f0; border-radius: 12px; padding: 12px 14px; }
+        .paso-num { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; background: #1b6ec2; color: #ffffff; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        .paso-faq h6 { margin: 0 0 4px; font-size: 15px; color: #16345c; font-weight: 700; }
+        .paso-faq p { margin: 0; font-size: 14px; }
+        .fecha-badge { display: inline-block; background: #e3eefb; color: #123a6d; border-radius: 50px; padding: 2px 12px; font-size: 13px; font-weight: 600; margin: 2px 4px 2px 0; }
+        .tabla-crono { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+        .tabla-crono th { background: #1b6ec2; color: #ffffff; padding: 8px 12px; text-align: left; }
+        .tabla-crono td { padding: 8px 12px; border-bottom: 1px solid #d8e2f0; background: #ffffff; }
+        .chips-contacto { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .chip-contacto { display: inline-flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid #d8e2f0; border-radius: 50px; padding: 5px 14px; font-size: 13px; font-weight: 600; color: #16345c; text-decoration: none; transition: background .3s ease; }
+        .chip-contacto:hover { background: #e3eefb; }
+
+        /* Palabra rotativa: cursor parpadeante */
+                @keyframes cursorBlink { 50% { opacity: 0; } }
+
+        /* Cinta azul grande */
+        .marquee-fhycs { overflow: hidden; background: #1b6ec2; color: #ffffff; font-weight: 700; font-size: 27px; padding: 22px 0; white-space: nowrap; }
+        .marquee-fhycs-track { display: inline-flex; align-items: center; animation: marqueeFhycs 45s linear infinite; }
+        .marquee-fhycs .mq-item { padding: 0 30px; }
+        .marquee-fhycs .mq-sep { color: #ffd23f; }
+        @keyframes marqueeFhycs { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) { .marquee-fhycs-track { animation: none; } }
+                /* Acortar el espacio entre Inscripción y Bienestar */
+        .top-category-list-sec { padding-bottom: 25px !important; }
+        .bienestar-estudiantil-sec { padding-top: 30px !important; }
+                /* ===== ARREGLOS PARA CELU ===== */
+        @media (max-width: 575px) {
+            /* Header: que entren los dos logos */
+            .site-branding { gap: 8px !important; }
+            .site-branding img[alt="UNaM"] { height: 34px !important; }
+            .site-branding a img[alt="Facultad Humanidades"] { height: 38px !important; }
+            /* Banda superior más chica */
+            .top-header-content-box p { font-size: 12px !important; }
+        }
+        @media (max-width: 767px) {
+            /* En celu: logos arriba, botón "Preguntas frecuentes" debajo, encima del banner */
+            .header-btn { display: none !important; }
+            .btn-faq-movil { display: block; text-align: center; }         
+                         /* Recuadro azul: la foto no ocupa toda la pantalla */
+            .apply-now-image-box img { max-width: 210px !important; height: auto !important; }
+            /* La foto grande de la carrera: que no haga zoom en celu */
+            .course-detail-image { height: auto !important; }
+            .course-detail-image img { position: static !important; width: 100% !important; height: auto !important; object-fit: contain !important; }
+            .apply-now-text { margin-left: 0 !important; transform: none !important; }
+        }
+                    </style>
+</head>
 <body class="">
     <!-- Loader Start -->
     <div class="loader-box" style="display: none;">
@@ -53,7 +156,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="top-header-content-box">
-                            <p>CARRERAS 2026 <span> INSCRIPCIÓN ABIERTA!</span></p>
+                            <p>CARRERAS 2027 <span> INSCRIPCIÓN ABIERTA!</span></p>
                         </div>
                     </div>
                 </div>
@@ -62,20 +165,21 @@
         <div class="bottom-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-xxl-3 col-lg-2">
-                        <div class="site-branding">
-                            <a href="https://ingreso.fhycs.unam.edu.ar/index.html" title="Facultad Humanidades">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" width="360" height="72" alt="Facultad Humanidades">
+                    <div class="col-xxl-5 col-lg-4">
+                        <div class="site-branding" style="display: flex; align-items: center; gap: 14px;">
+                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam-header.png" alt="UNaM" style="height: 52px; width: auto;">
+                            <a href="index.html" title="Facultad Humanidades" style="display: flex;">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" alt="Facultad Humanidades" style="height: 56px; width: auto;">
                             </a>
                         </div>
                     </div>
-                    <div class="col-xxl-9 col-lg-10">
+                    <div class="col-xxl-7 col-lg-8">
                         <div class="header-menu">
                             <nav class="main-navigation">
                                 
                                 <div class="header-btn">
-                                    <a href="https://ingreso.fhycs.unam.edu.ar/contacto.html" class="sec-btn" title="Info"><span>Más Información</span></a>
-                                </div>
+<a href="index.html#faqAccordion" class="sec-btn" title="Preguntas frecuentes"><span>Preguntas frecuentes</span></a>                   
+</div>
                             </nav>
                             <div class="black-shadow"></div>
                         </div>
@@ -149,16 +253,19 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="banner-content">
-                        <span class="sub-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeup-animation;"><br>#SumatealacomunidadFHyCS</span>
-                        <h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: fadeup-animation;">Tu Futuro esta en la FHyCS</h1>
+                        <div class="btn-faq-movil" style="margin-bottom: 14px;">
+                            <a href="#faqAccordion" class="sec-btn" title="Preguntas frecuentes"><span>Preguntas frecuentes</span></a>
+                        </div>
+                        <span class="sub-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeup-animation;"><br>#SumatealacomunidadFHyCS</span>}
+                        <h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: fadeup-animation;">Tu futuro está en <span id="rotator-word" style="color: #1b6ec2;"></span><span style="color: #1b6ec2; animation: cursorBlink 0.9s steps(1) infinite;">|</span></h1>
                         <div class="banner-description-wp wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: fadeup-animation;">
                             <div class="banner-description-text">
-                                <p>Carreras cortas, tecnicaturas, licenciaturas y profesorados</p>
+                                <p>Carreras cortas, tecnicaturas, licenciaturas y profesorados universitarios</p>
                             </div>
                              
                         </div>
                         <div class="banner-btn wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.5s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.5s; animation-name: fadeup-animation;">
-                            <a href="https://ingreso.fhycs.unam.edu.ar/contacto.html" class="sec-btn" title="Get Started"><span>Consultas</span></a>
+                            <a href="contacto.html" class="sec-btn" title="Get Started"><span>Consultas</span></a>
                         </div>
                     </div>
                 </div>
@@ -169,10 +276,10 @@
                         </div>
                         <div class="banner-image-box">
                             <div class="banner-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img_AVHt.png" width="510" height="697" alt="Banner Image">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img.png" width="510" height="697" alt="Banner Image">
                             </div>
                         </div>
-                        <div class="congra-box move-element-animation-2">
+                        <div class="congra-box">
                             <div class="congra-icon">
                                 <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/note-icon_AVHt.svg" width="24" height="30" alt="Note Icon">
                             </div>
@@ -196,57 +303,28 @@
             </div>
         </div>
     </section>
-    <!-- Banner End -->
-
-    <!-- Main Partners Start -->
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="about-counter-row wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" id="about_counter" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-                        <div class="about-counter-box-wp">
-                            <div class="about-counter-box">
-                                <h3 class="h3-title"><span class="counting" data-count="1">1</span>#</h3>
-                                <div class="about-counter-text">
-                                    <p>Universidad Pública en Misiones</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="about-counter-box-wp">
-                            <div class="about-counter-box">
-                                <h3 class="h3-title"><span class="counting" data-count="53">53</span> años</h3>
-                                <div class="about-counter-text">
-                                    <p>Educación Misionera de Calidad</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="about-counter-box-wp">
-                            <div class="about-counter-box">
-                                <h3 class="h3-title"><span class="counting" data-count="18">18</span></h3>
-                                <div class="about-counter-text">
-                                    <p>Carreras de Pregrado y Grado</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="about-counter-box-wp">
-                            <div class="about-counter-box">
-                                <h3 class="h3-title"><span>Títulos</span></h3>
-                                <div class="about-counter-text">
-                                    <p>Oficiales de Validez Nacional</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" width="1080" height="103" alt="separador">
-                </div>
-            </div>
-
-    
-    <!-- Top Category List Start -->
+    <!-- Banner End -->            
+    <!-- Guarda de colores + cinta azul -->
+    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" alt="" style="display: block; width: 100%; height: auto;">
+    <div class="marquee-fhycs">
+        <div class="marquee-fhycs-track">
+            <span class="mq-item">1# Universidad pública en Misiones</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">53 años de educación misionera de calidad</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">18 carreras de pregrado y grado</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">Títulos oficiales de validez nacional</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">1# Universidad pública en Misiones</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">53 años de educación misionera de calidad</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">18 carreras de pregrado y grado</span><span class="mq-item mq-sep">✦</span>
+            <span class="mq-item">Títulos oficiales de validez nacional</span><span class="mq-item mq-sep">✦</span>
+        </div>
+    </div>
+            <!-- Top Category List Start -->
     <section class="top-category-list-sec sec-space">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sec-title text-center">
-                        <span class="sub-title">Es Fácil!  En solo 3 pasos...</span>
+                        <span class="sub-title">¡Es fácil!  En solo 3 pasos...</span>
                         <h2 class="h2-title">Inscripción</h2>
                     </div>
                 </div>
@@ -260,7 +338,7 @@
                                 <h4 class="h4-title">1. Inscripción en línea</h4>
                             </a>
                             <p>Visite la página de preinscripción y genere el alta de usuario/alumno <br>
-                                <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank">Click Aquí </a></p>
+                                <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank">clic aquí </a></p>
                         </div>
                     </div>
                 </div>
@@ -271,8 +349,8 @@
                             <a title="Profesorados">
                                 <h4 class="h4-title">2. Documentación</h4>
                             </a>
-                            <p>Entrega de la documentación en la Dirección General de Enseñanza y Acción Estudiantil -Alumnado-
-                                <a href="https://www.instagram.com/p/DQUyVkejwwE/?img_index=3" target="_blank">Qué Documentación? </a>
+                            <p>Entrega de la documentación en la Dirección General de Enseñanza y Acción Estudiantil -alumnado-
+                                <a href="#collapseInsc3" id="link-doc-faq">¿Qué documentación? </a>
 
                             
                         </p>
@@ -284,13 +362,12 @@
                         
                         <div class="category-list-text">
                             <a title="Licenciaturas">
-                                <h4 class="h4-title">3. Curso Virtual </h4>
+                                <h4 class="h4-title">3. Curso virtual </h4>
                             </a>
                             <p>Realizá el curso virtual obligatorio no 
-eliminatorio de Introducción a las Aulas Virtuales Moodle (MOOC). Del 23
- al 27 de Febrero de 2026.
-                                <a href="mailto:aulavirtual@fhycs.unam.edu.ar" target="_blank">Consultas</a></p>
-                        </div>
+eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
+ al 27 de febrero de 2027.
+<a href="mailto/promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar"><span </span></a>                        </div>
                     </div>
                 </div>
                 
@@ -386,27 +463,33 @@ eliminatorio de Introducción a las Aulas Virtuales Moodle (MOOC). Del 23
                 </div>
             </div>
         </div>
+            <div class="text-center mt-4">
+                <a href="#cB1" id="link-faq-bienestar" class="sec-btn" title="Preguntas sobre beneficios"><span>¿Dudas sobre becas y beneficios? Ver preguntas frecuentes</span></a>
+            </div>
     </section>
     <!-- Bienestar Estudiantil End -->
 
     <!-- Top Course Start -->
-    <section class="top-course-sec sec-space-top sec-bg">
+    <section class="top-course-sec sec-space-top sec-bg" id="carreras">
         <div class="container">
             <div class="top-course-title">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="sec-title">
-                            <span class="sub-title">Ciclo 2026</span>
-                            <h2 class="h2-title">Carreras para vos</h2>
+                        <div class="sec-title" style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+                            <div>
+                                <span class="sub-title">Ciclo 2027</span>
+                                <h2 class="h2-title">Carreras para vos</h2>
+                            </div>
+                            <a href="#cCA1" id="link-faq-carreras" class="sec-btn" title="Preguntas sobre las carreras" style="font-size: 13px; padding: 8px 18px; white-space: nowrap;"><span>¿Dudas? Ver preguntas</span></a>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="top-course-list-wp">
                             <div class="top-course-list">
                                 <button class="list-btn active" title="all" data-type="*" name="isotope-filter">Todas</button>
-                                <button class="list-btn" title="all" data-type="carreras-cortas" name="isotope-filter">Carreras Cortas</button>
+                                <button class="list-btn" title="all" data-type="carreras-cortas" name="isotope-filter">Carreras cortas</button>
                                 <button class="list-btn" title="all" data-type="profesorados" name="isotope-filter">Profesorados</button>
-                                <button class="list-btn" title="all" data-type="licenciaturas" name="isotope-filter">Licenciaturas</button>
+                                           <button class="list-btn" title="all" data-type="licenciaturas" name="isotope-filter">Licenciaturas</button>
                             </div>
                         </div>
                     </div>
@@ -417,7 +500,7 @@ eliminatorio de Introducción a las Aulas Virtuales Moodle (MOOC). Del 23
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec_com_social_AVHt.jpg" width="408" height="230" alt="Tec Comunicacion Social">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec-com-social-portada.JPG" width="408" height="230" alt="Tec Comunicacion Social">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -428,7 +511,7 @@ eliminatorio de Introducción a las Aulas Virtuales Moodle (MOOC). Del 23
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">
+                                <a href="tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">
                                     <h4 class="h4-title">Tecnicatura en Comunicación Social (3 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -444,7 +527,7 @@ sociales y comunitarios. </p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">Ver Más</a>
+                                        <a href="tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -456,7 +539,7 @@ sociales y comunitarios. </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bibliotecologia_AVHt.jpg" width="408" height="230" alt="Bibliotecología">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bibliotecología-portada.jpg" width="408" height="230" alt="Bibliotecología">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -467,7 +550,7 @@ sociales y comunitarios. </p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/bibliotecologia.html" title="Bibliotecología">
+                                <a href="bibliotecologia.html" title="Bibliotecología">
                                     <h4 class="h4-title">Bibliotecología (3 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -484,7 +567,7 @@ la cultura.  </p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/bibliotecologia.html" title="Bibliotecología">Ver Más</a>
+                                        <a href="bibliotecologia.html" title="Bibliotecología">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -496,7 +579,7 @@ la cultura.  </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec_inv_socio_AVHt.jpg" width="408" height="230" alt="Técnico en Investigación Socioeconómica">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tise-portada.jpg" width="408" height="230" alt="Técnico en Investigación Socioeconómica">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -505,9 +588,8 @@ la cultura.  </p>
                         <div class="common-post-content">
                             <div class="post-lessons-info">
                                 
-                            </div>
-                            <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/tise.html" title="Técnico en Investigación Socioeconómica ">
+                            </div>                            <div class="post-content-title">
+                                <a href="tise.html" title="Técnico en Investigación Socioeconómica ">
                                     <h4 class="h4-title">Técnico en Investigación Socioeconómica (3 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -523,7 +605,7 @@ parte de proyectos, diagnósticos y estudios en distintos ámbitos. </p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/tise.html" title="Técnico en Investigación Socioeconómica ">Ver Más</a>
+                                        <a href="tise.html" title="Técnico en Investigación Socioeconómica ">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -538,7 +620,7 @@ parte de proyectos, diagnósticos y estudios en distintos ámbitos. </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/guia-de-turismo_AVHt.jpg" width="408" height="230" alt="Guia de Turismo">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/guia-turismo-portada.jpg" width="408" height="230" alt="Guia de Turismo">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -549,7 +631,7 @@ parte de proyectos, diagnósticos y estudios en distintos ámbitos. </p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/guia-de-turismo.html" title="Guía de Turismo">
+                                <a href="guia-de-turismo.html" title="Guía de Turismo">
                                     <h4 class="h4-title">Guía de Turismo (3 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -565,7 +647,7 @@ turista o visitante? <br>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/guia-de-turismo.html" title="Guía de Turismo">Ver Más</a>
+                                        <a href="guia-de-turismo.html" title="Guía de Turismo">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -577,7 +659,7 @@ turista o visitante? <br>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-en-ciencias-economicas_AVHt.jpg" width="408" height="230" alt="prof-en-ciencias-economicas">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-ciencias-economicas-portada.jpg" width="408" height="230" alt="Profesorado en Ciencias Económicas">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -588,7 +670,7 @@ turista o visitante? <br>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">
+                                <a href="profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">
                                     <h4 class="h4-title">Profesorado en Ciencias Económicas (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -607,7 +689,7 @@ formando a nuevas generaciones con creatividad, innovación y compromiso.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">Ver Más</a>
+                                        <a href="profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -619,7 +701,7 @@ formando a nuevas generaciones con creatividad, innovación y compromiso.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-historia_AVHt.jpg" width="408" height="230" alt="prof-historia">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-historia-portada.jpg" width="408" height="306" alt="Profesorado en Historia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -630,7 +712,7 @@ formando a nuevas generaciones con creatividad, innovación y compromiso.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-historia.html" title="Profesorado en Historia">
+                                <a href="profesorado-en-historia.html" title="Profesorado en Historia">
                                     <h4 class="h4-title">Profesorado en Historia con Orientación en Ciencias Sociales (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -647,7 +729,7 @@ para analizar el pasado y el presente, y transmitirlos como herramientas
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-historia.html" title="Profesorado en Historia">Ver Más</a>
+                                        <a href="profesorado-en-historia.html" title="Profesorado en Historia">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -662,7 +744,7 @@ para analizar el pasado y el presente, y transmitirlos como herramientas
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-educacion-especial_AVHt.jpg" width="408" height="230" alt="prof-educacion-especial">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/educacion-especial-portada.jpg" width="408" height="230" alt="Profesorado en Educación Especial">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -673,7 +755,7 @@ para analizar el pasado y el presente, y transmitirlos como herramientas
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">
+                                <a href="profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">
                                     <h4 class="h4-title">Profesorado en Educación Especial (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -692,7 +774,7 @@ empatía, el respeto y la igualdad de oportunidades.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">Ver Más</a>
+                                        <a href="profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -704,8 +786,7 @@ empatía, el respeto y la igualdad de oportunidades.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/Porfesorado-en-letras_AVHt.jpg" width="408" height="230" alt="Porfesorado en letras">
-                            </div>
+<img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-letras-portada.jpg" width="408" height="306" alt="Profesorado en Letras">                            </div>
                             <div class="post-tag">
                                 <span>Grado</span>
                             </div>
@@ -715,7 +796,7 @@ empatía, el respeto y la igualdad de oportunidades.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-letras.html" title="Profesorado en Letras">
+                                <a href="profesorado-en-letras.html" title="Profesorado en Letras">
                                     <h4 class="h4-title">Profesorado en Letras (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -734,7 +815,7 @@ lengua y la literatura en territorios culturales complejos.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-letras.html" title="Profesorado en Letras ">Ver Más</a>
+                                        <a href="profesorado-en-letras.html" title="Profesorado en Letras ">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -746,7 +827,7 @@ lengua y la literatura en territorios culturales complejos.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/Profesorado-en-Portuges_AVHt.jpg" width="408" height="230" alt="Profesorado Portuges">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-portugues-portada.jpg" width="408" height="230" alt="Profesorado en Portugués">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -757,7 +838,7 @@ lengua y la literatura en territorios culturales complejos.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-portugues.html" title="Profesorado en Portugués">
+                                <a href="profesorado-en-portugues.html" title="Profesorado en Portugués">
                                     <h4 class="h4-title">Profesorado en Portugués (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -775,7 +856,7 @@ cultural entre Argentina y Brasil.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-portugues.html" title="Profesorado en Portugués">Ver Más</a>
+                                        <a href="profesorado-en-portugues.html" title="Profesorado en Portugués">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -789,7 +870,7 @@ cultural entre Argentina y Brasil.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/Prof-Ciencias-de-la-Educacion_AVHt.jpg" width="408" height="230" alt="Prof-Ciencias-de-la-Educacion">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/puce-portada.jpg" width="408" height="230" alt="Prof-Ciencias-de-la-Educacion">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -800,7 +881,7 @@ cultural entre Argentina y Brasil.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">
+                                <a href="profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">
                                     <h4 class="h4-title">Profesorado Universitario en Ciencias de la Educación (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -822,7 +903,7 @@ innovación y compromiso social con la realidad educativa.
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">Ver Más</a>
+                                        <a href="profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -834,7 +915,7 @@ innovación y compromiso social con la realidad educativa.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/antropologia_AVHt.jpg" width="408" height="230" alt="antropologia">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/antropologia-social-portada.jpg" width="408" height="230" alt="Licenciatura en Antropología Social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -845,7 +926,7 @@ innovación y compromiso social con la realidad educativa.
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">
+                                <a href="licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">
                                     <h4 class="h4-title">Licenciatura en Antropología Social (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -866,7 +947,7 @@ derechos.
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">Ver Más</a>
+                                        <a href="licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -878,7 +959,7 @@ derechos.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-trabajo-social_AVHt.jpg" width="408" height="230" alt="lic-trabajo-social">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/licenciatura-trabajo-social-portada.jpg" width="408" height="230" alt="lic-trabajo-social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -889,7 +970,7 @@ derechos.
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-trabajo-social.html" title="Licenciatura en Trabajo Social">
+                                <a href="licenciatura-en-trabajo-social.html" title="Licenciatura en Trabajo Social">
                                     <h4 class="h4-title">Licenciatura en Trabajo Social (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -908,7 +989,7 @@ las comunidades.
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/tise.html" title="Licenciatura en Trabajo Social">Ver Más</a>
+                                        <a href="tise.html" title="Licenciatura en Trabajo Social">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -922,7 +1003,7 @@ las comunidades.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/litadis_AVHt.jpg" width="408" height="230" alt="litadis">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/litadis-portada.jpg" width="408" height="230" alt="litadis">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -933,7 +1014,7 @@ las comunidades.
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">
+                                <a href="litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">
                                     <h4 class="h4-title">Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -951,7 +1032,7 @@ de investigación.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">Ver Más</a>
+                                        <a href="litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -963,7 +1044,7 @@ de investigación.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-turismo_AVHt.jpg" width="408" height="230" alt="lic-turismo">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-turismo-portada.jpg" width="408" height="230" alt="lic-turismo">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -974,7 +1055,7 @@ de investigación.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-turismo.html" title="Licenciatura en Turismo">
+                                <a href="licenciatura-en-turismo.html" title="Licenciatura en Turismo">
                                     <h4 class="h4-title">Licenciatura en Turismo (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -995,7 +1076,7 @@ global.
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-turismo.html" title="Licenciatura en Turismo">Ver Más</a>
+                                        <a href="licenciatura-en-turismo.html" title="Licenciatura en Turismo">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1007,7 +1088,7 @@ global.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic_com_social_AVHt.jpg" width="408" height="230" alt="lic_com_social">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-com-social-portada.JPG" width="408" height="230" alt="lic_com_social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1018,7 +1099,7 @@ global.
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">
+                                <a href="licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">
                                     <h4 class="h4-title">Licenciatura en Comunicación Social (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -1036,7 +1117,7 @@ realidad desde una mirada crítica, ética y comprometida con su tiempo.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">Ver Más</a>
+                                        <a href="licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1050,7 +1131,7 @@ realidad desde una mirada crítica, ética y comprometida con su tiempo.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-letras_AVHt.jpg" width="408" height="230" alt="lic-letras">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/letras-portada.jpg" width="408" height="230" alt="Licenciatura en Letras">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1061,7 +1142,7 @@ realidad desde una mirada crítica, ética y comprometida con su tiempo.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-letras.html" title="Licenciatura en Letras">
+                                <a href="licenciatura-en-letras.html" title="Licenciatura en Letras">
                                     <h4 class="h4-title">Licenciatura en Letras (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -1080,7 +1161,7 @@ pensar y transformar la realidad.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-letras.html" title="Licenciatura en Letras">Ver Más</a>
+                                        <a href="licenciatura-en-letras.html" title="Licenciatura en Letras">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1092,7 +1173,7 @@ pensar y transformar la realidad.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-historia_AVHt.jpg" width="408" height="230" alt="lic-historia">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/historia-portada.jpg" width="408" height="230" alt="Licenciatura en Historia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1103,7 +1184,7 @@ pensar y transformar la realidad.</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-historia.html" title="Licenciatura en Historia">
+                                <a href="licenciatura-en-historia.html" title="Licenciatura en Historia">
                                     <h4 class="h4-title">Licenciatura en Historia (5 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -1121,7 +1202,7 @@ preservación del patrimonio y la memoria colectiva</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-historia.html" title="Licenciatura en Historia">Ver Más</a>
+                                        <a href="licenciatura-en-historia.html" title="Licenciatura en Historia">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1133,7 +1214,7 @@ preservación del patrimonio y la memoria colectiva</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-bibliotecologia_AVHt.jpg" width="408" height="230" alt="lic-bibliotecologia">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-bibliotecologia-portada.jpg" width="408" height="230" alt="lic-bibliotecologia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1144,7 +1225,7 @@ preservación del patrimonio y la memoria colectiva</p>
                                 
                             </div>
                             <div class="post-content-title">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">
+                                <a href="licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">
                                     <h4 class="h4-title">Licenciatura en Bibliotecología (4 años)</h4>
                                 </a>
                                 <div class="client-review-text">
@@ -1161,7 +1242,7 @@ promover una sociedad más informada y participativa.</p>
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">Ver Más</a>
+                                        <a href="licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1186,8 +1267,8 @@ promover una sociedad más informada y participativa.</p>
                 <div class="col-lg-12">
                     <div class="our-event-content">
                         <div class="sec-title text-center">
-                            <span class="sub-title">Fechas Importantes</span>
-                            <h2 class="h2-title">Próximos cierres de Inscripción</h2>
+                            <span class="sub-title">Fechas importantes</span>
+                            <h2 class="h2-title">Próximos cierres de inscripción</h2>
                         </div>
                         <div class="our-event-box-wp">
                             <div class="our-event-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
@@ -1199,7 +1280,7 @@ promover una sociedad más informada y participativa.</p>
                                     <div class="our-event-text">
                                         <div class="our-event-title">
                                             <a title="Carreras Cortas">
-                                                <h4 class="h4-title">Carreras 2026: Tecnicaturas, Profesorados y Licenciaturas
+                                                <h4 class="h4-title">Carreras 2027: Tecnicaturas, profesorados y licenciaturas
                                                 </h4>
                                             </a>
                                         </div>
@@ -1209,7 +1290,7 @@ promover una sociedad más informada y participativa.</p>
                                                     <span class="post-info-icon">
                                                         <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Date Icon">
                                                     </span>
-                                                    <span class="post-info-text">Desde el 27/10 hasta el 30/12.  Y desde el 2/2 al 27/2.</span>
+                                                    <span class="post-info-text">Las inscripciones online estarán abiertas del 13/10 al 30/12/2026 y del 01/02 al 19/02/2027. La presentación de documentación se realiza del 10/02 al 26/02/2027.</span>
                                                 </li>
                                                 
                                             </ul>
@@ -1217,8 +1298,7 @@ promover una sociedad más informada y participativa.</p>
                                     </div>
                                 </div>
                                 <div class="our-event-btn">
-                                    <a href="https://ingreso.fhycs.unam.edu.ar/contacto.html" class="sec-btn" title="Get Ticket"><span>Consultar</span></a>
-                                </div>
+<a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" class="sec-btn" title="Preinscripción"><span>Inscribite ahora</span></a>                                </div>
                             </div>
                             
                         </div>
@@ -1348,20 +1428,20 @@ comunicación pública de la ciencia y como investigadora.”</p>
                     <div class="our-features-content wow left-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="sec-title">
                             <span class="sub-title">Facultad de Humanidades y Ciencias Sociales</span>
-                            <h2 class="h2-title">Impulsá tu Carrera</h2>
+                            <h2 class="h2-title">Impulsá tu carrera</h2>
                         </div>
                         <div class="our-features-info">
                             <div class="our-features-info-box">
                                 
                                 <div class="our-features-info-text">
-                                    <h4 class="h4-title">Docentes Destacados</h4>
+                                    <h4 class="h4-title">Docentes destacados</h4>
                                     <p>Estudiá con referentes y profesionales de trayectoria</p>
                                 </div>
                             </div>
                             <div class="our-features-info-box">
                                 
                                 <div class="our-features-info-text">
-                                    <h4 class="h4-title">Formación Pública, Gratuita y Transformadora</h4>
+                                    <h4 class="h4-title">Formación pública, gratuita y transformadora</h4>
                                     <p>Formá parte de la universidad más reconocida de la provincia</p>
                                 </div>
                             </div>
@@ -1375,7 +1455,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                             <div class="our-features-info-box">
                                 
                                 <div class="our-features-info-text">
-                                    <h4 class="h4-title">Extensión y Vinculación comunitaria</h4>
+                                    <h4 class="h4-title">Extensión y vinculación comunitaria</h4>
                                     <p>Sumate a cursos, diplomaturas, congresos y proyectos que conectan la facultado con la comunidad</p>
                                 </div>
                             </div>
@@ -1396,7 +1476,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                     <div class="our-features-image-wp wow right-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="our-features-image">
                             <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.png" width="510" height="693" alt="FHyCS - estudiante"><br>
-
+                          
                         </div>  <!--<h4 class="h4-title"> Cristian Garrido - Decano FHyCS - UNaM</h4>-->
                     </div>
                 </div>
@@ -1412,7 +1492,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 <div class="col-lg-12">
                     <div class="sec-title text-center">
                         <span class="sub-title">Resolvé tus dudas</span>
-                        <h2 class="h2-title">Preguntas Frecuentes – Ingreso FHyCS UNaM</h2>
+                        <h2 class="h2-title">Preguntas frecuentes – Ingreso FHyCS UNaM</h2>
                     </div>
                 </div>
             </div>
@@ -1426,255 +1506,152 @@ comunicación pública de la ciencia y como investigadora.”</p>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingGeneral1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral1" aria-expanded="false" aria-controls="collapseGeneral1">
-                                    ¿Cuánto me cuesta estudiar en la Facultad?
-                                </button>
-                            </h2>
-                            <div id="collapseGeneral1" class="accordion-collapse collapse" aria-labelledby="headingGeneral1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Estudiar en la Facultad de Humanidades y Ciencias Sociales de la Universidad Nacional de Misiones, en las carreras de pregrado y grado, es <strong>totalmente gratuito</strong>.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hG1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cG1" aria-expanded="false" aria-controls="cG1">¿Cuánto me cuesta estudiar en la Facultad?</button></h2>
+                            <div id="cG1" class="accordion-collapse collapse" aria-labelledby="hG1" data-bs-parent="#faqAccordion"><div class="accordion-body">Estudiar en la Facultad de Humanidades y Ciencias Sociales de la Universidad Nacional de Misiones, en las carreras de pregrado y grado, es <strong>totalmente gratuito</strong>.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingGeneral2">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral2" aria-expanded="false" aria-controls="collapseGeneral2">
-                                    ¿Los títulos tienen validez nacional?
-                                </button>
-                            </h2>
-                            <div id="collapseGeneral2" class="accordion-collapse collapse" aria-labelledby="headingGeneral2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Sí. Todos los títulos otorgados por la Universidad Nacional de Misiones cuentan con validez nacional.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hG2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cG2" aria-expanded="false" aria-controls="cG2">¿Los títulos tienen validez nacional?</button></h2>
+                            <div id="cG2" class="accordion-collapse collapse" aria-labelledby="hG2" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí. Todos los títulos otorgados por la Universidad Nacional de Misiones cuentan con validez nacional.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingGeneral3">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral3" aria-expanded="false" aria-controls="collapseGeneral3">
-                                    ¿Las carreras son presenciales?
-                                </button>
-                            </h2>
-                            <div id="collapseGeneral3" class="accordion-collapse collapse" aria-labelledby="headingGeneral3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Sí. Todas las carreras de grado de la Facultad se dictan en modalidad presencial, salvo aquellas que expresamente indiquen una modalidad diferente.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hG3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cG3" aria-expanded="false" aria-controls="cG3">¿Las carreras son presenciales?</button></h2>
+                            <div id="cG3" class="accordion-collapse collapse" aria-labelledby="hG3" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí. Todas las carreras de grado de la Facultad se dictan en modalidad presencial, salvo aquellas que expresamente indiquen una modalidad diferente.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingGeneral4">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral4" aria-expanded="false" aria-controls="collapseGeneral4">
-                                    ¿Hay carreras virtuales o a distancia?
-                                </button>
-                            </h2>
-                            <div id="collapseGeneral4" class="accordion-collapse collapse" aria-labelledby="headingGeneral4" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Actualmente no contamos con carreras de pregrado y grado totalmente virtuales.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hG4"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cG4" aria-expanded="false" aria-controls="cG4">¿Hay carreras virtuales o a distancia?</button></h2>
+                            <div id="cG4" class="accordion-collapse collapse" aria-labelledby="hG4" data-bs-parent="#faqAccordion"><div class="accordion-body">Actualmente no contamos con carreras de pregrado y grado totalmente virtuales.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingGeneral5">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral5" aria-expanded="false" aria-controls="collapseGeneral5">
-                                    ¿Puedo estudiar si trabajo?
-                                </button>
-                            </h2>
-                            <div id="collapseGeneral5" class="accordion-collapse collapse" aria-labelledby="headingGeneral5" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Sí. Muchas de nuestras carreras son elegidas por estudiantes que trabajan. Los horarios de cursado son definidos por cada carrera y se informan antes del inicio de clases.</p>
-                                    <p class="mb-0">Podés consultar por el <strong>Régimen de cursado especial</strong> en la <strong>Secretaría de Bienestar Estudiantil</strong> enviando un correo a <a href="mailto:secretariadebienestarestudiantil@fhycs.unam.edu.ar">secretariadebienestarestudiantil@fhycs.unam.edu.ar</a> o acercándote a su oficina.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hG5"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cG5" aria-expanded="false" aria-controls="cG5">¿Puedo estudiar si trabajo?</button></h2>
+                            <div id="cG5" class="accordion-collapse collapse" aria-labelledby="hG5" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Sí. Muchas de nuestras carreras son elegidas por estudiantes que trabajan. Los horarios de cursado son definidos por cada carrera y se informan antes del inicio de clases.</p><p class="mb-0">Podés consultar por el <strong>Régimen de Cursado Especial</strong> en la Secretaría de Bienestar Estudiantil (planta baja de la Facultad) o por correo:</p><div class="chips-contacto"><a class="chip-contacto" href="mailto:secretariadebienestarestudiantil@fhycs.unam.edu.ar">✉ secretariadebienestarestudiantil@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
 
-                        <!-- CATEGORÍA: INSCRIPCIÓN ALUMNADO -->
+                        <!-- CATEGORÍA: INSCRIPCIÓN -->
                         <div class="faq-category-title mt-5 mb-3">
-                            <h3 class="h3-title text-primary"><i class="fas fa-user-edit me-2"></i>Inscripción Alumnado</h3>
+                            <h3 class="h3-title text-primary"><i class="fas fa-user-edit me-2"></i>Inscripción</h3>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc1" aria-expanded="false" aria-controls="collapseInsc1">
-                                    ¿Cómo me inscribo?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc1" class="accordion-collapse collapse" aria-labelledby="headingInsc1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>La inscripción consta de dos etapas para quienes ingresan por primera vez a la Universidad Nacional de Misiones:</p>
-                                    <p><strong>1ra Etapa: Preinscripción Online</strong><br>
-                                    Debés ingresar al sistema de preinscripción: <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank">preinscripcion.sistemas.unam.edu.ar/alumno/</a>. Deberás inscribirte a la carrera elegida (desde el 13/10 al 30/12/2026 y del 02/02 al 27/02/2027) registrando todos los datos solicitados y eligiendo el día y horario en el que presentarás la documentación. <a href="#" target="_blank">(Ver tutorial de preinscripción)</a></p>
-                                    <p class="mb-0"><strong>2da Etapa: Presentación de Documentación</strong><br>
-                                    Deberás presentar tu documentación presencialmente en el horario y día que elegiste, en la Dirección General de Enseñanza y Acción Estudiantil - Alumnado (Tucumán 1946, Edificio Central) del 9 de febrero al 27 de febrero de 2027.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI1" aria-expanded="false" aria-controls="cI1">¿Cómo me inscribo?</button></h2>
+                            <div id="cI1" class="accordion-collapse collapse" aria-labelledby="hI1" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>La inscripción consta de <strong>dos etapas</strong> para quienes ingresan por primera vez a la Universidad Nacional de Misiones:</p>
+                                <div class="pasos-faq">
+                                    <div class="paso-faq"><span class="paso-num">1</span><div><h6>Preinscripción Online</h6><p>Ingresá a <a href="https://preinscripcion.sistemas.unam.edu.ar" target="_blank">preinscripcion.sistemas.unam.edu.ar</a>, inscribite a la carrera elegida y registrá todos los datos que te solicitan. Elegí el día y horario en que presentarás la documentación.<br><span class="fecha-badge">13/10 al 30/12/2026</span><span class="fecha-badge">01/02 al 19/02/2027</span></p></div></div>
+                                    <div class="paso-faq"><span class="paso-num">2</span><div><h6>Presentar documentación</h6><p>Presentá tu documentación en el día y horario elegidos, en la Dirección General de Alumnado (DGA), Planta Baja del Edificio Central, Tucumán 1946.<br><span class="fecha-badge">10/02 al 27/02/2027</span></p></div></div>
+                                </div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc2">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc2" aria-expanded="false" aria-controls="collapseInsc2">
-                                    ¿Hasta cuándo puedo inscribirme?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc2" class="accordion-collapse collapse" aria-labelledby="headingInsc2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Las inscripciones online estarán abiertas del <strong>13/10 al 30/12/2026</strong> y del <strong>02/02 al 27/02/2027</strong>. La presentación de documentación se realiza del <strong>09/02 al 27/02/2027</strong>.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI2" aria-expanded="false" aria-controls="cI2">¿Hasta cuándo puedo inscribirme?</button></h2>
+                            <div id="cI2" class="accordion-collapse collapse" aria-labelledby="hI2" data-bs-parent="#faqAccordion"><div class="accordion-body">Las inscripciones online estarán abiertas:<br><span class="fecha-badge">13/10 al 30/12/2026</span><span class="fecha-badge">01/02 al 19/02/2027</span></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc3">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc3" aria-expanded="false" aria-controls="collapseInsc3">
-                                    ¿Qué documentación debo presentar?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc3" class="accordion-collapse collapse" aria-labelledby="headingInsc3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <ul>
-                                        <li>Formulario de preinscripción online impreso.</li>
-                                        <li>Título secundario o constancia correspondiente.</li>
-                                        <li>Fotocopia del DNI (frente y dorso válido).</li>
-                                        <li>Fotocopia de la partida de nacimiento.</li>
-                                        <li>Dos fotos 3x3.</li>
-                                        <li>Número de CUIL.</li>
-                                    </ul>
-                                    <hr>
-                                    <small class="text-muted d-block">
-                                        * La copia del título original puede ser certificada por el colegio secundario, juzgado de paz, escribano o policía. También se puede certificar en la Dirección General de Alumnado presentando original y copia.<br>
-                                        * Si tenés <strong>Título Digital</strong>, traelo impreso para verificar su validez.<br>
-                                        * Si aún no tenés el título, podés presentar la constancia original de finalización de estudios secundario/polimodal sin adeudar materias.<br>
-                                        * Si tu número de CUIL no figura en el DNI, deberás presentar la constancia de CUIL impresa.
-                                    </small>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="headingInsc3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc3" aria-expanded="false" aria-controls="collapseInsc3">¿Qué documentación debo presentar?</button></h2>
+                            <div id="collapseInsc3" class="accordion-collapse collapse" aria-labelledby="headingInsc3" data-bs-parent="#faqAccordion"><div class="accordion-body">
+                                <ul>
+                                    <li>Formulario de inscripción online impreso.</li>
+                                    <li>Título secundario o constancia correspondiente.</li>
+                                    <li>Fotocopia del DNI (frente y dorso válido).</li>
+                                    <li>Fotocopia de la partida de nacimiento.</li>
+                                    <li>Dos fotos 3x3.</li>
+                                    <li>Número de CUIL.</li>
+                                </ul>
+                                <hr>
+                                <small class="text-muted d-block">
+                                    * La copia del título puede certificarla la escuela de graduación, un juzgado de paz, escribano público o la Policía de Misiones. También podés hacerlo en la DGA trayendo original y copia.<br>
+                                    * Si tu título es digital, traelo impreso y verificamos su validez.<br>
+                                    * Si todavía no tenés el título, traé tu constancia de título en trámite o certificado de finalización de estudios original, sin adeudar materias.<br>
+                                    * Si tu CUIL no figura en el DNI, presentá la constancia de CUIL impresa.
+                                </small></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc4">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc4" aria-expanded="false" aria-controls="collapseInsc4">
-                                    ¿Puedo inscribirme si todavía debo materias del secundario?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc4" class="accordion-collapse collapse" aria-labelledby="headingInsc4" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Sí. Podés realizar la inscripción presentando la constancia correspondiente y completando la documentación en la fecha designada por la DGA. Para consultas específicas podés escribir a <a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a>.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI4"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI4" aria-expanded="false" aria-controls="cI4">¿Puedo inscribirme si todavía debo materias del secundario?</button></h2>
+                            <div id="cI4" class="accordion-collapse collapse" aria-labelledby="hI4" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí. Podés realizar la inscripción presentando la constancia correspondiente y completar la documentación en la fecha designada por la DGA.<div class="chips-contacto"><a class="chip-contacto" href="mailto:dga@fhycs.unam.edu.ar">✉ dga@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc5">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc5" aria-expanded="false" aria-controls="collapseInsc5">
-                                    No puedo completar la inscripción online. ¿Qué hago?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc5" class="accordion-collapse collapse" aria-labelledby="headingInsc5" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Si tenés inconvenientes con el sistema, comunicate con la Dirección General de Alumnado para recibir asistencia escribiendo a <a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a>. También podés consultar nuestro <a href="#" target="_blank">instructivo de ayuda</a>.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI5"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI5" aria-expanded="false" aria-controls="cI5">No puedo completar la inscripción online. ¿Qué hago?</button></h2>
+                            <div id="cI5" class="accordion-collapse collapse" aria-labelledby="hI5" data-bs-parent="#faqAccordion"><div class="accordion-body">Si tenés inconvenientes con el sistema, comunicate con la Dirección General de Alumnado para recibir asistencia.<div class="chips-contacto"><a class="chip-contacto" href="mailto:dga@fhycs.unam.edu.ar">✉ dga@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc6">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc6" aria-expanded="false" aria-controls="collapseInsc6">
-                                    Perdí el formulario de inscripción o no puedo imprimirlo. ¿Qué hago?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc6" class="accordion-collapse collapse" aria-labelledby="headingInsc6" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Comunicate con la Dirección General de Alumnado (<a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a>) indicando tu nombre completo, DNI y el problema para que puedan ayudarte.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI6"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI6" aria-expanded="false" aria-controls="cI6">Perdí el formulario de inscripción o no puedo imprimirlo. ¿Qué hago?</button></h2>
+                            <div id="cI6" class="accordion-collapse collapse" aria-labelledby="hI6" data-bs-parent="#faqAccordion"><div class="accordion-body">Comunicate con la Dirección General de Alumnado indicando tu nombre completo, DNI y el inconveniente, para que puedan ayudarte.<div class="chips-contacto"><a class="chip-contacto" href="mailto:dga@fhycs.unam.edu.ar">✉ dga@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc7">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc7" aria-expanded="false" aria-controls="collapseInsc7">
-                                    ¿Qué hago si tengo problemas o necesito recuperar la contraseña del SIU Guaraní?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc7" class="accordion-collapse collapse" aria-labelledby="headingInsc7" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Para inconvenientes técnicos, escribí a <a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a> indicando tu nombre completo, DNI, CUIL, correo electrónico y una descripción del problema.</p>
-                                    <p class="mb-0">Para recuperar tu clave, podés seguir las indicaciones de nuestro <a href="#" target="_blank">tutorial en video</a>.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI7"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI7" aria-expanded="false" aria-controls="cI7">¿Qué hago si tengo problemas con el SIU Guaraní?</button></h2>
+                            <div id="cI7" class="accordion-collapse collapse" aria-labelledby="hI7" data-bs-parent="#faqAccordion"><div class="accordion-body">Comunicate con la Dirección General de Alumnado indicando tu nombre completo, DNI, CUIL, correo electrónico y una descripción del inconveniente.<div class="chips-contacto"><a class="chip-contacto" href="mailto:dga@fhycs.unam.edu.ar">✉ dga@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc8">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc8" aria-expanded="false" aria-controls="collapseInsc8">
-                                    ¿Si no tengo título secundario puedo inscribirme igual?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc8" class="accordion-collapse collapse" aria-labelledby="headingInsc8" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Si sos <strong>mayor de 25 años</strong> y no tenés título secundario, podés estudiar gracias a la Ley N.° 24.521. Completás el formulario de preinscripción online seleccionando la opción <em>"Mayores de 25 años sin título"</em> (del 13/10/2026 al 18/12/2026) y luego te acercás a la Dirección General de Alumnado para cumplimentar el proceso de admisión de 8:00 a 12:30 hs en Tucumán 1946 (Planta Baja, Posadas, Misiones) durante el mes de diciembre.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI8"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI8" aria-expanded="false" aria-controls="cI8">¿Si no tengo título secundario puedo inscribirme igual?</button></h2>
+                            <div id="cI8" class="accordion-collapse collapse" aria-labelledby="hI8" data-bs-parent="#faqAccordion"><div class="accordion-body">Si sos <strong>mayor de 25 años</strong> y no tenés título secundario, podés estudiar gracias a la Ley N.° 24.521. Completá la Preinscripción Online seleccionando la opción <em>"Mayores de 25 años sin título"</em> <span class="fecha-badge">13/10 al 18/12/2026</span> y luego acercate a la DGA (Tucumán 1946, Planta Baja) para cumplimentar el proceso de admisión, de 8:00 a 12:30 hs, durante diciembre de 2026.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingInsc9">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInsc9" aria-expanded="false" aria-controls="collapseInsc9">
-                                    ¿Puedo inscribirme si soy extranjero/a?
-                                </button>
-                            </h2>
-                            <div id="collapseInsc9" class="accordion-collapse collapse" aria-labelledby="headingInsc9" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Sí, podés inscribirte. Para conocer los requisitos de convalidación de estudios y documentación requerida para estudiantes extranjeros, comunicate con la Dirección General de Alumnado a <a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a>.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hI9"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI9" aria-expanded="false" aria-controls="cI9">¿Puedo inscribirme si soy extranjero/a?</button></h2>
+                            <div id="cI9" class="accordion-collapse collapse" aria-labelledby="hI9" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí, podés inscribirte. Para conocer los requisitos de convalidación de estudios y documentación requerida, comunicate con la Dirección General de Alumnado.<div class="chips-contacto"><a class="chip-contacto" href="mailto:dga@fhycs.unam.edu.ar">✉ dga@fhycs.unam.edu.ar</a></div></div></div>
                         </div>
 
-                        <!-- CATEGORÍA: INGRESO PATFES -->
+                        <!-- CATEGORÍA: INGRESO -->
                         <div class="faq-category-title mt-5 mb-3">
-                            <h3 class="h3-title text-primary"><i class="fas fa-graduation-cap me-2"></i>Ingreso PATFES</h3>
+                            <h3 class="h3-title text-primary"><i class="fas fa-graduation-cap me-2"></i>Ingreso</h3>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingPatfes1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePatfes1" aria-expanded="false" aria-controls="collapsePatfes1">
-                                    ¿Cuándo comienza el ingreso y es obligatorio el cursillo?
-                                </button>
-                            </h2>
-                            <div id="collapsePatfes1" class="accordion-collapse collapse" aria-labelledby="headingPatfes1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    El ingreso se desarrolla en diferentes etapas cuyos cronogramas oficiales se publican anualmente. <strong>El cursillo de ingreso es obligatorio</strong> para todas las personas ingresantes.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hN1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN1" aria-expanded="false" aria-controls="cN1">¿En qué consiste el ingreso?</button></h2>
+                            <div id="cN1" class="accordion-collapse collapse" aria-labelledby="hN1" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>El ingreso es un período de actividades que se realiza <strong>antes del comienzo del cursado</strong>, para acompañarte en el inicio de la vida universitaria. Está organizado en <strong>tres trayectos</strong>:</p>
+                                <div class="pasos-faq">
+                                    <div class="paso-faq"><span class="paso-num">1</span><div><h6>Introducción a las Aulas Moodle (MOOC)</h6><p>Para conocer y aprender a usar las aulas virtuales de la Facultad. Virtual y autogestionado.</p></div></div>
+                                    <div class="paso-faq"><span class="paso-num">2</span><div><h6>Curso de Ingreso General</h6><p>Para conocer la institución, la vida universitaria y comenzar a trabajar con prácticas de lectura, escritura, oralidad y estudio. Presencial o virtual, a elección.</p></div></div>
+                                    <div class="paso-faq"><span class="paso-num">3</span><div><h6>Curso de Ingreso Específico</h6><p>Para acercarte a la carrera que elegiste: organización, plan de estudios y actividades introductorias.</p></div></div>
+                                </div></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingPatfes2">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePatfes2" aria-expanded="false" aria-controls="collapsePatfes2">
-                                    ¿Dónde consigo el cuadernillo de ingreso y cómo son los horarios?
-                                </button>
-                            </h2>
-                            <div id="collapsePatfes2" class="accordion-collapse collapse" aria-labelledby="headingPatfes2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Cada carrera publica su material de ingreso antes del inicio de las actividades. Podés descargarlo desde la web o solicitarlo en el Departamento Académico correspondiente.</p>
-                                    <p class="mb-0">Los horarios, días y comisiones (turnos) de cursado son definidos por cada carrera y se anuncian antes de comenzar el ciclo lectivo.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hN2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN2" aria-expanded="false" aria-controls="cN2">¿Cuándo comienza el ingreso? ¿Cuál es el cronograma?</button></h2>
+                            <div id="cN2" class="accordion-collapse collapse" aria-labelledby="hN2" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Las actividades del ingreso 2027 comienzan en <strong>noviembre de 2026</strong> y continúan durante febrero y marzo de 2027. En algunos trayectos podés elegir entre hacerlos a fines de 2026 o durante 2027.</p>
+                                <table class="tabla-crono">
+                                    <tr><th>Trayecto</th><th>Fechas</th></tr>
+                                    <tr><td>1. Introducción a Moodle (MOOC)</td><td>Del 2/11 al 21/12/2026 <strong>o</strong> del 8/2 al 8/3/2027</td></tr>
+                                    <tr><td>2. Ingreso General — Presencial</td><td>Del 1/3 al 10/3/2027</td></tr>
+                                    <tr><td>2. Ingreso General — Virtual</td><td>Del 1/12 al 15/12/2026 <strong>o</strong> del 1/3 al 15/3/2027</td></tr>
+                                    <tr><td>3. Ingreso Específico</td><td>Del 11/3 al 18/3/2027</td></tr>
+                                </table></div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingPatfes3">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePatfes3" aria-expanded="false" aria-controls="collapsePatfes3">
-                                    ¿Existen grupos de WhatsApp para ingresantes?
-                                </button>
-                            </h2>
-                            <div id="collapsePatfes3" class="accordion-collapse collapse" aria-labelledby="headingPatfes3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Sí. Muchas carreras organizan grupos institucionales para acompañar a sus nuevos estudiantes. Podés consultar el enlace oficial en el departamento correspondiente una vez completada tu inscripción.
+                            <h2 class="accordion-header" id="hN3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN3" aria-expanded="false" aria-controls="cN3">Trayecto 1: ¿Cómo es el MOOC de aulas virtuales?</button></h2>
+                            <div id="cN3" class="accordion-collapse collapse" aria-labelledby="hN3" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Aprenderás a utilizar Moodle, la plataforma de aulas virtuales de la Facultad, organizando tus tiempos de manera autónoma dentro del período establecido.</p><span class="fecha-badge">2/11 al 21/12/2026</span><span class="fecha-badge">o 8/2 al 8/3/2027</span><p class="mt-2 mb-0">Acceso al curso: <a href="https://virtual.fhycs.unam.edu.ar/course/view.php?id=2674" target="_blank">Introducción a las Aulas Moodle</a>. Vas a recibir un mensaje en el correo que usaste para la inscripción con la información de acceso. ¿No te llegó?</p><div class="chips-contacto"><a class="chip-contacto" href="mailto:aulavirtual@fhycs.unam.edu.ar">✉ aulavirtual@fhycs.unam.edu.ar</a></div></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN4"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN4" aria-expanded="false" aria-controls="cN4">Trayecto 2: ¿Cómo es el Curso de Ingreso General?</button></h2>
+                            <div id="cN4" class="accordion-collapse collapse" aria-labelledby="hN4" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Conocerás distintos aspectos de la vida universitaria y participarás de actividades introductorias de lectura, escritura, oralidad y estudio. <strong>Podés elegir entre dos modalidades:</strong></p>
+                                <div class="pasos-faq">
+                                    <div class="paso-faq"><span class="paso-num">A</span><div><h6>Opción presencial</h6><p>Compartís actividades con docentes, tutores y otros ingresantes, y conocés los espacios y recursos de la Facultad.<br><span class="fecha-badge">1/3 al 10/3/2027</span> · Tucumán 1946, Posadas · Turno mañana 8–11 h o tarde 16–19 h</p></div></div>
+                                    <div class="paso-faq"><span class="paso-num">B</span><div><h6>Opción virtual</h6><p>Recorrido virtual y asincrónico de dos semanas: cinco módulos obligatorios y dos optativos, para realizar de forma autoasistida.<br><span class="fecha-badge">1/12 al 15/12/2026</span><span class="fecha-badge">o 1/3 al 15/3/2027</span></p></div></div>
                                 </div>
-                            </div>
+                                <div class="chips-contacto"><span class="chip-contacto">Presencial: patfes@fhycs.unam.edu.ar</span><a class="chip-contacto" href="mailto:fhycsvirtual@fhycs.unam.edu.ar">Virtual: fhycsvirtual@fhycs.unam.edu.ar</a></div></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN5"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN5" aria-expanded="false" aria-controls="cN5">Trayecto 3: ¿Cómo es el Curso de Ingreso Específico?</button></h2>
+                            <div id="cN5" class="accordion-collapse collapse" aria-labelledby="hN5" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Te encontrarás con docentes y estudiantes avanzados de tu carrera: conocerás cómo está organizada, las materias del plan de estudios, las formas de cursado y evaluación, y participarás de actividades introductorias.</p><span class="fecha-badge">11/3 al 18/3/2027</span><p class="mt-2 mb-0">Días, horarios y espacios los define cada carrera y se comunican antes de finalizar el Curso de Ingreso General. Por lo general es presencial, aunque algunas carreras ofrecen actividades virtuales o híbridas.</p></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN6"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN6" aria-expanded="false" aria-controls="cN6">¿Tengo que participar? ¿Me van a tomar un examen final?</button></h2>
+                            <div id="cN6" class="accordion-collapse collapse" aria-labelledby="hN6" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Es importante que participes de las actividades de ingreso: allí recibirás orientaciones sobre la vida universitaria y realizarás actividades introductorias de aulas virtuales, lectura, escritura, oralidad y estudio.</p><p class="mb-0"><strong>No está previsto un examen final.</strong> Las actividades están pensadas para que tengas un primer acercamiento a las formas de estudiar y comunicar conocimientos en la universidad, y nos ayudan a conocer tus experiencias y necesidades para acompañarte mejor.</p></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN7"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN7" aria-expanded="false" aria-controls="cN7">¿Puedo elegir modalidad o cambiarme a mitad de camino?</button></h2>
+                            <div id="cN7" class="accordion-collapse collapse" aria-labelledby="hN7" data-bs-parent="#faqAccordion"><div class="accordion-body">Sí. El Curso de Ingreso General se ofrece en modalidad presencial y virtual, y podés elegir la que mejor se adapte a tus posibilidades. Si empezaste en una y necesitás cambiar a la otra, podés hacerlo: comunicate con el equipo responsable del ingreso para organizar la continuación.</div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN8"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN8" aria-expanded="false" aria-controls="cN8">¿Qué hago si trabajo o necesito apoyos de accesibilidad?</button></h2>
+                            <div id="cN8" class="accordion-collapse collapse" aria-labelledby="hN8" data-bs-parent="#faqAccordion"><div class="accordion-body"><p><strong>Si trabajás:</strong> podés hacer los dos primeros trayectos de forma virtual y autónoma. Para el trayecto 3, comunicate con los organizadores del ingreso de tu carrera.</p><p class="mb-0"><strong>Si necesitás apoyos o ajustes de accesibilidad</strong> (materiales, comunicación, espacios físicos, actividades o herramientas digitales), escribinos y buscamos alternativas conjuntamente desde el PATFEs y la Oficina de Inclusión Educativa:</p><div class="chips-contacto"><a class="chip-contacto" href="mailto:patfes@fhycs.unam.edu.ar">✉ patfes@fhycs.unam.edu.ar</a><a class="chip-contacto" href="mailto:oficinadeinclusionfhycs@gmail.com">✉ oficinadeinclusionfhycs@gmail.com</a></div></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN9"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN9" aria-expanded="false" aria-controls="cN9">¿Dónde consigo el cuadernillo de ingreso?</button></h2>
+                            <div id="cN9" class="accordion-collapse collapse" aria-labelledby="hN9" data-bs-parent="#faqAccordion"><div class="accordion-body"><ul class="mb-0"><li><strong>General presencial:</strong> sección PATFEs de la web de la FHyCS.</li><li><strong>General virtual:</strong> aula virtual del curso.</li><li><strong>Específico:</strong> cada carrera publica su material antes del inicio de las actividades (web o departamento correspondiente).</li></ul></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN10"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN10" aria-expanded="false" aria-controls="cN10">¿Cómo me comunico con los encargados del ingreso?</button></h2>
+                            <div id="cN10" class="accordion-collapse collapse" aria-labelledby="hN10" data-bs-parent="#faqAccordion"><div class="accordion-body"><p class="mb-1"><strong>Ingreso General presencial</strong> (PATFEs):</p><div class="chips-contacto"><a class="chip-contacto" href="mailto:patfes@fhycs.unam.edu.ar">✉ patfes@fhycs.unam.edu.ar</a><a class="chip-contacto" href="https://wa.me/5493764837146" target="_blank">💬 WhatsApp 376 483-7146</a><a class="chip-contacto" href="https://www.instagram.com/patfes.humanidades" target="_blank">📷 Instagram</a><a class="chip-contacto" href="https://www.facebook.com/profile.php?id=100068563728385" target="_blank">📘 Facebook</a></div><p class="mb-1 mt-3"><strong>Ingreso General virtual:</strong></p><div class="chips-contacto"><a class="chip-contacto" href="mailto:aulavirtual@fhycs.unam.edu.ar">✉ aulavirtual@fhycs.unam.edu.ar</a></div><p class="mb-0 mt-3"><strong>Trayecto específico:</strong> comunicate con el departamento de tu carrera.</p></div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hN11"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cN11" aria-expanded="false" aria-controls="cN11">¿A quién recurro si tengo dificultades durante el ingreso?</button></h2>
+                            <div id="cN11" class="accordion-collapse collapse" aria-labelledby="hN11" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>El <strong>PATFEs</strong> (Programa de Acompañamiento a las Trayectorias Formativas de los Estudiantes) te acompaña en tu recorrido, especialmente en el ingreso y los primeros años: actividades y espacios de acompañamiento, prácticas de lectura, escritura y estudio, resolución de dudas y contacto con otros estudiantes. Estamos en el <strong>piso 1 del edificio de San Lorenzo</strong>.</p><div class="chips-contacto"><a class="chip-contacto" href="mailto:patfes@fhycs.unam.edu.ar">✉ patfes@fhycs.unam.edu.ar</a><a class="chip-contacto" href="mailto:patfesesttudiantes@gmail.com">✉ patfesesttudiantes@gmail.com</a><a class="chip-contacto" href="https://wa.me/5493764837146" target="_blank">💬 376 483-7146</a><a class="chip-contacto" href="https://www.instagram.com/patfes.humanidades" target="_blank">📷 Instagram</a><a class="chip-contacto" href="https://www.facebook.com/profile.php?id=100068563728385" target="_blank">📘 Facebook</a></div></div></div>
                         </div>
 
                         <!-- CATEGORÍA: CARRERAS -->
@@ -1683,256 +1660,70 @@ comunicación pública de la ciencia y como investigadora.”</p>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingCarreras1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCarreras1" aria-expanded="false" aria-controls="collapseCarreras1">
-                                    ¿Dónde puedo consultar el plan de estudios y la duración de las carreras?
-                                </button>
-                            </h2>
-                            <div id="collapseCarreras1" class="accordion-collapse collapse" aria-labelledby="headingCarreras1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    En la página individual de cada carrera dentro de este sitio web podés ver la duración específica y descargar el plan de estudios detallado en formato PDF.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hCA1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCA1" aria-expanded="false" aria-controls="cCA1">¿Dónde puedo consultar el plan de estudios?</button></h2>
+                            <div id="cCA1" class="accordion-collapse collapse" aria-labelledby="hCA1" data-bs-parent="#faqAccordion"><div class="accordion-body">En la página de cada carrera dentro de este sitio de ingreso. Allí también podés descargar el plan de estudios en formato PDF.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingCarreras2">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCarreras2" aria-expanded="false" aria-controls="collapseCarreras2">
-                                    ¿Necesito un título terciario para cursar una Licenciatura?
-                                </button>
-                            </h2>
-                            <div id="collapseCarreras2" class="accordion-collapse collapse" aria-labelledby="headingCarreras2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    No. Para ingresar a las licenciaturas de la Facultad únicamente se requiere título secundario completo o la documentación habilitante correspondiente.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hCA2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCA2" aria-expanded="false" aria-controls="cCA2">¿Cuánto duran las carreras?</button></h2>
+                            <div id="cCA2" class="accordion-collapse collapse" aria-labelledby="hCA2" data-bs-parent="#faqAccordion"><div class="accordion-body">La duración depende de cada carrera y figura en su plan de estudios.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingCarreras3">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCarreras3" aria-expanded="false" aria-controls="collapseCarreras3">
-                                    ¿En qué sede se dictan las carreras?
-                                </button>
-                            </h2>
-                            <div id="collapseCarreras3" class="accordion-collapse collapse" aria-labelledby="headingCarreras3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    La mayoría de las carreras se dictan en la sede central de Posadas. Algunas también se ofrecen en sedes de extensión. Esta precisión figura en el apartado de cada carrera.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hCA3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCA3" aria-expanded="false" aria-controls="cCA3">¿Necesito un título terciario para cursar una licenciatura?</button></h2>
+                            <div id="cCA3" class="accordion-collapse collapse" aria-labelledby="hCA3" data-bs-parent="#faqAccordion"><div class="accordion-body">No. Para ingresar a las licenciaturas de la Facultad únicamente se requiere título secundario completo o la documentación habilitante correspondiente.</div></div>
+                        </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hCA4"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCA4" aria-expanded="false" aria-controls="cCA4">¿En qué sede se dictan las carreras?</button></h2>
+                            <div id="cCA4" class="accordion-collapse collapse" aria-labelledby="hCA4" data-bs-parent="#faqAccordion"><div class="accordion-body">La mayoría de las carreras se dictan en Posadas. Algunas también se ofrecen en sedes de extensión académica.</div></div>
                         </div>
 
-                        <!-- CATEGORÍA: BIENESTAR ESTUDIANTIL Y TRÁMITES -->
+                        <!-- CATEGORÍA: BIENESTAR ESTUDIANTIL -->
                         <div class="faq-category-title mt-5 mb-3">
-                            <h3 class="h3-title text-primary"><i class="fas fa-hand-holding-heart me-2"></i>Bienestar Estudiantil y Trámites</h3>
+                            <h3 class="h3-title text-primary"><i class="fas fa-hand-holding-heart me-2"></i>Bienestar Estudiantil</h3>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingBienestar1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBienestar1" aria-expanded="false" aria-controls="collapseBienestar1">
-                                    ¿Cuándo puedo solicitar un certificado de alumno regular?
-                                </button>
-                            </h2>
-                            <div id="collapseBienestar1" class="accordion-collapse collapse" aria-labelledby="headingBienestar1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Podrás descargarlo directamente desde el SIU Guaraní una vez finalizada tu inscripción definitiva, habiendo adjuntado toda la documentación exigida y registrado el alta como estudiante regular de la Facultad.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hB1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cB1" aria-expanded="false" aria-controls="cB1">¿Cuándo puedo solicitar mi certificado de alumno regular?</button></h2>
+                            <div id="cB1" class="accordion-collapse collapse" aria-labelledby="hB1" data-bs-parent="#faqAccordion"><div class="accordion-body">Una vez finalizada la inscripción definitiva, adjuntada toda la documentación solicitada y registrado el alta como estudiante, podés descargar tu constancia de alumno regular a través del SIU Guaraní.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingBienestar2">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBienestar2" aria-expanded="false" aria-controls="collapseBienestar2">
-                                    ¿Cómo tramito el Boleto Estudiantil Gratuito (BEM / SUBE Estudiantil)?
-                                </button>
-                            </h2>
-                            <div id="collapseBienestar2" class="accordion-collapse collapse" aria-labelledby="headingBienestar2" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Una vez que seas estudiante regular, ingresás al sistema BEM, completás el formulario y lo descargás. Luego te acercás con tu certificado de alumno regular impreso a la Secretaría de Bienestar Estudiantil o a la Dirección de Alumnado para obtener la firma y sello correspondientes.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hB2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cB2" aria-expanded="false" aria-controls="cB2">¿Cómo tramito el boleto estudiantil o la SUBE Estudiantil?</button></h2>
+                            <div id="cB2" class="accordion-collapse collapse" aria-labelledby="hB2" data-bs-parent="#faqAccordion"><div class="accordion-body">Una vez que seas estudiante regular: ingresá al BEM, completá el formulario, descargalo y acercate a la Secretaría de Bienestar Estudiantil o a la Dirección General de Alumnado con tu certificado de alumno regular para obtener la firma.</div></div>
                         </div>
-
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingBienestar3">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBienestar3" aria-expanded="false" aria-controls="collapseBienestar3">
-                                    ¿Qué becas hay disponibles y cómo aplico?
-                                </button>
-                            </h2>
-                            <div id="collapseBienestar3" class="accordion-collapse collapse" aria-labelledby="headingBienestar3" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>La Facultad ofrece becas de <strong>Salud, Comedor (almuerzo y cena), Albergue, Cuidados y Gimnasio (GYM)</strong>.</p>
-                                    <p class="mb-0">Para acceder a las becas se debe solicitar el formulario de inscripción presencialmente en la Dirección de Bienestar Estudiantil. Tras presentar la documentación requerida, la solicitud será evaluada para su asignación.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hB3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cB3" aria-expanded="false" aria-controls="cB3">¿Qué becas hay disponibles y cómo aplico?</button></h2>
+                            <div id="cB3" class="accordion-collapse collapse" aria-labelledby="hB3" data-bs-parent="#faqAccordion"><div class="accordion-body">Podés acceder a becas de <strong>Salud, Comedor (almuerzo y cena), Albergue, Cuidados y Gimnasio</strong> de la universidad. Una vez que seas estudiante regular, consultá en la Secretaría de Bienestar Estudiantil.</div></div>
                         </div>
 
-                        <!-- CATEGORÍA: CONSULTAS GENERALES Y POR CARRERA -->
+                        <!-- CATEGORÍA: CONSULTAS -->
                         <div class="faq-category-title mt-5 mb-3">
                             <h3 class="h3-title text-primary"><i class="fas fa-question-circle me-2"></i>Consultas</h3>
                         </div>
 
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
-                            <h2 class="accordion-header" id="headingConsultas1">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConsultas1" aria-expanded="false" aria-controls="collapseConsultas1">
-                                    ¿Dónde puedo realizar consultas generales o específicas sobre una carrera?
-                                </button>
-                            </h2>
-                            <div id="collapseConsultas1" class="accordion-collapse collapse" aria-labelledby="headingConsultas1" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Para <strong>consultas generales</strong>, podés comunicarte con la Dirección General de Alumnado (<a href="mailto:dga@fhycs.unam.edu.ar">dga@fhycs.unam.edu.ar</a>) o a través de nuestros canales oficiales de comunicación.</p>
-                                    <p class="mb-0">Para <strong>dudas específicas sobre una carrera</strong>, cada oferta académica cuenta con un Departamento Académico encargado de brindar información detallada del plan de estudios, horarios, dinamica de cursado y actividades específicas.</p>
-                                </div>
-                            </div>
+                            <h2 class="accordion-header" id="hCO1"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCO1" aria-expanded="false" aria-controls="cCO1">¿Dónde puedo realizar consultas generales?</button></h2>
+                            <div id="cCO1" class="accordion-collapse collapse" aria-labelledby="hCO1" data-bs-parent="#faqAccordion"><div class="accordion-body">Podés acercarte a la Dirección General de Alumnado o a la Secretaría de Extensión de la Facultad.</div></div>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- FAQ Section End -->
-    
-    <!-- Our Blog Start -->
-    <section class="our-blog-sec sec-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-title text-center">
-                        <span class="sub-title">Blog</span>
-                        <h2 class="h2-title">Novedades</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row our-blog-row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="common-post-card blog-card wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/campus_AVHt.jpg" width="356" height="266" alt="Blog Image">
-                            </div>
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hCO2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCO2" aria-expanded="false" aria-controls="cCO2">¿Dónde consulto cuestiones específicas sobre una carrera?</button></h2>
+                            <div id="cCO2" class="accordion-collapse collapse" aria-labelledby="hCO2" data-bs-parent="#faqAccordion"><div class="accordion-body">Cada carrera cuenta con un <strong>Departamento Académico</strong> que brinda información sobre el plan de estudios, horarios, cursado y actividades propias de la carrera.</div></div>
                         </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                <ul>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Book Icon">
-                                        </span>
-                                        <span class="post-info-text">2025</span>
-                                    </li>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/admin-icon_AVHt.svg" width="20" height="20" alt="Clock Icon">
-                                        </span>
-                                        <span class="post-info-text">FHyCS</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="post-content-title">
-                                <a title="Convocatoria de Proyectos con financiamiento">
-                                    <h4 class="h4-title">Se abre la Convocatoria de Proyectos con financiamiento</h4>
-                                </a>
-                            </div>
-                            <div class="post-content-description-text">
-                                <p>La Secretaría de Investigación de la 
-FHyCS de la UNaM convoca a la presentación de Proyectos en Líneas 
-Estratégicas con financiamiento, en concordancia con el Plan Estratégico
- de Ciencia y Tecnología de la UNaM 2023-2026 (Res CS 152/22), de 
-acuerdo a los lineamientos generales establecidos por la reglamentación 
-vigente (Ordenanza 082/16 y su modificación por Ord. 02/25), el Plan 
-Nacional de Ciencia, Tecnología e Innovación 2030 y los objetivos de 
-desarrollo sostenible (ODS). La Convocatoria ha sido aprobada según 
-Resolución HCD N° 376/25.</p>
-                            </div>
-                            
+                        <div class="accordion-item mb-3 border-0 shadow-sm rounded">
+                            <h2 class="accordion-header" id="hCO3"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cCO3" aria-expanded="false" aria-controls="cCO3">¿Cuáles son otros espacios de acompañamiento?</button></h2>
+                            <div id="cCO3" class="accordion-collapse collapse" aria-labelledby="hCO3" data-bs-parent="#faqAccordion"><div class="accordion-body"><ul class="mb-0">
+                                <li class="mb-2"><strong>Programa de Salud Mental</strong> <span style="display:inline-flex; gap:6px; margin:0 0 0 6px; flex-wrap:wrap;"><a class="chip-contacto" href="https://wa.me/5493764627048" target="_blank">💬 WhatsApp</a><a class="chip-contacto" href="https://www.instagram.com/programadesaludmentalfhycs/" target="_blank">📷 Instagram</a></span></li>
+                                <li class="mb-2"><strong>Oficina de Inclusión Educativa</strong> <span style="display:inline-flex; gap:6px; margin:0 0 0 6px; flex-wrap:wrap;"><a class="chip-contacto" href="mailto:oficinadeinclusionfhycs@gmail.com">✉ oficinadeinclusionfhycs@gmail.com</a></span></li>
+                                <li class="mb-2"><strong>Oficina de Protección de Derechos y Abordaje de las Violencias</strong> <span style="display:inline-flex; gap:6px; margin:0 0 0 6px; flex-wrap:wrap;"><a class="chip-contacto" href="https://wa.me/5493764837400" target="_blank">💬 WhatsApp</a><a class="chip-contacto" href="mailto:opdfhycs@gmail.com">✉ opdfhycs@gmail.com</a></span></li>
+                                <li><strong>Secretaría de Bienestar Estudiantil</strong> <span style="display:inline-flex; gap:6px; margin:0 0 0 6px; flex-wrap:wrap;"><a class="chip-contacto" href="https://www.instagram.com/bienestarestudiantilfhycs/" target="_blank">📷 Instagram</a><a class="chip-contacto" href="mailto:secretariadebienestarestudiantil@fhycs.unam.edu.ar">✉ secretariadebienestarestudiantil@fhycs.unam.edu.ar</a></span></li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="common-post-card blog-card wow fadedown-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: none;">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/inscripcion_AVHt.jpg" width="356" height="266" alt="Blog Image">
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                <ul>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Book Icon">
-                                        </span>
-                                        <span class="post-info-text">2025</span>
-                                    </li>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/admin-icon_AVHt.svg" width="20" height="20" alt="Clock Icon">
-                                        </span>
-                                        <span class="post-info-text">FHyCS</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="post-content-title">
-                                <a title="Inscripciones abiertas para carreras ">
-                                    <h4 class="h4-title">Inscripciones abiertas para carreras 2026</h4>
-                                </a>
-                            </div>
-                            <div class="post-content-description-text">
-                                <p>La Facultad de Humanidades y Ciencias
- Sociales (FHyCS) de la Universidad Nacional de Misiones informa que se 
-encuentran abiertas las inscripciones a las carreras de grado y pregrado
- a partir del lunes 27 de octubre.<br> 18 carreras entre licenciaturas, profesorados y carreras cortas, que abarcan distintas áreas del conocimiento.</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="common-post-card blog-card wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: none;">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/50_AVHt.jpg" width="356" height="266" alt="Blog Image">
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                <ul>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Book Icon">
-                                        </span>
-                                        <span class="post-info-text">2025</span>
-                                    </li>
-                                    <li>
-                                        <span class="post-info-icon">
-                                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/admin-icon_AVHt.svg" width="20" height="20" alt="Clock Icon">
-                                        </span>
-                                        <span class="post-info-text">FHyCS</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="post-content-title">
-                                <a title="50 años de la Licenciatura y 40 años de la reapertura del Profesorado">
-                                    <h4 class="h4-title">50 años de la Licenciatura y 40 años de la reapertura del Profesorado</h4>
-                                </a>
-                            </div>
-                            <div class="post-content-description-text">
-                                <p>En este 2025 estamos celebrando 50 
-años de la creación de la Licenciatura en Letras y 40 años de la 
-reapertura del Profesorado en Letras en la Facultad de Humanidades y 
-Ciencias Sociales de la UNaM. Lo primero que debemos mencionar es la 
-relevancia que tuvo en los orígenes de las actuales carreras de Letras 
-el Profesorado en Castellano y Literatura perteneciente al Instituto 
-Superior del Profesorado de la Provincia de Misiones.</p>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Our Blog End -->
+    <!-- FAQ Section End -->    
 
     <!-- Apply Now Start -->
     <section class="apply-now-sec">
@@ -1945,23 +1736,24 @@ Superior del Profesorado de la Provincia de Misiones.</p>
                         </div>
                         <div class="apply-now-content">
                             <div class="apply-now-image-box">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_AVHt.png" width="305" height="287" alt="ENCONTRÁ TU CARRERA IDEAL">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_respaldo.png" width="305" height="287" alt="ENCONTRÁ TU CARRERA IDEAL">
                             </div>
                             <div class="apply-now-text">
                                 <div class="sec-title">
                                     <span class="sub-title"></span>
                                     <h3 class="h3-title"> ENCONTRÁ TU CARRERA IDEAL</h3>
                                 </div>
-                                <div class="apply-now-btn">
-                                    <a href="https://ingreso.fhycs.unam.edu.ar/contacto.html" class="sec-btn" title="inicio"><span>Iniciar</span></a>
-                                </div>
-                            </div>
-                        </div>
+                                <div class="apply-now-btn" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
+                                    <a href="#" data-filtro="profesorados" class="sec-btn btn-carrera-filtro" title="Ver profesorados"><span>Profesorados</span></a>
+                                    <a href="#" data-filtro="carreras-cortas" class="sec-btn btn-carrera-filtro" title="Ver tecnicaturas"><span>Carreras Cortas</span></a>
+                                    <a href="#" data-filtro="licenciaturas" class="sec-btn btn-carrera-filtro" title="Ver licenciaturas"><span>Licenciaturas</span></a>
+                                </div>                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+                            </div>
+</section>
     <!-- Apply Now End -->
 
     <!-- Footer Start -->
@@ -2007,7 +1799,7 @@ Superior del Profesorado de la Provincia de Misiones.</p>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-about">
                             <div class="footer-logo">
-                                <a href="https://ingreso.fhycs.unam.edu.ar/index.html" title="UNAM FHyCS">
+                                <a href="index.html" title="UNAM FHyCS">
                                     <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM">
                                 </a>
                             </div>
@@ -2034,12 +1826,11 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="our-link-content">
                                 <h4 class="underline-title"><br>+Links</h4>
                                 <ul>
-                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/calendario-academico-2026/" target="_blank" title="Home">Calendario 2026</a></li>
+                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/calendario-academico-2027/" target="_blank" title="Home">Calendario 2027</a></li>
                                     <li><a href="https://virtual.fhycs.unam.edu.ar/" target="_blank" title="Aula">Aula Virtual</a></li>
                                     <li><a href="https://www.fhycs.unam.edu.ar/portada/cronograma-de-investigacion-y-posgrado-2020/" target="_blank" title="Investigación">Investigación</a></li>
                                     <li><a href="https://edicionesfhycs.unam.edu.ar/" target="_blank" title="Ediciones FHyCS">Ediciones FHyCS</a></li>
-                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/category/graduados/" target="_blank" title="Graduados">Graduados</a></li>
-                                    <li><a href="https://www.fhycs.unam.edu.ar/" target="_blank" title="FHyCS">FHyCS</a></li>
+                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/category/graduados/" target="_blank" title="Graduados">Graduados</a></li>                                    <li><a href="https://www.fhycs.unam.edu.ar/" target="_blank" title="FHyCS">FHyCS</a></li>
                                     <li><a href="https://www.unam.edu.ar/" target="_blank" title="UNaM">UNaM</a></li>
                                 </ul>
                             </div>
@@ -2050,15 +1841,15 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="our-link-content">
                                 <h4 class="underline-title"><br>Top Carreras</h4>
                                 <ul>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-comunicacion-social.html" title="Design &amp; Learn Art">Comunicación Social</a>
+                                    <li><a href="licenciatura-en-comunicacion-social.html" title="Design &amp; Learn Art">Comunicación Social</a>
                                     </li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-turismo.html" title="Learn Data Science">Turismo</a>
+                                    <li><a href="licenciatura-en-turismo.html" title="Learn Data Science">Turismo</a>
                                     </li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-economicas.html" title="Business Strategy">Ciencias Económicas</a></li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-historia.html" title="Learn Marketing">Historia</a></li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-letras.html" title="Learn Lifestyle">Letras</a></li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/licenciatura-en-trabajo-social.html" title="Learn Finance">Trabajo Social</a></li>
-                                    <li><a href="https://ingreso.fhycs.unam.edu.ar/profesorado-en-ciencias-de-la-educacion.html" title="Learn Finance">Educación</a></li>
+                                    <li><a href="profesorado-en-ciencias-economicas.html" title="Business Strategy">Ciencias Económicas</a></li>
+                                    <li><a href="licenciatura-en-historia.html" title="Learn Marketing">Historia</a></li>
+                                    <li><a href="licenciatura-en-letras.html" title="Learn Lifestyle">Letras</a></li>
+                                    <li><a href="licenciatura-en-trabajo-social.html" title="Learn Finance">Trabajo Social</a></li>
+                                    <li><a href="profesorado-en-ciencias-de-la-educacion.html" title="Learn Finance">Educación</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -2077,20 +1868,10 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                                 </li>
                                 <li>
                                     <span class="contact-icon">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/phone-icon_AVHt.svg" width="19" height="19" alt="Phone Icon">
-                                    </span>
-                                    <span class="contact-text">
-                                        <a href="https://wa.me/5493764815202" title="5493764815202">376 481 5202</a>
-                                        
-                                    </span>
-                                </li>
-                                <li>
-                                    <span class="contact-icon">
                                         <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Mail Icon">
                                     </span>
                                     <span class="contact-text">
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
-                                       
                                     </span>
                                 </li>
                             </ul>
@@ -2105,14 +1886,10 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                     <div class="col-lg-12">
                         <div class="footer-bottom-box">
                             <div class="copy-right">
-                                <p>Copyright © <span id="copy-right-year">2026</span> <a href="https://www.unam.edu.ar/" target="_blank" title="UNaM">UNaM</a>. <span>Derechos Reservados</span></p>
+                                <p>Copyright © <span>2027</span> <a href="https://www.unam.edu.ar/" target="_blank" title="UNaM">UNaM</a>. <span>Derechos Reservados</span></p>
                             </div>
                             <div class="footer-bottom-link">
                                 <ul>
-                                    <li>
-                                        <a href="https://wa.me/5493764815202" target="_blank" title="WhatsApp Directo">Contacto Directo WhatsApp</a>
-                                    </li>
-                                    
                                 </ul>
                             </div>
                         </div>
@@ -2132,7 +1909,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
     <!-- Back To Top End -->
 
     <!-- Jquery JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
 
     <!-- Bootstrap JS Link -->
     <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bootstrap.min_AVHt.js"></script>
@@ -2155,6 +1932,107 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
 
     <!-- Back To Top JS Link -->
     <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/back-to-top_AVHt.js"></script>
+    <!-- Palabra rotativa del banner -->
+    <script>
+        (function () {
+            var palabras = [
+                "Comunicación Social", "Turismo", "Trabajo Social", "Historia", "Letras",
+                "Antropología Social", "Bibliotecología", "Ciencias de la Educación",
+                "Ciencias Económicas", "Portugués", "Educación Especial", "LITADIS",
+                "Guía de Turismo", "Tecnicatura en Comunicación"
+            ];
+            var el = document.getElementById('rotator-word');
+            if (!el) return;
+            var i = 0, pos = 0, borrando = false;
+            function tick() {
+                var p = palabras[i];
+                if (!borrando) {
+                    pos++;
+                    el.textContent = p.slice(0, pos);
+                    if (pos === p.length) { borrando = true; return setTimeout(tick, 1700); }
+                    return setTimeout(tick, 70);
+                }
+                pos--;
+                el.textContent = p.slice(0, pos);
+                if (pos === 0) { borrando = false; i = (i + 1) % palabras.length; return setTimeout(tick, 400); }
+                return setTimeout(tick, 35);
+            }
+            tick();
+        })();
+    </script>
+        <!-- Botones "Ver preguntas" de Bienestar y Carreras: abren el FAQ y hacen scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            [['link-faq-bienestar', 'cB1'], ['link-faq-carreras', 'cCA1']].forEach(function (par) {
+                var a = document.getElementById(par[0]);
+                if (!a) return;
+                a.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var el = document.getElementById(par[1]);
+                    if (window.bootstrap && bootstrap.Collapse) {
+                        bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }).show();
+                    } else {
+                        el.classList.add('show');
+                    }
+                    setTimeout(function () {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 350);
+                });
+            });
+        });
+    </script>
+    <!-- Script: link "¿Qué documentación?" abre el FAQ y hace scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var link = document.getElementById('link-doc-faq');
+            if (!link) return;
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var el = document.querySelector('#collapseInsc3');
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }).show();
+                } else {
+                    el.classList.add('show');
+                }
+                setTimeout(function () {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400);
+            });
+        });
+    </script>
+        <!-- Scroll suave para botones que apuntan a secciones de la página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+                if (a.id === 'link-doc-faq') return; // ese ya tiene su propio script
+                a.addEventListener('click', function (e) {
+                    var id = a.getAttribute('href');
+                    if (id.length > 1) {
+                        var dest = document.querySelector(id);
+                        if (dest) {
+                            e.preventDefault();
+                            dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+     <!-- Botones de la sección "Encontrá tu carrera ideal": suben y filtran las carreras -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.btn-carrera-filtro').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var tipo = btn.getAttribute('data-filtro');
+                    var filtro = document.querySelector('.top-course-list [data-type="' + tipo + '"]');
+                    if (filtro) { filtro.click(); }
+                    var seccion = document.querySelector('.top-course-sec');
+                    if (seccion) { seccion.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                });
+            });
+        });
 
-
+        
+    </script>   
 </body></html>
