@@ -60,7 +60,8 @@
         }
         /* Ocultar las descripciones de las tarjetas de carreras */
         .top-course-sec .client-review-text { display: none !important; }
-        /* Botón FAQ del banner: solo en celu */
+                /* Íconos de bienestar: todos iguales (cuadrados, mismo tamaño) */
+        .bienestar-img-box img { width: 160px !important; height: 160px !important; object-fit: cover; border-radius: 18px; }        /* Botón FAQ del banner: solo en celu */
         .btn-faq-movil { display: none; }
         /* Tarjetas compactas + "Ver Más" como botón azul centrado */
         .top-course-sec .common-post-card { height: auto !important; }
@@ -122,7 +123,9 @@
             /* Banda superior más chica */
             .top-header-content-box p { font-size: 12px !important; }
         }
-        @media (max-width: 767px) {
+        @media (max-width: 767px) {           
+             /* El título no cambia de alto cuando rota la palabra */
+            .main-banner .h1-title { min-height: 3em; }
             /* En celu: logos arriba, botón "Preguntas frecuentes" debajo, encima del banner */
             .header-btn { display: none !important; }
             .btn-faq-movil { display: block; text-align: center; }         
@@ -167,9 +170,9 @@
                 <div class="row">
                     <div class="col-xxl-5 col-lg-4">
                         <div class="site-branding" style="display: flex; align-items: center; gap: 14px;">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam-header.png" alt="UNaM" style="height: 52px; width: auto;">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam-header.png" alt="UNaM" style="height: 52px; width: auto;">
                             <a href="index.html" title="Facultad Humanidades" style="display: flex;">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" alt="Facultad Humanidades" style="height: 56px; width: auto;">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" alt="Facultad Humanidades" style="height: 56px; width: auto;">
                             </a>
                         </div>
                     </div>
@@ -198,55 +201,55 @@
         </div>
         <div class="main-banner-bg-aliment-wp">
             <div class="bg-aliment-1 rotate-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
             </div>
             <div class="bg-aliment-2 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment">
             </div>
             <div class="bg-aliment-3 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
             </div>
             <div class="bg-aliment-4 rotate-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
             </div>
             <div class="bg-aliment-5 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment">
             </div>
             <div class="bg-aliment-6 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
             </div>
             <div class="bg-aliment-7 rotate-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
             </div>
             <div class="bg-aliment-8 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
             </div>
             <div class="bg-aliment-9 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
             </div>
             <div class="bg-aliment-10 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
             </div>
             <div class="bg-aliment-11 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
             </div>
             <div class="bg-aliment-12 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
             </div>
             <div class="bg-aliment-13 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
             </div>
             <div class="bg-aliment-14 rotate-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment">
             </div>
             <div class="bg-aliment-15 zoom-fade-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
             </div>
             <div class="bg-aliment-16 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
             </div>
             <div class="bg-aliment-17 rotate-animation">
-                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
             </div>
         </div>
         <div class="container">
@@ -256,7 +259,7 @@
                         <div class="btn-faq-movil" style="margin-bottom: 14px;">
                             <a href="#faqAccordion" class="sec-btn" title="Preguntas frecuentes"><span>Preguntas frecuentes</span></a>
                         </div>
-                        <span class="sub-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeup-animation;"><br>#SumatealacomunidadFHyCS</span>}
+                        <span class="sub-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeup-animation;"><br>#SumatealacomunidadFHyCS</span>
                         <h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: fadeup-animation;">Tu futuro está en <span id="rotator-word" style="color: #1b6ec2;"></span><span style="color: #1b6ec2; animation: cursorBlink 0.9s steps(1) infinite;">|</span></h1>
                         <div class="banner-description-wp wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: fadeup-animation;">
                             <div class="banner-description-text">
@@ -272,7 +275,7 @@
                 <div class="col-lg-6">
                     <div class="banner-image-content wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: fadeup-animation;">
                         <div class="banner-image-shape">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/arrow-aliment_AVHt.svg" class="move-element-animation-1" width="123" height="142" alt="Arrow Aliment">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/arrow-aliment_AVHt.svg" class="move-element-animation-1" width="123" height="142" alt="Arrow Aliment">
                         </div>
                         <div class="banner-image-box">
                             <div class="banner-image">
@@ -281,7 +284,7 @@
                         </div>
                         <div class="congra-box">
                             <div class="congra-icon">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/note-icon_AVHt.svg" width="24" height="30" alt="Note Icon">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/note-icon_AVHt.svg" width="24" height="30" alt="Note Icon">
                             </div>
                             <div class="congra-text">
                                 <h5 class="h5-title">Te esperamos</h5>
@@ -290,7 +293,7 @@
                         </div>
                         <div class="certification-box-wp">
                             <div class="certification-icon">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/right-big-icon_AVHt.svg" width="30" height="15" alt="Right Icon">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/right-big-icon_AVHt.svg" width="30" height="15" alt="Right Icon">
                             </div>
                             <div class="certification-box">
                                 <div class="certification-text"><span style="transform:rotate(0deg)">
@@ -305,7 +308,7 @@
     </section>
     <!-- Banner End -->            
     <!-- Guarda de colores + cinta azul -->
-    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" alt="" style="display: block; width: 100%; height: auto;">
+    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" alt="" style="display: block; width: 100%; height: auto;">
     <div class="marquee-fhycs">
         <div class="marquee-fhycs-track">
             <span class="mq-item">1# Universidad pública en Misiones</span><span class="mq-item mq-sep">✦</span>
@@ -365,9 +368,9 @@
                                 <h4 class="h4-title">3. Curso virtual </h4>
                             </a>
                             <p>Realizá el curso virtual obligatorio no 
-eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
+eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 2 de noviembre al 21 de diciembre de 2026 y del 8 de febrero al 8 de marzo de 2027.
  al 27 de febrero de 2027.
-<a href="mailto/promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar"><span </span></a>                        </div>
+                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
                     </div>
                 </div>
                 
@@ -394,7 +397,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_comedor.jpg" width="60" height="60" alt="Beca de comedor">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_comedor.jpg" width="60" height="60" alt="Beca de comedor">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Beca de comedor</h4>
@@ -406,7 +409,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_albergue.jpg" width="60" height="60" alt="Beca de albergue">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_albergue.jpg" width="60" height="60" alt="Beca de albergue">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Beca de albergue</h4>
@@ -418,7 +421,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/gimnasio.jpg" width="60" height="60" alt="Gimnasio">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/gimnasio.jpg" width="60" height="60" alt="Gimnasio">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Gimnasio</h4>
@@ -430,7 +433,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/salud_mental.jpg" width="60" height="60" alt="Programa de salud mental">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/salud_mental.jpg" width="60" height="60" alt="Programa de salud mental">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Programa de salud mental</h4>
@@ -442,7 +445,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_salud.jpg" width="60" height="60" alt="Beca de salud">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_salud.jpg" width="60" height="60" alt="Beca de salud">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Beca de salud</h4>
@@ -454,7 +457,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                 <div class="col-lg-4 col-md-6">
                     <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
                         <div class="bienestar-img-box mb-3">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_cuidado.jpg" width="60" height="60" alt="Beca de cuidado">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_cuidado.jpg" width="60" height="60" alt="Beca de cuidado">
                         </div>
                         <div class="category-list-text w-100 p-0 text-center">
                             <h4 class="h4-title m-0">Beca de cuidado</h4>
@@ -500,7 +503,7 @@ eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 23
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec-com-social-portada.JPG" width="408" height="230" alt="Tec Comunicacion Social">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec-com-social-portada.JPG" width="408" height="230" alt="Tec Comunicacion Social">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -539,7 +542,7 @@ sociales y comunitarios. </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bibliotecología-portada.jpg" width="408" height="230" alt="Bibliotecología">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bibliotecología-portada.jpg" width="408" height="230" alt="Bibliotecología">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -579,7 +582,7 @@ la cultura.  </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tise-portada.jpg" width="408" height="230" alt="Técnico en Investigación Socioeconómica">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tise-portada.jpg" width="408" height="230" alt="Técnico en Investigación Socioeconómica">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -620,7 +623,7 @@ parte de proyectos, diagnósticos y estudios en distintos ámbitos. </p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/guia-turismo-portada.jpg" width="408" height="230" alt="Guia de Turismo">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/guia-turismo-portada.jpg" width="408" height="230" alt="Guia de Turismo">
                             </div>
                             <div class="post-tag">
                                 <span>Carrera Corta</span>
@@ -659,7 +662,7 @@ turista o visitante? <br>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-ciencias-economicas-portada.jpg" width="408" height="230" alt="Profesorado en Ciencias Económicas">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-ciencias-economicas-portada.jpg" width="408" height="230" alt="Profesorado en Ciencias Económicas">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -701,7 +704,7 @@ formando a nuevas generaciones con creatividad, innovación y compromiso.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-historia-portada.jpg" width="408" height="306" alt="Profesorado en Historia">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-historia-portada.jpg" width="408" height="306" alt="Profesorado en Historia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -744,7 +747,7 @@ para analizar el pasado y el presente, y transmitirlos como herramientas
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/educacion-especial-portada.jpg" width="408" height="230" alt="Profesorado en Educación Especial">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/educacion-especial-portada.jpg" width="408" height="230" alt="Profesorado en Educación Especial">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -786,7 +789,7 @@ empatía, el respeto y la igualdad de oportunidades.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-<img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-letras-portada.jpg" width="408" height="306" alt="Profesorado en Letras">                            </div>
+<img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-letras-portada.jpg" width="408" height="306" alt="Profesorado en Letras">                            </div>
                             <div class="post-tag">
                                 <span>Grado</span>
                             </div>
@@ -827,7 +830,7 @@ lengua y la literatura en territorios culturales complejos.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-portugues-portada.jpg" width="408" height="230" alt="Profesorado en Portugués">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-portugues-portada.jpg" width="408" height="230" alt="Profesorado en Portugués">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -870,7 +873,7 @@ cultural entre Argentina y Brasil.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/puce-portada.jpg" width="408" height="230" alt="Prof-Ciencias-de-la-Educacion">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/puce-portada.jpg" width="408" height="230" alt="Prof-Ciencias-de-la-Educacion">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -915,7 +918,7 @@ innovación y compromiso social con la realidad educativa.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/antropologia-social-portada.jpg" width="408" height="230" alt="Licenciatura en Antropología Social">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/antropologia-social-portada.jpg" width="408" height="230" alt="Licenciatura en Antropología Social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -959,7 +962,7 @@ derechos.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/licenciatura-trabajo-social-portada.jpg" width="408" height="230" alt="lic-trabajo-social">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/licenciatura-trabajo-social-portada.jpg" width="408" height="230" alt="lic-trabajo-social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -989,7 +992,7 @@ las comunidades.
                                 <div class="post-author-info">
                                     
                                     <div class="post-author-name">
-                                        <a href="tise.html" title="Licenciatura en Trabajo Social">Ver Más</a>
+                                        <a href="licenciatura-en-trabajo-social.html" title="Licenciatura en Trabajo Social">Ver Más</a>
                                     </div>
                                 </div>
                                 
@@ -1003,7 +1006,7 @@ las comunidades.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/litadis-portada.jpg" width="408" height="230" alt="litadis">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/litadis-portada.jpg" width="408" height="230" alt="litadis">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1044,7 +1047,7 @@ de investigación.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-turismo-portada.jpg" width="408" height="230" alt="lic-turismo">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-turismo-portada.jpg" width="408" height="230" alt="lic-turismo">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1088,7 +1091,7 @@ global.
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-com-social-portada.JPG" width="408" height="230" alt="lic_com_social">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-com-social-portada.JPG" width="408" height="230" alt="lic_com_social">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1131,7 +1134,7 @@ realidad desde una mirada crítica, ética y comprometida con su tiempo.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/letras-portada.jpg" width="408" height="230" alt="Licenciatura en Letras">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/letras-portada.jpg" width="408" height="230" alt="Licenciatura en Letras">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1173,7 +1176,7 @@ pensar y transformar la realidad.</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/historia-portada.jpg" width="408" height="230" alt="Licenciatura en Historia">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/historia-portada.jpg" width="408" height="230" alt="Licenciatura en Historia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1214,7 +1217,7 @@ preservación del patrimonio y la memoria colectiva</p>
                     <div class="common-post-card">
                         <div class="post-image-box-wp">
                             <div class="post-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-bibliotecologia-portada.jpg" width="408" height="230" alt="lic-bibliotecologia">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-bibliotecologia-portada.jpg" width="408" height="230" alt="lic-bibliotecologia">
                             </div>
                             <div class="post-tag">
                                 <span>Grado</span>
@@ -1274,7 +1277,7 @@ promover una sociedad más informada y participativa.</p>
                             <div class="our-event-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                                 <div class="our-event-image-text">
                                     <!--<div class="our-event-image">
-                                        <img src="assets/images/event-image-1.jpg" width="270" height="150"
+                                        <img loading="lazy" src="assets/images/event-image-1.jpg" width="270" height="150"
                                             alt="Event Image">
                                     </div>-->
                                     <div class="our-event-text">
@@ -1288,7 +1291,7 @@ promover una sociedad más informada y participativa.</p>
                                             <ul>
                                                 <li>
                                                     <span class="post-info-icon">
-                                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Date Icon">
+                                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Date Icon">
                                                     </span>
                                                     <span class="post-info-text">Las inscripciones online estarán abiertas del 13/10 al 30/12/2026 y del 01/02 al 19/02/2027. La presentación de documentación se realiza del 10/02 al 26/02/2027.</span>
                                                 </li>
@@ -1333,7 +1336,7 @@ promover una sociedad más informada y participativa.</p>
                                 <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
                                 <div class="client-image-title-wp">
                                     <div class="client-image">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/serena_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/serena_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
                                     </div>
                                     <div class="client-info">
                                         <h4 class="h4-title">Serena Ortellado</h4>
@@ -1354,7 +1357,7 @@ comunitarios con una perspectiva más justa y reflexiva.”</p>
                                 <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
                                 <div class="client-image-title-wp">
                                     <div class="client-image">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/sergio_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/sergio_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
                                     </div>
                                     <div class="client-info">
                                         <h4 class="h4-title">Sergio Rodríguez</h4>
@@ -1375,7 +1378,7 @@ gerente de Responsabilidad Social en una empresa de energía.”</p>
                                 <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
                                 <div class="client-image-title-wp">
                                     <div class="client-image">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/patricia_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/patricia_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
                                     </div>
                                     <div class="client-info">
                                         <h4 class="h4-title">Patricia Monzón</h4>
@@ -1397,7 +1400,7 @@ sostenibilidad y pensamiento crítico.”</p>
                                 <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
                                 <div class="client-image-title-wp">
                                     <div class="client-image">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/agustina_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/agustina_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
                                     </div>
                                     <div class="client-info">
                                         <h4 class="h4-title">Agustina Komjati</h4>
@@ -1475,7 +1478,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 <div class="col-lg-6 align-self-center">
                     <div class="our-features-image-wp wow right-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="our-features-image">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.png" width="510" height="693" alt="FHyCS - estudiante"><br>
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.png" width="510" height="693" alt="FHyCS - estudiante"><br>
                           
                         </div>  <!--<h4 class="h4-title"> Cristian Garrido - Decano FHyCS - UNaM</h4>-->
                     </div>
@@ -1606,7 +1609,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                             <div id="cN2" class="accordion-collapse collapse" aria-labelledby="hN2" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>Las actividades del ingreso 2027 comienzan en <strong>noviembre de 2026</strong> y continúan durante febrero y marzo de 2027. En algunos trayectos podés elegir entre hacerlos a fines de 2026 o durante 2027.</p>
                                 <table class="tabla-crono">
                                     <tr><th>Trayecto</th><th>Fechas</th></tr>
-                                    <tr><td>1. Introducción a Moodle (MOOC)</td><td>Del 2/11 al 21/12/2026 <strong>o</strong> del 8/2 al 8/3/2027</td></tr>
+                                    <tr><td>1. Introducción a las aulas virtuales Moodle (MOOC)</td><td>Del 2/11 al 21/12/2026 <strong>o</strong> del 8/2 al 8/3/2027</td></tr>
                                     <tr><td>2. Ingreso General — Presencial</td><td>Del 1/3 al 10/3/2027</td></tr>
                                     <tr><td>2. Ingreso General — Virtual</td><td>Del 1/12 al 15/12/2026 <strong>o</strong> del 1/3 al 15/3/2027</td></tr>
                                     <tr><td>3. Ingreso Específico</td><td>Del 11/3 al 18/3/2027</td></tr>
@@ -1732,11 +1735,11 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 <div class="col-lg-12">
                     <div class="apply-now-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="apply-now-shape animate-this" style="transform: translateX(-20px) translateY(10px);">
-                            <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/newsletter-bg-shape_AVHt.svg" width="838" height="488" alt="Aplicá en tu Carrera Ideal">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/newsletter-bg-shape_AVHt.svg" width="838" height="488" alt="Aplicá en tu Carrera Ideal">
                         </div>
                         <div class="apply-now-content">
                             <div class="apply-now-image-box">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_respaldo.png" width="305" height="287" alt="ENCONTRÁ TU CARRERA IDEAL">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_respaldo.png" width="305" height="287" alt="ENCONTRÁ TU CARRERA IDEAL">
                             </div>
                             <div class="apply-now-text">
                                 <div class="sec-title">
@@ -1761,37 +1764,37 @@ comunicación pública de la ciencia y como investigadora.”</p>
         <div class="top-footer">
             <div class="footer-bg-aliment-wp">
                 <div class="bg-aliment-1 rotate-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
                 </div>
                 <div class="bg-aliment-2 rotate-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
                 </div>
                 <div class="bg-aliment-3 rotate-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
                 </div>
                 <div class="bg-aliment-4 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
                 </div>
                 <div class="bg-aliment-5 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
                 </div>
                 <div class="bg-aliment-6 zoom-fade-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
                 </div>
                 <div class="bg-aliment-7 zoom-fade-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
                 </div>
                 <div class="bg-aliment-8 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
                 </div>
                 <div class="bg-aliment-9 zoom-fade-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
                 </div>
                 <div class="bg-aliment-10 rotate-animation">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
                 </div>
                 <div class="bg-aliment-11 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
                 </div>
             </div>
             <div class="container">
@@ -1800,7 +1803,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                         <div class="footer-about">
                             <div class="footer-logo">
                                 <a href="index.html" title="UNAM FHyCS">
-                                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM">
+                                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM">
                                 </a>
                             </div>
                             <div class="footer-logo-about-text">
@@ -1812,8 +1815,8 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="social-info">
                                 <h4 class="underline-title">Seguínos en las Redes</h4>
                                 <div class="footer-social-icons">
-                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon"></a>
-                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon"></a>
+                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon"></a>
+                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon"></a>
                                     <!--<a href="https://www.linkedin.com/" title="WhatsApp" target="_blank"><img
                                             src="assets/images/whatsapp-icon.svg" width="13" height="13"
                                             alt="WhatsApp Icon"></a>-->
@@ -1826,7 +1829,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="our-link-content">
                                 <h4 class="underline-title"><br>+Links</h4>
                                 <ul>
-                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/calendario-academico-2027/" target="_blank" title="Home">Calendario 2027</a></li>
+                                    <li><a href="https://www.fhycs.unam.edu.ar/portada/ingreso-fhycs-2027-sede-posadas/" target="_blank" title="Home">Calendario 2027</a></li>
                                     <li><a href="https://virtual.fhycs.unam.edu.ar/" target="_blank" title="Aula">Aula Virtual</a></li>
                                     <li><a href="https://www.fhycs.unam.edu.ar/portada/cronograma-de-investigacion-y-posgrado-2020/" target="_blank" title="Investigación">Investigación</a></li>
                                     <li><a href="https://edicionesfhycs.unam.edu.ar/" target="_blank" title="Ediciones FHyCS">Ediciones FHyCS</a></li>
@@ -1860,7 +1863,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <ul>
                                 <li>
                                     <span class="contact-icon">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Location Icon">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Location Icon">
                                     </span>
                                     <span class="contact-text">
                                         <a href="https://maps.app.goo.gl/fDiwFeB9pYM4u1Xg7" title="Tucumán 1946, Posadas, Misiones" target="_blank">Tucumán 1946, Posadas, Misiones - CP: N3300BSP</a>
@@ -1868,7 +1871,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                                 </li>
                                 <li>
                                     <span class="contact-icon">
-                                        <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Mail Icon">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Mail Icon">
                                     </span>
                                     <span class="contact-text">
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
@@ -1910,30 +1913,30 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
     <!-- Back To Top End -->
 
     <!-- Jquery JS Link -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
 
     <!-- Bootstrap JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bootstrap.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bootstrap.min_AVHt.js"></script>
 
     <!-- Swiper Slider JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/swiper-bundle.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/swiper-bundle.min_AVHt.js"></script>
 
     <!-- Bg Moving JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bg-moving_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bg-moving_AVHt.js"></script>
 
     <!-- Isotope JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/isotope.pkgd.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/isotope.pkgd.min_AVHt.js"></script>
 
     <!-- Wow Animation JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/wow.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/wow.min_AVHt.js"></script>
 
     <!-- Custom JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/custom_AVHt.js"></script>
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/custom-scroll-count_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/custom_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/custom-scroll-count_AVHt.js"></script>
 
     <!-- Back To Top JS Link -->
-    <script src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/back-to-top_AVHt.js"></script>
-    <!-- Palabra rotativa del banner -->
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/back-to-top_AVHt.js"></script>
+    <!-- Palabra rotativa del banner (se pausa sola cuando no la estás mirando) -->
     <script>
         (function () {
             var palabras = [
@@ -1944,8 +1947,11 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
             ];
             var el = document.getElementById('rotator-word');
             if (!el) return;
-            var i = 0, pos = 0, borrando = false;
+            var i = 0, pos = 0, borrando = false, corriendo = false, visible = true;
+
             function tick() {
+                if (!visible) { corriendo = false; return; }
+                corriendo = true;
                 var p = palabras[i];
                 if (!borrando) {
                     pos++;
@@ -1958,10 +1964,17 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                 if (pos === 0) { borrando = false; i = (i + 1) % palabras.length; return setTimeout(tick, 400); }
                 return setTimeout(tick, 35);
             }
+
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    visible = entries[0].isIntersecting;
+                    if (visible && !corriendo) tick();
+                }).observe(el.closest('h1') || el);
+            }
             tick();
         })();
     </script>
-        <!-- Botones "Ver preguntas" de Bienestar y Carreras: abren el FAQ y hacen scroll -->
+         <!-- Botones "Ver preguntas" de Bienestar y Carreras: abren el FAQ y hacen scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             [['link-faq-bienestar', 'cB1'], ['link-faq-carreras', 'cCA1']].forEach(function (par) {
