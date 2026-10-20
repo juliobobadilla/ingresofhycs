@@ -29,8 +29,28 @@
 
     <!-- Main Style CSS Link -->
     <link rel="stylesheet" type="text/css" href="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/style_AVHt.css">
+    <script>
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        document.documentElement.classList.add('safari-lite');
+    }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* Safari: solo se quietan los adornos de fondo que giran eternamente */
+        .safari-lite .rotate-animation,
+        .safari-lite .zoom-fade-animation,
+        .safari-lite .animate-this,
+        .safari-lite .move-element-animation-1 { animation: none !important; }
+
+        /* Header: que no quede fijo al hacer scroll */
+        .site-header,
+        .site-header.sticky-header,
+        .site-header.header-fixed {
+            position: relative !important;
+            top: auto !important;
+            animation: none !important;
+        }
+
         /* Fuente Roboto (homologada con todo el sitio) */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
         body, h1, h2, h3, h4, h5, h6, p, a, button, span, li, div, input, textarea, select { font-family: 'Roboto', sans-serif !important; }
@@ -137,6 +157,7 @@
             .apply-now-text { margin-left: 0 !important; transform: none !important; }
         }
                     </style>
+<base target="_blank">
 </head>
 <body class="">
     <!-- Loader Start -->
@@ -279,7 +300,7 @@
                         </div>
                         <div class="banner-image-box">
                             <div class="banner-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img.png" width="510" height="697" alt="Banner Image">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img.webp" width="510" height="697" alt="Banner Image">
                             </div>
                         </div>
                         <div class="congra-box">
@@ -340,8 +361,8 @@
                             <a title="Inscripción en línea">
                                 <h4 class="h4-title">1. Inscripción en línea</h4>
                             </a>
-                            <p>Visite la página de preinscripción y genere el alta de usuario/alumno <br>
-                                <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank">clic aquí </a></p>
+                            <p>Visite la página de preinscripción y genere el alta de usuario/alumno</p>
+                            <p style="margin-top:12px;"><a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" class="sec-btn" title="Preinscripción online" style="font-size:13px; padding:8px 18px;"><span>Inscribite</span></a></p>
                         </div>
                     </div>
                 </div>
@@ -352,8 +373,8 @@
                             <a title="Profesorados">
                                 <h4 class="h4-title">2. Documentación</h4>
                             </a>
-                            <p>Entrega de la documentación en la Dirección General de Enseñanza y Acción Estudiantil -alumnado-
-                                <a href="#collapseInsc3" id="link-doc-faq">¿Qué documentación? </a>
+                            <p>Entrega de la documentación en la Dirección General de Enseñanza (Alumnado)
+                                <a href="#collapseInsc3" id="link-doc-faq" class="sec-btn" title="Ver documentación requerida" style="font-size:13px; padding:8px 18px;"><span>¿Qué documentación?</span></a>
 
                             
                         </p>
@@ -368,9 +389,8 @@
                                 <h4 class="h4-title">3. Curso virtual </h4>
                             </a>
                             <p>Realizá el curso virtual obligatorio no 
-eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 2 de noviembre al 21 de diciembre de 2026 y del 8 de febrero al 8 de marzo de 2027.
- al 27 de febrero de 2027.
-                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
+eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 2/11 al 21/12/2026 y del 8/02 al 8/03/2027.
+                         <a href="#cN1" id="link-faq-ingreso" class="sec-btn" title="Preguntas frecuentes sobre el ingreso" style="font-size:13px; padding:8px 18px;"><span>¿Querés saber más sobre el ingreso?</span></a>
                     </div>
                 </div>
                 
@@ -1233,7 +1253,7 @@ preservación del patrimonio y la memoria colectiva</p>
                                 </a>
                                 <div class="client-review-text">
                                     <p>Si te gusta la organización de la información y el conocimiento, la investigación, el desarrollo de
-políticas institucionales y las alfabetizaciones múltiples esta carrera es para vos. La
+políticas institucionales y las alfabetizaciones múltiples, esta carrera es para vos. La
 Licenciatura en Bibliotecología te prepara para gestionar unidades de información, organizar
 colecciones analógicas y digitales. Aprendés a diseñar, analizar y coordinar sistemas que
 faciliten el acceso al conocimiento, combinando tecnología, cultura e investigación para
@@ -1459,7 +1479,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                                 
                                 <div class="our-features-info-text">
                                     <h4 class="h4-title">Extensión y vinculación comunitaria</h4>
-                                    <p>Sumate a cursos, diplomaturas, congresos y proyectos que conectan la facultado con la comunidad</p>
+                                    <p>Sumate a cursos, diplomaturas, congresos y proyectos que conectan la facultad con la comunidad</p>
                                 </div>
                             </div>
 
@@ -1478,7 +1498,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 <div class="col-lg-6 align-self-center">
                     <div class="our-features-image-wp wow right-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="our-features-image">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.png" width="510" height="693" alt="FHyCS - estudiante"><br>
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.webp" width="510" height="693" alt="FHyCS - estudiante"><br>
                           
                         </div>  <!--<h4 class="h4-title"> Cristian Garrido - Decano FHyCS - UNaM</h4>-->
                     </div>
@@ -1539,7 +1559,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                             <div id="cI1" class="accordion-collapse collapse" aria-labelledby="hI1" data-bs-parent="#faqAccordion"><div class="accordion-body"><p>La inscripción consta de <strong>dos etapas</strong> para quienes ingresan por primera vez a la Universidad Nacional de Misiones:</p>
                                 <div class="pasos-faq">
                                     <div class="paso-faq"><span class="paso-num">1</span><div><h6>Preinscripción Online</h6><p>Ingresá a <a href="https://preinscripcion.sistemas.unam.edu.ar" target="_blank">preinscripcion.sistemas.unam.edu.ar</a>, inscribite a la carrera elegida y registrá todos los datos que te solicitan. Elegí el día y horario en que presentarás la documentación.<br><span class="fecha-badge">13/10 al 30/12/2026</span><span class="fecha-badge">01/02 al 19/02/2027</span></p></div></div>
-                                    <div class="paso-faq"><span class="paso-num">2</span><div><h6>Presentar documentación</h6><p>Presentá tu documentación en el día y horario elegidos, en la Dirección General de Alumnado (DGA), Planta Baja del Edificio Central, Tucumán 1946.<br><span class="fecha-badge">10/02 al 27/02/2027</span></p></div></div>
+                                    <div class="paso-faq"><span class="paso-num">2</span><div><h6>Presentar documentación</h6><p>Presentá tu documentación en el día y horario elegidos, en la Dirección General de Alumnado (DGA), Planta Baja del Edificio Central, Tucumán 1946.<br><span class="fecha-badge">10/02 al 26/02/2027</span></p></div></div>
                                 </div></div></div>
                         </div>
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
@@ -1583,7 +1603,7 @@ comunicación pública de la ciencia y como investigadora.”</p>
                         </div>
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
                             <h2 class="accordion-header" id="hI8"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI8" aria-expanded="false" aria-controls="cI8">¿Si no tengo título secundario puedo inscribirme igual?</button></h2>
-                            <div id="cI8" class="accordion-collapse collapse" aria-labelledby="hI8" data-bs-parent="#faqAccordion"><div class="accordion-body">Si sos <strong>mayor de 25 años</strong> y no tenés título secundario, podés estudiar gracias a la Ley N.° 24.521. Completá la Preinscripción Online seleccionando la opción <em>"Mayores de 25 años sin título"</em> <span class="fecha-badge">13/10 al 18/12/2026</span> y luego acercate a la DGA (Tucumán 1946, Planta Baja) para cumplimentar el proceso de admisión, de 8:00 a 12:30 hs, durante diciembre de 2026.</div></div>
+                            <div id="cI8" class="accordion-collapse collapse" aria-labelledby="hI8" data-bs-parent="#faqAccordion"><div class="accordion-body">Si sos <strong>mayor de 25 años</strong> y no tenés título secundario, podés estudiar gracias a la Ley N.° 24.521. Completá la Preinscripción Online seleccionando la opción <em>"Mayores de 25 años sin título"</em> <span class="fecha-badge">26/10 al 18/12/2026 y del 01/02 al 19/02/2027</span> y luego acercate a la DGA (Tucumán 1946, Planta Baja) para cumplimentar el proceso de admisión, de 9:00 a 12 hs, desde el 26/10 hasta el 30/12/2026 y desde el 10/02 al 19/02/2027.</div></div>
                         </div>
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
                             <h2 class="accordion-header" id="hI9"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI9" aria-expanded="false" aria-controls="cI9">¿Puedo inscribirme si soy extranjero/a?</button></h2>
@@ -1863,7 +1883,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <ul>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Location Icon">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Ubicación">
                                     </span>
                                     <span class="contact-text">
                                         <a href="https://maps.app.goo.gl/fDiwFeB9pYM4u1Xg7" title="Tucumán 1946, Posadas, Misiones" target="_blank">Tucumán 1946, Posadas, Misiones - CP: N3300BSP</a>
@@ -1871,7 +1891,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                                 </li>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Mail Icon">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Correo">
                                     </span>
                                     <span class="contact-text">
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
@@ -1913,7 +1933,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
     <!-- Back To Top End -->
 
     <!-- Jquery JS Link -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
 
     <!-- Bootstrap JS Link -->
     <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bootstrap.min_AVHt.js"></script>
@@ -1992,6 +2012,25 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }, 350);
                 });
+            });
+        });
+    </script>
+    <!-- Botón "¿Querés saber más sobre el ingreso?" abre el FAQ de ingreso y hace scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var link = document.getElementById('link-faq-ingreso');
+            if (!link) return;
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                var el = document.querySelector('#cN1');
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(el, { toggle: false }).show();
+                } else {
+                    el.classList.add('show');
+                }
+                setTimeout(function () {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400);
             });
         });
     </script>
