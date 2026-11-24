@@ -6,6 +6,23 @@
     <meta name="keywords" content="Facultad, Humanidades, Ciencias Sociales, Misiones, Carreras, Comunicación Social, Turismo, Antropologia, Bibliotecologia, Ciencias Económicas, Historia, Letras, Trabajo Social, Educación, Comunicación, tecnicaturas, diplomaturas, licenciaturas, profesorados">
     <meta name="description" content="Facultad de Humanidades y Ciencias Sociales, Universidad Nacional de Misiones">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Volver siempre arriba al entrar a Inicio, salvo que la URL indique una sección -->
+    <script>
+        (function () {
+            if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual';
+            }
+            function volverArriba() {
+                if (!window.location.hash) {
+                    window.scrollTo(0, 0);
+                }
+            }
+            volverArriba();
+            document.addEventListener('DOMContentLoaded', volverArriba);
+            window.addEventListener('load', volverArriba);
+            window.addEventListener('pageshow', volverArriba);
+        })();
+    </script>
 
     <!-- FavIcon Link -->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/gif" sizes="16x16">
@@ -55,9 +72,39 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
         body, h1, h2, h3, h4, h5, h6, p, a, button, span, li, div, input, textarea, select { font-family: 'Roboto', sans-serif !important; }
 
-        /* Título de "Encontrá tu carrera ideal": corrido a la derecha y más arriba */
-        @media (min-width: 992px) {
-            .apply-now-text { margin-left: 150px; transform: translateY(-40px); }
+        /* Cartel final: solo consulta, centrada en el espacio a la derecha de la foto */
+        .apply-now-sec .apply-now-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            width: 100%;
+        }
+        .apply-now-sec .apply-now-image-box {
+            flex: 0 0 305px;
+            margin: 0;
+        }
+        .apply-now-sec .apply-now-text {
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: center;
+            min-width: 0;
+            width: auto;
+            margin: 0 !important;
+            transform: none !important;
+        }
+        .apply-now-sec .apply-now-btn {
+            width: 100%;
+            margin-top: 0 !important;
+        }
+        .apply-now-sec .apply-now-btn > div {
+            width: 100%;
+            max-width: 520px !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+        }
+        .apply-now-sec .apply-now-btn a:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 4px;
         }
 
         /* Más contraste en Preguntas Frecuentes */
@@ -121,8 +168,81 @@
         .chip-contacto { display: inline-flex; align-items: center; gap: 6px; background: #ffffff; border: 1px solid #d8e2f0; border-radius: 50px; padding: 5px 14px; font-size: 13px; font-weight: 600; color: #16345c; text-decoration: none; transition: background .3s ease; }
         .chip-contacto:hover { background: #e3eefb; }
 
-        /* Palabra rotativa: cursor parpadeante */
-                @keyframes cursorBlink { 50% { opacity: 0; } }
+        /* Portada: título fijo y descripción siempre visible */
+        .main-banner .h1-title { min-height: 0 !important; }
+        .main-banner .banner-content { position: relative; z-index: 6; }
+        .main-banner .banner-description-wp { visibility: visible !important; }
+
+        /* Datos clave de la oferta académica: visibles sin competir con el buscador */
+        .banner-beneficios {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            max-width: 640px;
+            margin-top: 22px;
+            padding: 9px;
+            border-radius: 20px;
+            background: #1b6ec2;
+            box-shadow: 0 14px 32px rgba(18,58,109,.16);
+        }
+        .banner-beneficio {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-width: 0;
+            min-height: 58px;
+            padding: 9px 10px;
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 13px;
+            background: rgba(255,255,255,.12);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: .025em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: beneficio-entrar .42s ease forwards;
+            transition: transform .22s ease, background .22s ease;
+        }
+        .banner-beneficio:nth-child(1) { animation-delay: .12s; }
+        .banner-beneficio:nth-child(2) { animation-delay: .24s; }
+        .banner-beneficio:nth-child(3) { animation-delay: .36s; }
+        .banner-beneficio-icono {
+            display: inline-grid;
+            place-items: center;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #ff8c42;
+            color: #ffffff;
+        }
+        .banner-beneficio-icono svg { display: block; width: 18px; height: 18px; }
+        @keyframes beneficio-entrar {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (hover: hover) {
+            .banner-beneficio:hover { transform: translateY(-3px); background: rgba(255,255,255,.20); }
+        }
+        @media (max-width: 1199px) and (min-width: 992px) {
+            .banner-beneficio { padding: 8px; font-size: 10px; }
+            .banner-beneficio-icono { flex-basis: 30px; width: 30px; height: 30px; }
+        }
+        @media (max-width: 767px) {
+            .banner-beneficios { grid-template-columns: 1fr; max-width: 430px; margin-top: 18px; border-radius: 17px; }
+            .banner-beneficio { min-height: 46px; padding: 7px 11px; font-size: 12px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .banner-beneficio { opacity: 1; animation: none; transition: none; }
+        }
+        /* Sello giratorio: subido para que el recuadro azul no lo tape */
+        .main-banner .banner-image-content { position: relative; z-index: 20; }
+        .main-banner .certification-box-wp {
+            z-index: 30 !important;
+            transform: translateY(-100px) !important;
+        }
 
         /* Cinta azul grande */
         .marquee-fhycs { overflow: hidden; background: #1b6ec2; color: #ffffff; font-weight: 700; font-size: 27px; padding: 22px 0; white-space: nowrap; }
@@ -131,9 +251,308 @@
         .marquee-fhycs .mq-sep { color: #ffd23f; }
         @keyframes marqueeFhycs { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @media (prefers-reduced-motion: reduce) { .marquee-fhycs-track { animation: none; } }
-                /* Acortar el espacio entre Inscripción y Bienestar */
+        /* Inscripción: pasos, fechas y tutorial */
+        .inscripcion-pasos-sec .top-category-list-row {
+            --bs-gutter-x: 24px;
+            --bs-gutter-y: 24px;
+            align-items: stretch;
+        }
+        .inscripcion-pasos-sec .top-category-list-row > [class*="col-"] { display: flex; }
+        .inscripcion-pasos-sec .category-list-box {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding: 28px;
+            background: #ffffff;
+            border: 1px solid #d8e2f0;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(18,58,109,.09);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .inscripcion-pasos-sec .category-list-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(18,58,109,.14);
+        }
+        .inscripcion-pasos-sec .category-list-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+        }
+        .paso-inscripcion-num {
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            margin-bottom: 18px;
+            border-radius: 50%;
+            background: #1b6ec2;
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .inscripcion-pasos-sec .h4-title { margin-bottom: 12px; color: #16345c; }
+        .inscripcion-pasos-sec .category-list-text > p { margin: 0; color: #3d4d63; line-height: 1.6; }
+        .fechas-inscripcion {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+            margin: 20px 0 24px;
+        }
+        .fecha-inscripcion-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: #eef4fb;
+        }
+        .fecha-inscripcion-item small { color: #4c6786; font-size: .75rem; font-weight: 600; }
+        .fecha-inscripcion-item strong { color: #123a6d; font-size: .92rem; }
+        .paso-accion { width: 100%; margin-top: auto; }
+        .paso-accion .sec-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            text-align: center;
+        }
+        .video-inscripcion {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 14px;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #123a6d;
+            box-shadow: 0 8px 20px rgba(18,58,109,.12);
+        }
+        .video-inscripcion iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .paso-inscribite-btn {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 20px;
+        }
+        .inscripcion-cierre {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-top: 36px;
+            padding: 28px 32px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #0a2a4d 0%, #1565c0 100%);
+            box-shadow: 0 14px 36px rgba(10,42,77,.18);
+        }
+        .inscripcion-cierre h3 { margin: 0 0 4px; color: #ffffff; font-size: 1.35rem; }
+        .inscripcion-cierre p { margin: 0; color: #ffffff; font-size: 1rem; }
+        .inscripcion-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            min-height: 52px;
+            padding: 14px 34px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: #ffffff !important;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(255,107,53,.35);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .inscripcion-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(255,107,53,.45); }
+        .inscripcion-cta-btn:focus-visible { outline: 3px solid #ffffff; outline-offset: 4px; }
+        @media (max-width: 767px) {
+            .inscripcion-pasos-sec .category-list-box { padding: 24px; }
+            .inscripcion-cierre { flex-direction: column; padding: 26px 22px; text-align: center; }
+            .inscripcion-cta-btn { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .inscripcion-pasos-sec .category-list-box,
+            .inscripcion-cta-btn { transition: none; }
+        }
+
+        /* Características compactas con íconos */
+        .caracteristicas-fhycs-sec {
+            padding: 42px 0 48px;
+            background: #f4f8fd;
+        }
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .caracteristica-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-width: 0;
+            padding: 24px;
+            background: #ffffff;
+            border: 1px solid #d8e2f0;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(18,58,109,.08);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .caracteristica-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(18,58,109,.13);
+        }
+        .caracteristica-icon {
+            display: grid;
+            place-items: center;
+            flex: 0 0 64px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #e3eefb;
+            color: #1b6ec2;
+        }
+        .caracteristica-item h3 { margin: 0 0 6px; color: #16345c; font-size: 1.08rem; line-height: 1.3; }
+        .caracteristica-item p { margin: 0; color: #3d4d63; font-size: .9rem; line-height: 1.5; }
+
+        /* Conocé la Facultad: recorridos en video + características */
+        .conoce-facultad-sec {
+            overflow: hidden;
+            background: #f4f8fd;
+        }
+        .conoce-facultad-intro { padding: 48px 0 0; }
+        .conoce-facultad-intro .sec-title { margin-bottom: 26px; }
+        .conoce-facultad-intro .h2-title {
+            margin: 0;
+            color: #16345c;
+            font-size: clamp(1.65rem, 2.8vw, 2.35rem);
+        }
+        .facultad-videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .facultad-video-card { min-width: 0; margin: 0; }
+        .facultad-video-card h3 {
+            min-height: 2.7em;
+            margin: 0 0 12px;
+            color: #16345c;
+            font-size: 1.02rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .facultad-video-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #123a6d;
+            box-shadow: 0 10px 26px rgba(18,58,109,.14);
+        }
+        .facultad-video-frame iframe {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .conoce-facultad-sec .caracteristicas-fhycs-sec { padding-top: 38px; }
+
+        /* Bienestar: una sola cinta compacta con flechas */
+        .bienestar-estudiantil-sec { padding: 48px 0 !important; overflow: hidden; }
+        .bienestar-cinta-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 22px;
+        }
+        .bienestar-cinta-header .sec-title { margin: 0; text-align: left; }
+        .bienestar-cinta-header .h2-title { margin: 0; font-size: clamp(1.45rem, 2.4vw, 2rem); }
+        .bienestar-controls { display: flex; flex: 0 0 auto; gap: 10px; }
+        .bienestar-arrow {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: #1b6ec2;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease, opacity .2s ease;
+        }
+        .bienestar-arrow:hover { background: #123a6d; transform: translateY(-2px); }
+        .bienestar-arrow:focus-visible { outline: 3px solid #ff8c42; outline-offset: 3px; }
+        .bienestar-arrow.swiper-button-disabled { opacity: .35; cursor: not-allowed; transform: none; }
+        .bienestar-slider { overflow: hidden; padding: 4px 2px 12px; }
+        .bienestar-slider .swiper-slide { height: auto; }
+        .bienestar-cinta-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            height: 100%;
+            min-height: 88px;
+            padding: 14px 16px;
+            background: #ffffff;
+            border: 1px solid #d8e2f0;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(18,58,109,.08);
+        }
+        .bienestar-cinta-item .bienestar-img-box { flex: 0 0 56px; margin: 0 !important; }
+        .bienestar-cinta-item .bienestar-img-box img {
+            width: 56px !important;
+            height: 56px !important;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .bienestar-cinta-item h3 { margin: 0; color: #16345c; font-size: .96rem; line-height: 1.35; }
+        .bienestar-faq-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 44px;
+            margin-top: 10px;
+            color: #1b6ec2;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .bienestar-faq-link:hover { color: #123a6d; }
+        .bienestar-faq-link:focus-visible { outline: 3px solid #ff8c42; outline-offset: 3px; }
+        .faq-main-title {
+            font-size: clamp(.8rem, 2.3vw, 2rem) !important;
+            line-height: 1.2 !important;
+            letter-spacing: -.02em;
+            white-space: nowrap;
+        }
+        @media (max-width: 991px) {
+            .caracteristica-item { gap: 14px; padding: 20px; }
+            .caracteristica-icon { flex-basis: 54px; width: 54px; height: 54px; }
+        }
+        @media (max-width: 767px) {
+            .caracteristicas-fhycs-sec { padding: 32px 0 38px; }
+            .caracteristicas-grid { grid-template-columns: 1fr; gap: 14px; }
+            .caracteristica-item { padding: 18px; }
+            .conoce-facultad-intro { padding-top: 38px; }
+            .facultad-videos-grid { grid-template-columns: 1fr; gap: 24px; max-width: 560px; margin: 0 auto; }
+            .facultad-video-card h3 { min-height: 0; }
+            .conoce-facultad-sec .caracteristicas-fhycs-sec { padding-top: 32px; }
+            .bienestar-estudiantil-sec { padding: 38px 0 !important; }
+            .bienestar-cinta-header { align-items: center; gap: 14px; }
+            .bienestar-cinta-header .sub-title { font-size: .75rem; }
+            .bienestar-arrow { width: 44px; height: 44px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .caracteristica-item,
+            .bienestar-arrow { transition: none; }
+        }
+
+        /* Acortar el espacio entre Inscripción y Bienestar */
         .top-category-list-sec { padding-bottom: 25px !important; }
-        .bienestar-estudiantil-sec { padding-top: 30px !important; }
                 /* ===== ARREGLOS PARA CELU ===== */
         @media (max-width: 575px) {
             /* Header: que entren los dos logos */
@@ -143,9 +562,11 @@
             /* Banda superior más chica */
             .top-header-content-box p { font-size: 12px !important; }
         }
-        @media (max-width: 767px) {           
-             /* El título no cambia de alto cuando rota la palabra */
-            .main-banner .h1-title { min-height: 3em; }
+        @media (max-width: 767px) {
+            .apply-now-sec .apply-now-content { flex-direction: column; gap: 20px; }
+            .apply-now-sec .apply-now-image-box { flex: 0 1 auto; }
+            .apply-now-sec .apply-now-text { width: 100%; }
+            .apply-now-sec .apply-now-btn > div { text-align: center !important; }
             /* En celu: logos arriba, botón "Preguntas frecuentes" debajo, encima del banner */
             .header-btn { display: none !important; }
             .btn-faq-movil { display: block; text-align: center; }         
@@ -156,8 +577,128 @@
             .course-detail-image img { position: static !important; width: 100% !important; height: auto !important; object-fit: contain !important; }
             .apply-now-text { margin-left: 0 !important; transform: none !important; }
         }
-                    </style>
+                    
+        /* ===== REDUCIR ESPACIOS Y UNIR BANNER CON BUSCADOR ===== */
+        body .main-banner { padding-top: 20px !important; padding-bottom: 0 !important; margin-bottom: 0 !important; }
+        body .main-banner .container { padding-bottom: 0 !important; }
+        body .main-banner .row { margin-bottom: 0 !important; }
+        body .main-banner .banner-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+        body .main-banner .banner-image-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+        body .main-banner .apply-now-image-box { margin-bottom: 0 !important; }
+        body .main-banner .apply-now-text { margin-bottom: 0 !important; }
+
+        /* Transición suave: buscador emerge como tarjeta sobre el banner */
+        .buscador-carreras-sec {
+            margin-top: -40px !important;
+            position: relative;
+            z-index: 10;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -15px 50px rgba(0,0,0,0.2);
+        }
+        /* Falso degradado de transición entre banner y buscador */
+        .main-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #1a4b8c);
+            pointer-events: none;
+            z-index: 5;
+        }
+        .main-banner { position: relative; }
+
+        /* FAQ compacta: búsqueda global y categorías por pestañas */
+        .faq-compact-shell { margin: 26px 0 20px; }
+        .faq-search-box { position: relative; max-width: 680px; margin: 0 auto 18px; }
+        .faq-search-box > svg {
+            position: absolute;
+            top: 50%;
+            left: 17px;
+            width: 20px;
+            height: 20px;
+            color: #1b6ec2;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .faq-search-input {
+            width: 100%;
+            min-height: 52px;
+            padding: 13px 20px 13px 48px;
+            border: 1px solid #d8e2f0;
+            border-radius: 15px;
+            background: #ffffff;
+            color: #16345c;
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 16px !important;
+            box-shadow: 0 8px 24px rgba(18,58,109,.07);
+        }
+        .faq-search-input::placeholder { color: #64748b; }
+        .faq-search-input:focus { border-color: #1b6ec2; outline: 3px solid rgba(27,110,194,.15); }
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 3px 3px 8px;
+            scrollbar-width: thin;
+        }
+        .faq-tab {
+            flex: 0 0 auto;
+            min-height: 44px;
+            padding: 9px 16px;
+            border: 1px solid #d8e2f0;
+            cursor: pointer;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #16345c;
+            font-family: 'Roboto', sans-serif !important;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+        .faq-tab:hover { transform: translateY(-1px); border-color: #1b6ec2; }
+        .faq-tab[aria-selected="true"] { border-color: #1b6ec2; background: #1b6ec2; color: #ffffff; }
+        .faq-tab:focus-visible { outline: 3px solid #ff8c42; outline-offset: 2px; }
+        .faq-compact-shell.is-searching .faq-tabs { display: none; }
+        .faq-search-status { min-height: 20px; margin: 6px 0 0; color: #52657b; font-size: 14px; text-align: center; }
+        .faq-empty {
+            max-width: 680px;
+            margin: 10px auto 0;
+            padding: 22px;
+            border: 1px dashed #b9cbe0;
+            border-radius: 14px;
+            color: #52657b;
+            text-align: center;
+            background: #f7faff;
+        }
+        .faq-compact-enhanced > .faq-category-panel > .faq-category-title { display: none; }
+        .faq-compact-enhanced.faq-searching > .faq-category-panel:not([hidden]) > .faq-category-title {
+            display: block;
+            margin: 24px 0 12px !important;
+        }
+        .faq-compact-enhanced .accordion-item { margin-bottom: 10px !important; }
+        .faq-compact-enhanced .accordion-button { padding-top: 16px; padding-bottom: 16px; }
+        .faq-category-panel[hidden], .faq-compact-enhanced .accordion-item[hidden], .faq-empty[hidden] { display: none !important; }
+        @keyframes faq-panel-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        .faq-panel-enter { animation: faq-panel-enter .2s ease; }
+        @media (max-width: 767px) {
+            .faq-compact-shell { margin-top: 20px; }
+            .faq-tabs { justify-content: flex-start; margin-right: -12px; padding-right: 14px; }
+            .faq-tab { padding: 9px 14px; font-size: 13px; }
+            .faq-compact-enhanced .accordion-button { padding-right: 16px; padding-left: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .faq-tab { transition: none; }
+            .faq-panel-enter { animation: none; }
+        }
+</style>
 <base target="_blank">
+    <link rel="stylesheet" href="fhycs-optimizacion.css">
+    <!-- Google Analytics 4: el ID se configura en fhycs-analytics.js -->
+    <script defer src="fhycs-analytics.js"></script>
 </head>
 <body class="">
     <!-- Loader Start -->
@@ -166,7 +707,7 @@
             <div class="loading-container">
                 <div class="loading"></div>
                 <div class="loading-icon">
-                    <img class="main-load" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/loader-image_AVHt.svg" width="56" height="50" alt="Loader image">
+                    <img class="main-load" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/loader-image_AVHt.svg" width="56" height="50" alt="Loader image" decoding="async">
                 </div>
             </div>
         </div>
@@ -191,9 +732,9 @@
                 <div class="row">
                     <div class="col-xxl-5 col-lg-4">
                         <div class="site-branding" style="display: flex; align-items: center; gap: 14px;">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam-header.png" alt="UNaM" style="height: 52px; width: auto;">
-                            <a href="index.html" title="Facultad Humanidades" style="display: flex;">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" alt="Facultad Humanidades" style="height: 56px; width: auto;">
+                            <img loading="eager" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam-header.png" alt="UNaM" style="height: 52px; width: auto;" decoding="async" fetchpriority="low">
+                            <a href="index.html" title="Facultad Humanidades" style="display: flex;" target="_self">
+                                <img loading="eager" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" alt="Facultad Humanidades" style="height: 56px; width: auto;" decoding="async" fetchpriority="low">
                             </a>
                         </div>
                     </div>
@@ -215,97 +756,105 @@
     <!-- Header End -->
 
     <!-- Banner Start -->
-    <section class="main-banner">
+    <section class="main-banner" style="padding-top: 20px !important; padding-bottom: 0 !important; margin-bottom: 0 !important;">
         <div class="main-banner-bg-shape">
             <div class="shape-1"></div>
             <div class="shape-2"></div>
         </div>
         <div class="main-banner-bg-aliment-wp">
             <div class="bg-aliment-1 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-2 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-3 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-4 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-5 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-6 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-7 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-8 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-9 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-10 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-11 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-12 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-13 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-14 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-15 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-16 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-17 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
         </div>
-        <div class="container">
+        <div class="container" style="padding-bottom: 0 !important;">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="banner-content">
                         <div class="btn-faq-movil" style="margin-bottom: 14px;">
-                            <a href="#faqAccordion" class="sec-btn" title="Preguntas frecuentes"><span>Preguntas frecuentes</span></a>
+                            <a href="#faqAccordion" class="sec-btn" title="Preguntas frecuentes" target="_self"><span>Preguntas frecuentes</span></a>
                         </div>
                         <span class="sub-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: fadeup-animation;"><br>#SumatealacomunidadFHyCS</span>
-                        <h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: fadeup-animation;">Tu futuro está en <span id="rotator-word" style="color: #1b6ec2;"></span><span style="color: #1b6ec2; animation: cursorBlink 0.9s steps(1) infinite;">|</span></h1>
-                        <div class="banner-description-wp wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: fadeup-animation;">
-                            <div class="banner-description-text">
-                                <p>Carreras cortas, tecnicaturas, licenciaturas y profesorados universitarios</p>
+                        <h1 class="h1-title wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: fadeup-animation;">Encontrá tu carrera ideal</h1>
+                        <div class="banner-description-wp banner-beneficios" role="list" aria-label="Características de las carreras">
+                            <div class="banner-beneficio" role="listitem">
+                                <span class="banner-beneficio-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12v4c2.8 2.3 7.2 2.3 10 0v-4M21 9v6"/></svg></span>
+                                <span>Carreras gratuitas</span>
                             </div>
-                             
+                            <div class="banner-beneficio" role="listitem">
+                                <span class="banner-beneficio-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l8-3 8 3v16M2 21h20M8 8h2m4 0h2M8 12h2m4 0h2M8 16h2m4 0h2"/></svg></span>
+                                <span>Cursado presencial</span>
+                            </div>
+                            <div class="banner-beneficio" role="listitem">
+                                <span class="banner-beneficio-icono" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-4M8 7h8M8 11h6"/></svg></span>
+                                <span>Grado y pregrado</span>
+                            </div>
                         </div>
                         <div class="banner-btn wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.5s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.5s; animation-name: fadeup-animation;">
-                            <a href="contacto.html" class="sec-btn" title="Get Started"><span>Consultas</span></a>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="banner-image-content wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: fadeup-animation;">
                         <div class="banner-image-shape">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/arrow-aliment_AVHt.svg" class="move-element-animation-1" width="123" height="142" alt="Arrow Aliment">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/arrow-aliment_AVHt.svg" class="move-element-animation-1" width="123" height="142" alt="Arrow Aliment" decoding="async">
                         </div>
                         <div class="banner-image-box">
                             <div class="banner-image">
-                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img.webp" width="510" height="697" alt="Banner Image">
+                                <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/banner-img.webp" width="510" height="697" alt="Estudiantes de la FHyCS" decoding="async" loading="eager" fetchpriority="high">
                             </div>
                         </div>
                         <div class="congra-box">
                             <div class="congra-icon">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/note-icon_AVHt.svg" width="24" height="30" alt="Note Icon">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/note-icon_AVHt.svg" width="24" height="30" alt="Note Icon" decoding="async">
                             </div>
                             <div class="congra-text">
                                 <h5 class="h5-title">Te esperamos</h5>
@@ -314,7 +863,7 @@
                         </div>
                         <div class="certification-box-wp">
                             <div class="certification-icon">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/right-big-icon_AVHt.svg" width="30" height="15" alt="Right Icon">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/right-big-icon_AVHt.svg" width="30" height="15" alt="Right Icon" decoding="async">
                             </div>
                             <div class="certification-box">
                                 <div class="certification-text"><span style="transform:rotate(0deg)">
@@ -327,9 +876,219 @@
             </div>
         </div>
     </section>
-    <!-- Banner End -->            
+    <!-- Banner End -->
+<!-- Buscador de Carreras -->
+    <section class="buscador-carreras-sec" style="background: linear-gradient(135deg, #0a2a4d 0%, #1565c0 50%, #0a2a4d 100%); padding: 0; position: relative; overflow: hidden; min-height: 520px;">
+        <!-- Formas decorativas de fondo -->
+        <div style="position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); top: -150px; left: -100px; pointer-events: none;"></div>
+        <div style="position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); bottom: -100px; right: 30%; pointer-events: none;"></div>
+        <div style="position: absolute; width: 180px; height: 180px; border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; top: 60px; right: 25%; animation: float 6s ease-in-out infinite; pointer-events: none;"></div>
+        <div style="position: absolute; width: 100px; height: 100px; border: 2px solid rgba(255,255,255,0.08); border-radius: 50%; bottom: 80px; left: 8%; animation: float 8s ease-in-out infinite reverse; pointer-events: none;"></div>
+
+        <div class="container" style="position: relative; z-index: 2; height: 100%;">
+            <div class="row align-items-stretch" style="min-height: 520px;">
+                <!-- Columna izquierda: contenido -->
+                <div class="col-lg-7 d-flex flex-column justify-content-center py-5">
+                    <div style="margin-bottom: 30px;">
+                        <span style="display: inline-block; background: rgba(255,255,255,0.2); color: #fff; padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 16px; backdrop-filter: blur(10px);">BUSCADOR DE CARRERAS</span>
+                        <h2 style="font-size: 2.8rem; font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 8px; text-shadow: 0 2px 20px rgba(0,0,0,0.2);">¿Qué querés estudiar?</h2>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 1.15rem; margin-bottom: 0; max-width: 90%;">Elegí el tipo de carrera y después seleccioná la que te interese.</p>
+                    </div>
+
+                    <div class="buscador-panel" style="background: rgba(255,255,255,0.12); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); border-radius: 24px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+                        <div class="row g-3">
+                            <!-- Tipo de carrera -->
+                            <div class="col-md-6">
+                                <label style="display: block; color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 600; margin-bottom: 10px;">
+                                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                                        <span style="width: 28px; height: 28px; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem;">📚</span>
+                                        Tipo de carrera
+                                    </span>
+                                </label>
+                                <select id="tipo-carrera" class="form-select" style="background: rgba(255,255,255,0.95); border: 2px solid transparent; border-radius: 14px; padding: 14px 18px; font-size: 1rem; font-weight: 500; color: #1a1a2e; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" onchange="actualizarCarreras()">
+                                    <option value="" selected disabled>Seleccioná una opción</option>
+                                    <option value="cortas">🎓 Carreras cortas</option>
+                                    <option value="profesorados">📖 Profesorados</option>
+                                    <option value="licenciaturas">📚 Licenciaturas</option>
+                                </select>
+                            </div>
+
+                            <!-- Carrera -->
+                            <div class="col-md-6">
+                                <label style="display: block; color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 600; margin-bottom: 10px;">
+                                    <span style="display: inline-flex; align-items: center; gap: 8px;">
+                                        <span style="width: 28px; height: 28px; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem;">🎯</span>
+                                        Carrera
+                                    </span>
+                                </label>
+                                <select id="nombre-carrera" class="form-select" style="background: rgba(255,255,255,0.95); border: 2px solid transparent; border-radius: 14px; padding: 14px 18px; font-size: 1rem; font-weight: 500; color: #1a1a2e; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" disabled>
+                                    <option value="" selected disabled>Seleccioná primero el tipo</option>
+                                </select>
+                            </div>
+
+                            <!-- Botón -->
+                            <div class="col-12 pt-2">
+                                <button id="btn-buscar-carrera" class="btn w-100 w-md-auto" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white; border: none; border-radius: 14px; padding: 16px 40px; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 25px rgba(255,107,53,0.4); display: inline-flex; align-items: center; justify-content: center; gap: 10px;" onclick="irACarrera()" disabled>
+                                    <span>Ver información de la carrera</span>
+                                    <span style="font-size: 1.3rem;">→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: imagen -->
+                <div class="col-lg-5 d-none d-lg-flex align-items-end justify-content-center" style="position: relative;">
+                    <!-- Glow detrás de la imagen -->
+                    <div style="position: absolute; bottom: -50px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+                    <img src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.webp" alt="Estudiante FHyCS" style="max-height: 480px; width: auto; display: block; position: relative; z-index: 2; filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3)); margin-bottom: -2px;" decoding="async" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+            }
+            .buscador-carreras-sec .form-select:focus {
+                border-color: #ff8c42 !important;
+                box-shadow: 0 0 0 4px rgba(255,140,66,0.25) !important;
+                outline: none;
+            }
+            .buscador-carreras-sec .form-select:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+            .buscador-carreras-sec .btn:hover:not(:disabled) {
+                transform: translateY(-3px) !important;
+                box-shadow: 0 12px 35px rgba(255,107,53,0.5) !important;
+            }
+            .buscador-carreras-sec .btn:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+                background: #888 !important;
+                box-shadow: none !important;
+            }
+            @media (max-width: 991px) {
+                .buscador-carreras-sec { min-height: auto !important; padding: 40px 0 !important; }
+                .buscador-carreras-sec h2 { font-size: 2rem !important; }
+            }
+            @media (max-width: 575px) {
+                .buscador-panel { padding: 20px !important; }
+                .buscador-carreras-sec #btn-buscar-carrera {
+                    padding: 14px 18px !important;
+                    font-size: 1rem !important;
+                    line-height: 1.35;
+                }
+            }
+        </style>
+
+        <script>
+            var carrerasPorTipo = {
+                cortas: [
+                    { nombre: "Bibliotecología", url: "bibliotecologia.html" },
+                    { nombre: "Guia de Turismo", url: "guia-de-turismo.html" },
+                    { nombre: "Tec. en Comunicación Social", url: "tecnicatura-en-comunicacion-social.html" },
+                    { nombre: "Tec. en Investigación Socioeconómica (TISE)", url: "tise.html" }
+                ],
+                profesorados: [
+                    { nombre: "Prof. en Ciencias Económicas", url: "profesorado-en-ciencias-economicas.html" },
+                    { nombre: "Prof. en Educación Especial", url: "profesorado-en-educacion-especial.html" },
+                    { nombre: "Prof. en Historia", url: "profesorado-en-historia.html" },
+                    { nombre: "Prof. en Letras", url: "profesorado-en-letras.html" },
+                    { nombre: "Prof. en Portugués", url: "profesorado-en-portugues.html" },
+                    { nombre: "Prof. Universitario en Cs. de la Educación", url: "profesorado-en-ciencias-de-la-educacion.html" }
+                ],
+                licenciaturas: [
+                    { nombre: "Lic. en Antropología Social", url: "licenciatura-en-antropologia-social.html" },
+                    { nombre: "Lic. en Bibliotecología", url: "licenciatura-en-bibliotecologia.html" },
+                    { nombre: "Lic. en Comunicación Social", url: "licenciatura-en-comunicacion-social.html" },
+                    { nombre: "Lic. en Historia", url: "licenciatura-en-historia.html" },
+                    { nombre: "Lic. en Letras", url: "licenciatura-en-letras.html" },
+                    { nombre: "Lic. en Tratamiento y Análisis de Datos (LITADIS)", url: "litadis.html" },
+                    { nombre: "Lic. en Trabajo Social", url: "licenciatura-en-trabajo-social.html" },
+                    { nombre: "Lic. en Turismo", url: "licenciatura-en-turismo.html" }
+                ]
+            };
+
+            function guardarSeleccionBuscador() {
+                try {
+                    sessionStorage.setItem('fhycsTipoCarrera', document.getElementById('tipo-carrera').value);
+                    sessionStorage.setItem('fhycsCarrera', document.getElementById('nombre-carrera').value);
+                } catch (error) {
+                    // Si el navegador bloquea el almacenamiento, el buscador sigue funcionando.
+                }
+            }
+
+            function actualizarCarreras(carreraARestaurar) {
+                var tipo = document.getElementById('tipo-carrera').value;
+                var selectCarrera = document.getElementById('nombre-carrera');
+                var btn = document.getElementById('btn-buscar-carrera');
+                var seleccionPrevia = typeof carreraARestaurar === 'string' ? carreraARestaurar : '';
+                var hayTipo = Boolean(tipo && carrerasPorTipo[tipo]);
+
+                selectCarrera.innerHTML = '<option value="" selected disabled>' +
+                    (hayTipo ? 'Seleccioná una carrera' : 'Seleccioná primero el tipo') + '</option>';
+
+                if (hayTipo) {
+                    carrerasPorTipo[tipo].forEach(function(c) {
+                        var opt = document.createElement('option');
+                        opt.value = c.url;
+                        opt.textContent = c.nombre;
+                        selectCarrera.appendChild(opt);
+                    });
+                    var seleccionValida = carrerasPorTipo[tipo].some(function(c) {
+                        return c.url === seleccionPrevia;
+                    });
+                    if (seleccionValida) selectCarrera.value = seleccionPrevia;
+                    selectCarrera.disabled = false;
+                } else {
+                    selectCarrera.disabled = true;
+                }
+                btn.disabled = !selectCarrera.value;
+                guardarSeleccionBuscador();
+            }
+
+            // Restaura tipo, carrera y botón también cuando el navegador no conserva
+            // los valores de las opciones generadas dinámicamente.
+            window.addEventListener('pageshow', function () {
+                var selectTipo = document.getElementById('tipo-carrera');
+                var selectCarrera = document.getElementById('nombre-carrera');
+                var tipoGuardado = '';
+                var carreraGuardada = '';
+                try {
+                    tipoGuardado = sessionStorage.getItem('fhycsTipoCarrera') || '';
+                    carreraGuardada = sessionStorage.getItem('fhycsCarrera') || '';
+                } catch (error) {}
+                if (!selectTipo.value && tipoGuardado) selectTipo.value = tipoGuardado;
+                var carreraARestaurar = selectCarrera.value;
+                if (!carreraARestaurar && selectTipo.value === tipoGuardado) {
+                    carreraARestaurar = carreraGuardada;
+                }
+                actualizarCarreras(carreraARestaurar);
+            });
+
+            document.getElementById('nombre-carrera').addEventListener('change', function() {
+                document.getElementById('btn-buscar-carrera').disabled = !this.value;
+                guardarSeleccionBuscador();
+            });
+
+            function irACarrera() {
+                var url = document.getElementById('nombre-carrera').value;
+                guardarSeleccionBuscador();
+                if (url) {
+                    window.location.href = url;
+                }
+            }
+        </script>
+    </section>
+    <!-- Buscador de Carreras End -->
+
+
+            
     <!-- Guarda de colores + cinta azul -->
-    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" alt="" style="display: block; width: 100%; height: auto;">
+    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/separador_AVHt.png" alt="" style="display: block; width: 100%; height: auto;" decoding="async">
     <div class="marquee-fhycs">
         <div class="marquee-fhycs-track">
             <span class="mq-item">1# Universidad pública en Misiones</span><span class="mq-item mq-sep">✦</span>
@@ -342,1180 +1101,102 @@
             <span class="mq-item">Títulos oficiales de validez nacional</span><span class="mq-item mq-sep">✦</span>
         </div>
     </div>
-            <!-- Top Category List Start -->
-    <section class="top-category-list-sec sec-space">
+            <!-- Inscripción: pasos, fechas y tutorial -->
+    <section class="top-category-list-sec sec-space inscripcion-pasos-sec">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sec-title text-center">
-                        <span class="sub-title">¡Es fácil!  En solo 3 pasos...</span>
-                        <h2 class="h2-title">Inscripción</h2>
+                        <span class="sub-title">Organizá tu ingreso en 3 pasos</span>
+                        <h2 class="h2-title">Inscripción 2027</h2>
                     </div>
                 </div>
             </div>
             <div class="row top-category-list-row">
                 <div class="col-xl-4 col-md-6">
                     <div class="category-list-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.3s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.3s; animation-name: none;">
-                        
                         <div class="category-list-text">
-                            <a title="Inscripción en línea">
-                                <h4 class="h4-title">1. Inscripción en línea</h4>
-                            </a>
-                            <p>Visite la página de preinscripción y genere el alta de usuario/alumno</p>
-                            <p style="margin-top:12px;"><a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" class="sec-btn" title="Preinscripción online" style="font-size:13px; padding:8px 18px;"><span>Inscribite</span></a></p>
+                            <span class="paso-inscripcion-num" aria-hidden="true">1</span>
+                            <h4 class="h4-title">Preinscripción online</h4>
+                            <p>Ingresá al sistema, generá tu usuario y registrá tus datos para la carrera que elegiste.</p>
+                            <div class="fechas-inscripcion" aria-label="Fechas de preinscripción">
+                                <div class="fecha-inscripcion-item"><small>PRIMER PERÍODO</small><strong>13/10 al 30/12/2026</strong></div>
+                                <div class="fecha-inscripcion-item"><small>SEGUNDO PERÍODO</small><strong>01/02 al 19/02/2027</strong></div>
+                            </div>
+                            <div class="paso-accion">
+                                <div class="inscripcion-videos-index">
+                                    <div class="inscripcion-video-item">
+                                        <h5 class="inscripcion-video-titulo">Cómo inscribirte si no sos alumno de la UNaM / Usuario nuevo</h5>
+                                        <div class="video-inscripcion" id="video-inscripcion">
+                                            <a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=2-4XFTOqDkQ" data-video-id="2-4XFTOqDkQ" data-video-title="Tutorial de preinscripción online" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Tutorial de preinscripción online"><img src="https://i.ytimg.com/vi/2-4XFTOqDkQ/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="inscripcion-video-item">
+                                        <h5 class="inscripcion-video-titulo">Cómo inscribirte si ya sos alumno de la UNaM</h5>
+                                        <div class="video-inscripcion"><a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=YytFhw1h3Rg" data-video-id="YytFhw1h3Rg" data-video-title="Cómo inscribirte si ya sos alumno de la UNaM" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Cómo inscribirte si ya sos alumno de la UNaM"><img src="https://i.ytimg.com/vi/YytFhw1h3Rg/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a></div>
+                                    </div>
+                                </div>
+                                <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" rel="noopener noreferrer" class="inscripcion-cta-btn paso-inscribite-btn" title="Comenzar preinscripción online">Inscribite <span aria-hidden="true" style="margin-left: 8px;">→</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6">
                     <div class="category-list-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: none;">
-                        
                         <div class="category-list-text">
-                            <a title="Profesorados">
-                                <h4 class="h4-title">2. Documentación</h4>
-                            </a>
-                            <p>Entrega de la documentación en la Dirección General de Enseñanza (Alumnado)
-                                <a href="#collapseInsc3" id="link-doc-faq" class="sec-btn" title="Ver documentación requerida" style="font-size:13px; padding:8px 18px;"><span>¿Qué documentación?</span></a>
-
-                            
-                        </p>
+                            <span class="paso-inscripcion-num" aria-hidden="true">2</span>
+                            <h4 class="h4-title">Presentación de documentación</h4>
+                            <p>Presentá la documentación en la Dirección General de Alumnado, en el día y horario elegidos.</p>
+                            <div class="fechas-inscripcion" aria-label="Fechas para presentar documentación">
+                                <div class="fecha-inscripcion-item"><small>PERÍODO DE PRESENTACIÓN</small><strong>10/02 al 26/02/2027</strong></div>
+                            </div>
+                            <div class="paso-accion">
+                                <a href="#collapseInsc3" id="link-doc-faq" class="sec-btn" title="Ver documentación requerida" target="_self"><span>¿Qué documentación?</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-md-6">
                     <div class="category-list-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.5s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.5s; animation-name: none;">
-                        
                         <div class="category-list-text">
-                            <a title="Licenciaturas">
-                                <h4 class="h4-title">3. Curso virtual </h4>
-                            </a>
-                            <p>Realizá el curso virtual obligatorio no 
-eliminatorio de Introducción a las aulas virtuales Moodle (MOOC). Del 2/11 al 21/12/2026 y del 8/02 al 8/03/2027.
-                         <a href="#cN1" id="link-faq-ingreso" class="sec-btn" title="Preguntas frecuentes sobre el ingreso" style="font-size:13px; padding:8px 18px;"><span>¿Querés saber más sobre el ingreso?</span></a>
+                            <span class="paso-inscripcion-num" aria-hidden="true">3</span>
+                            <h4 class="h4-title">Curso virtual de Moodle</h4>
+                            <p>Realizá el curso obligatorio no eliminatorio de Introducción a las aulas virtuales Moodle (MOOC).</p>
+                            <div class="fechas-inscripcion" aria-label="Fechas del curso virtual de Moodle">
+                                <div class="fecha-inscripcion-item"><small>PRIMER PERÍODO</small><strong>02/11 al 21/12/2026</strong></div>
+                                <div class="fecha-inscripcion-item"><small>SEGUNDO PERÍODO</small><strong>08/02 al 08/03/2027</strong></div>
+                            </div>
+                            <div class="paso-accion">
+                                <a href="#cN1" id="link-faq-ingreso" class="sec-btn" title="Preguntas frecuentes sobre el ingreso" target="_self"><span>¿Querés saber más sobre el ingreso?</span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
+            </div>
+            <div class="inscripcion-cierre">
+                <div>
+                    <h3>¿Tenés todo listo?</h3>
+                    <p>Completá tu preinscripción online.</p>
+                </div>
+                <a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" class="inscripcion-cta-btn" title="Preinscripción online">Inscribite <span aria-hidden="true" style="margin-left: 8px;">→</span></a>
             </div>
         </div>
     </section>
-    <!-- Top Category List End -->
+    <!-- Inscripción End -->
     
-    <!-- Bienestar Estudiantil Start -->
-    <section class="bienestar-estudiantil-sec sec-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-title text-center">
-                        <span class="sub-title">Beneficios y Acompañamiento</span>
-                        <h2 class="h2-title">Beneficios para el bienestar estudiantil</h2>
-                    </div>
-                </div>
-            </div>
-            
-<!-- Grid de 3 columnas y 2 filas (6 elementos) -->
-            <div class="row g-4 justify-content-center">
-                <!-- Item 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_comedor.jpg" width="60" height="60" alt="Beca de comedor">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Beca de comedor</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_albergue.jpg" width="60" height="60" alt="Beca de albergue">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Beca de albergue</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/gimnasio.jpg" width="60" height="60" alt="Gimnasio">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Gimnasio</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/salud_mental.jpg" width="60" height="60" alt="Programa de salud mental">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Programa de salud mental</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_salud.jpg" width="60" height="60" alt="Beca de salud">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Beca de salud</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="category-list-box d-flex flex-column align-items-center text-center p-4 h-100">
-                        <div class="bienestar-img-box mb-3">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_cuidado.jpg" width="60" height="60" alt="Beca de cuidado">
-                        </div>
-                        <div class="category-list-text w-100 p-0 text-center">
-                            <h4 class="h4-title m-0">Beca de cuidado</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="text-center mt-4">
-                <a href="#cB1" id="link-faq-bienestar" class="sec-btn" title="Preguntas sobre beneficios"><span>¿Dudas sobre becas y beneficios? Ver preguntas frecuentes</span></a>
-            </div>
-    </section>
-    <!-- Bienestar Estudiantil End -->
-
     <!-- Top Course Start -->
-    <section class="top-course-sec sec-space-top sec-bg" id="carreras">
-        <div class="container">
-            <div class="top-course-title">
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="sec-title" style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
-                            <div>
-                                <span class="sub-title">Ciclo 2027</span>
-                                <h2 class="h2-title">Carreras para vos</h2>
-                            </div>
-                            <a href="#cCA1" id="link-faq-carreras" class="sec-btn" title="Preguntas sobre las carreras" style="font-size: 13px; padding: 8px 18px; white-space: nowrap;"><span>¿Dudas? Ver preguntas</span></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="top-course-list-wp">
-                            <div class="top-course-list">
-                                <button class="list-btn active" title="all" data-type="*" name="isotope-filter">Todas</button>
-                                <button class="list-btn" title="all" data-type="carreras-cortas" name="isotope-filter">Carreras cortas</button>
-                                <button class="list-btn" title="all" data-type="profesorados" name="isotope-filter">Profesorados</button>
-                                           <button class="list-btn" title="all" data-type="licenciaturas" name="isotope-filter">Licenciaturas</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="position: relative; height: 4455px; visibility: hidden; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: none;">
-                <div class="grid-item" data-type="carreras-cortas" style="position: absolute; left: 0px; top: 0px; height: 613.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tec-com-social-portada.JPG" width="408" height="230" alt="Tec Comunicacion Social">
-                            </div>
-                            <div class="post-tag">
-                                <span>Carrera Corta</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">
-                                    <h4 class="h4-title">Tecnicatura en Comunicación Social (3 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>La Tecnicatura en Comunicación 
-Social te prepara para crear contenidos, gestionar proyectos y entender 
-cómo los medios, las redes y las personas se conectan. Aprendés desde la
- práctica a producir mensajes, contar historias y acompañar procesos 
-sociales y comunitarios. </p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="tecnicatura-en-comunicacion-social.html" title="Tecnicatura en Comunicación Social">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="carreras-cortas" style="position: absolute; left: 440px; top: 0px; height: 613.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bibliotecología-portada.jpg" width="408" height="230" alt="Bibliotecología">
-                            </div>
-                            <div class="post-tag">
-                                <span>Carrera Corta</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="bibliotecologia.html" title="Bibliotecología">
-                                    <h4 class="h4-title">Bibliotecología (3 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si te apasiona la organización de
- la información y el conocimiento, esta carrera es para vos. 
-Bibliotecología te forma para gestionar bibliotecas, organizar 
-colecciones y conectar a las personas con la información que necesitan. 
-Aprendés a usar tecnologías, coordinar equipos y promover la lectura y 
-la cultura.  </p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="bibliotecologia.html" title="Bibliotecología">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="carreras-cortas" style="position: absolute; left: 880px; top: 0px; height: 613.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/tise-portada.jpg" width="408" height="230" alt="Técnico en Investigación Socioeconómica">
-                            </div>
-                            <div class="post-tag">
-                                <span>Carrera Corta</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>                            <div class="post-content-title">
-                                <a href="tise.html" title="Técnico en Investigación Socioeconómica ">
-                                    <h4 class="h4-title">Técnico en Investigación Socioeconómica (3 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si querés entender cómo funciona 
-la sociedad, esta carrera es para vos. Se forma para analizar fenómenos 
-sociales y económicos, participar de investigaciones y transformar la 
-información en conocimiento útil. Adquirirás herramientas para formar 
-parte de proyectos, diagnósticos y estudios en distintos ámbitos. </p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="tise.html" title="Técnico en Investigación Socioeconómica ">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-
-                <div class="grid-item" data-type="carreras-cortas" style="position: absolute; left: 0px; top: 637.5px; height: 738.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/guia-turismo-portada.jpg" width="408" height="230" alt="Guia de Turismo">
-                            </div>
-                            <div class="post-tag">
-                                <span>Carrera Corta</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="guia-de-turismo.html" title="Guía de Turismo">
-                                    <h4 class="h4-title">Guía de Turismo (3 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Te gustaría ser anfitrión y 
-parte fundamental de una experiencia turística compartida, 
-intercambiando saberes, conocimientos y experiencias con un otro, 
-turista o visitante? <br>
-                                    Entonces esta carrera es para vos. </p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="guia-de-turismo.html" title="Guía de Turismo">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 440px; top: 637.5px; height: 738.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-ciencias-economicas-portada.jpg" width="408" height="230" alt="Profesorado en Ciencias Económicas">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">
-                                    <h4 class="h4-title">Profesorado en Ciencias Económicas (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si te entusiasma enseñar y el 
-mundo de las Ciencias Económicas; este Profesorado te ofrece una sólida 
-formación para planificar clases significativas, guiar aprendizajes y 
-acompañar a estudiantes para transformar el mundo desde la educación. 
-Combiná formación pedagógica, conocimientos en economía, administración,
- gestión, marketing, contabilidad y nuevas tecnologías para ser un 
-docente capaz de inspirar, acompañar y liderar proyectos educativos, 
-formando a nuevas generaciones con creatividad, innovación y compromiso.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-ciencias-economicas.html" title="Profesorado en Ciencias Económicas">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 880px; top: 637.5px; height: 738.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-historia-portada.jpg" width="408" height="306" alt="Profesorado en Historia">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-historia.html" title="Profesorado en Historia">
-                                    <h4 class="h4-title">Profesorado en Historia con Orientación en Ciencias Sociales (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Esta carrera te forma para 
-enseñar, investigar e interpretar los procesos históricos y sociales 
-desde una mirada crítica y reflexiva. Combina saberes de la historia, la
- geografía, la antropología y la educación, brindando las herramientas 
-para analizar el pasado y el presente, y transmitirlos como herramientas
- de transformación social.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-historia.html" title="Profesorado en Historia">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 0px; top: 1400px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/educacion-especial-portada.jpg" width="408" height="230" alt="Profesorado en Educación Especial">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">
-                                    <h4 class="h4-title">Profesorado en Educación Especial (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Te interesa acompañar a las 
-personas con una condición de discapacidad, en sus procesos de 
-aprendizaje y contribuir a una educación más inclusiva? Esta carrera 
-forma docentes capaces de planificar, enseñar y evaluar con estrategias 
-que respondan a las diversas necesidades educativas. Combina saberes 
-pedagógicos, psicológicos y biológicos para comprender el desarrollo 
-humano en todas sus etapas y promover una enseñanza basada en la 
-empatía, el respeto y la igualdad de oportunidades.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-educacion-especial.html" title="Profesorado en Educación Especial">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 440px; top: 1400px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-<img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-letras-portada.jpg" width="408" height="306" alt="Profesorado en Letras">                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-letras.html" title="Profesorado en Letras">
-                                    <h4 class="h4-title">Profesorado en Letras (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>El Profesorado en Letras combina 
-una sólida formación pedagógica y disciplinar, brindando las 
-herramientas necesarias para enseñar, investigar y promover el valor de 
-la palabra como herramienta para la construcción del conocimiento, el 
-pensamiento crítico y la transformación social. En Letras, podrás 
-potenciar tu pasión por los libros, la lectura y las palabras y 
-desarrollar una mirada comprometida y creativa para la enseñanza de la 
-lengua y la literatura en territorios culturales complejos.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-letras.html" title="Profesorado en Letras ">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 880px; top: 1400px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/prof-portugues-portada.jpg" width="408" height="230" alt="Profesorado en Portugués">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-portugues.html" title="Profesorado en Portugués">
-                                    <h4 class="h4-title">Profesorado en Portugués (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Te apasionan los idiomas y la 
-cultura brasileña? Esta carrera te forma para dominar el portugués 
-hablado en Brasil y para enseñar su lengua, literatura y expresiones 
-culturales. Combina una sólida formación lingüística y pedagógica con 
-una mirada crítica sobre la comunicación y la enseñanza. Ideal para 
-quienes buscan transmitir el idioma portugués y promover el intercambio 
-cultural entre Argentina y Brasil.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-portugues.html" title="Profesorado en Portugués">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="grid-item" data-type="profesorados" style="position: absolute; left: 0px; top: 2137.5px; height: 798.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/puce-portada.jpg" width="408" height="230" alt="Prof-Ciencias-de-la-Educacion">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">
-                                    <h4 class="h4-title">Profesorado Universitario en Ciencias de la Educación (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si te apasiona enseñar, 
-gestionar, liderar, evaluar, pensar la educación y transformar los 
-espacios de aprendizaje y toma de decisiones, esta carrera es para vos. 
-El Profesorado Universitario en Ciencias de la Educación te prepara para
- enseñar las diversas disciplinas del campo de la educación en 
-diferentes contextos, para comprender los procesos educativos desde una 
-mirada crítica, teórica y práctica. Formate para asesorar, diseñar, 
-gestionar y evaluar proyectos pedagógicos en distintos niveles y 
-modalidades - presenciales y virtuales-, combinando conocimiento, 
-innovación y compromiso social con la realidad educativa.
-</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="profesorado-en-ciencias-de-la-educacion.html" title="Profesorado Universitario en Ciencias de la Educación">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 440px; top: 2137.5px; height: 798.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/antropologia-social-portada.jpg" width="408" height="230" alt="Licenciatura en Antropología Social">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">
-                                    <h4 class="h4-title">Licenciatura en Antropología Social (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>La Antropología Social estudia 
-cómo las personas viven, piensan y se relacionan en diferentes culturas y
- contextos. Esta carrera te prepara para investigar y comprender las 
-formas en que los grupos humanos construyen y transforman su sociedad, 
-en el plano material y simbólico. Combina teoría, investigación,trabajo 
-de campo e intervención para analizar problemáticas actuales y aportar 
-miradas críticas que promuevan la inclusión, el reconocimiento de la 
-diversidad, el desarrollo comunitario y el pleno ejercicio de los 
-derechos.
-</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-antropologia-social.html" title="Licenciatura en Antropología Social">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 880px; top: 2137.5px; height: 798.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/licenciatura-trabajo-social-portada.jpg" width="408" height="230" alt="lic-trabajo-social">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-trabajo-social.html" title="Licenciatura en Trabajo Social">
-                                    <h4 class="h4-title">Licenciatura en Trabajo Social (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Querés transformar realidades y 
-acompañar a las personas en sus procesos sociales? Esta carrera te forma
- para analizar, planificar e intervenir en problemáticas sociales desde 
-una mirada crítica, ética y comprometida con los derechos humanos. La 
-Licenciatura en Trabajo Social combina teoría, investigación y práctica 
-profesional para promover el bienestar, la inclusión y el desarrollo de 
-las comunidades.
-</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-trabajo-social.html" title="Licenciatura en Trabajo Social">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 0px; top: 2960px; height: 733.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/litadis-portada.jpg" width="408" height="230" alt="litadis">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">
-                                    <h4 class="h4-title">Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si te gustan los números y querés
- entender cómo se comporta la sociedad a través de los datos, esta 
-carrera es para vos. LITADIS te forma para analizar, procesar e 
-interpretar información social y económica con herramientas estadísticas
- y tecnológicas. Aprendés a convertir los datos en conocimiento útil 
-para la toma de decisiones en organismos públicos, privados y proyectos 
-de investigación.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="litadis.html" title="Licenciatura en el Tratamiento y Análisis de Datos para la Investigación Socioeconómica">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 440px; top: 2960px; height: 733.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-turismo-portada.jpg" width="408" height="230" alt="lic-turismo">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-turismo.html" title="Licenciatura en Turismo">
-                                    <h4 class="h4-title">Licenciatura en Turismo (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Te gustaría diseñar viajes, 
-crear experiencias, emprender en turismo o gestionar destinos 
-turísticos?. La Licenciatura en Turismo te forma para analizar, 
-planificar y gestionar la actividad turística como motor económico, 
-social y cultural. Combina teoría, investigación y práctica profesional 
-para diseñar proyectos sustentables e innovadores que promuevan el 
-desarrollo regional y fortalezcan el turismo responsable en un contexto 
-global.
-
-</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-turismo.html" title="Licenciatura en Turismo">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 880px; top: 2960px; height: 733.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-com-social-portada.JPG" width="408" height="230" alt="lic_com_social">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">
-                                    <h4 class="h4-title">Licenciatura en Comunicación Social (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Te interesa entender cómo se 
-comunican las personas, los medios y las instituciones? Esta carrera te 
-forma para investigar, analizar y producir estrategias y contenidos que 
-generen impacto social. La Licenciatura en Comunicación Social combina 
-teoría, práctica y creatividad para formar profesionales capaces de 
-trabajar en medios, organismos y organizaciones, interpretando la 
-realidad desde una mirada crítica, ética y comprometida con su tiempo.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-comunicacion-social.html" title="Licenciatura en Comunicación Social">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 0px; top: 3717.5px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/letras-portada.jpg" width="408" height="230" alt="Licenciatura en Letras">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-letras.html" title="Licenciatura en Letras">
-                                    <h4 class="h4-title">Licenciatura en Letras (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>En la Licenciatura en Letras 
-podrás potenciar tu pasión por los libros, la lectura y el análisis de 
-los textos que circulan en nuestra cultura, desde una mirada creativa, 
-crítica y comprometida. Combina una sólida formación disciplinar y 
-preparación de investigadores capaces de analizar y comprender las 
-prácticas discursivas y culturales de la sociedad contemporánea. Una 
-carrera para quienes encuentran en las palabras una forma de conocer, 
-pensar y transformar la realidad.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-letras.html" title="Licenciatura en Letras">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 440px; top: 3717.5px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/historia-portada.jpg" width="408" height="230" alt="Licenciatura en Historia">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-historia.html" title="Licenciatura en Historia">
-                                    <h4 class="h4-title">Licenciatura en Historia (5 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>¿Querés entender cómo los 
-procesos del pasado explican el presente? La Licenciatura en Historia te
- forma para investigar, analizar y narrar los hechos sociales, políticos
- y culturales que construyeron nuestras sociedades. A través de la 
-investigación y el análisis crítico de fuentes, aprenderás a interpretar
- la historia regional, nacional y global, y a contribuir a la 
-preservación del patrimonio y la memoria colectiva</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-historia.html" title="Licenciatura en Historia">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-item" data-type="licenciaturas" style="position: absolute; left: 880px; top: 3717.5px; height: 713.5px;">
-                    <div class="common-post-card">
-                        <div class="post-image-box-wp">
-                            <div class="post-image">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/lic-bibliotecologia-portada.jpg" width="408" height="230" alt="lic-bibliotecologia">
-                            </div>
-                            <div class="post-tag">
-                                <span>Grado</span>
-                            </div>
-                        </div>
-                        <div class="common-post-content">
-                            <div class="post-lessons-info">
-                                
-                            </div>
-                            <div class="post-content-title">
-                                <a href="licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">
-                                    <h4 class="h4-title">Licenciatura en Bibliotecología (4 años)</h4>
-                                </a>
-                                <div class="client-review-text">
-                                    <p>Si te gusta la organización de la información y el conocimiento, la investigación, el desarrollo de
-políticas institucionales y las alfabetizaciones múltiples, esta carrera es para vos. La
-Licenciatura en Bibliotecología te prepara para gestionar unidades de información, organizar
-colecciones analógicas y digitales. Aprendés a diseñar, analizar y coordinar sistemas que
-faciliten el acceso al conocimiento, combinando tecnología, cultura e investigación para
-promover una sociedad más informada y participativa.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="post-author-review-info">
-                                <div class="post-author-info">
-                                    
-                                    <div class="post-author-name">
-                                        <a href="licenciatura-en-bibliotecologia.html" title="Licenciatura en Bibliotecología">Ver Más</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                
-            </div>
-        </div>
-    </section>
-    <!-- Top Course End -->
+    
 
     
-    <!-- Our Event Start -->
-    <section class="our-event-sec sec-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="our-event-content">
-                        <div class="sec-title text-center">
-                            <span class="sub-title">Fechas importantes</span>
-                            <h2 class="h2-title">Próximos cierres de inscripción</h2>
-                        </div>
-                        <div class="our-event-box-wp">
-                            <div class="our-event-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-                                <div class="our-event-image-text">
-                                    <!--<div class="our-event-image">
-                                        <img loading="lazy" src="assets/images/event-image-1.jpg" width="270" height="150"
-                                            alt="Event Image">
-                                    </div>-->
-                                    <div class="our-event-text">
-                                        <div class="our-event-title">
-                                            <a title="Carreras Cortas">
-                                                <h4 class="h4-title">Carreras 2027: Tecnicaturas, profesorados y licenciaturas
-                                                </h4>
-                                            </a>
-                                        </div>
-                                        <div class="our-event-info post-lessons-info">
-                                            <ul>
-                                                <li>
-                                                    <span class="post-info-icon">
-                                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/date-icon_AVHt.svg" width="20" height="17" alt="Date Icon">
-                                                    </span>
-                                                    <span class="post-info-text">Las inscripciones online estarán abiertas del 13/10 al 30/12/2026 y del 01/02 al 19/02/2027. La presentación de documentación se realiza del 10/02 al 26/02/2027.</span>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="our-event-btn">
-<a href="https://preinscripcion.sistemas.unam.edu.ar/alumno/" target="_blank" class="sec-btn" title="Preinscripción"><span>Inscribite ahora</span></a>                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Our Event End -->
-
-    
-    <!-- Testimonial Start -->
-    <br><br><br>
-    <section class="testimonial-sec sec-space-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sec-title text-center">
-                        <span class="sub-title">Testimonios</span>
-                        <h2 class="h2-title">Estudiantes y Graduados</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonial-slider-wp wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-            <div class="container-fluid">
-                <div class="swiper testimonial-slider swiper-initialized swiper-horizontal swiper-backface-hidden">
-                    <div class="swiper-wrapper" id="swiper-wrapper-6e93a1fe3f81c681" aria-live="off" style="transition-duration: 10000ms; transform: translate3d(-598px, 0px, 0px);">
-                        
-                        <div class="swiper-slide swiper-slide-prev" style="width: 574px; margin-right: 24px;" role="group" aria-label="2 / 4" data-swiper-slide-index="1">
-                            <div class="testimonial-box">
-                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
-                                <div class="client-image-title-wp">
-                                    <div class="client-image">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/serena_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
-                                    </div>
-                                    <div class="client-info">
-                                        <h4 class="h4-title">Serena Ortellado</h4>
-                                        <span class="client-profession">Graduada de Antropología Social</span>
-                                        
-                                    </div>
-                                </div>
-                                <div class="client-review-text">
-                                    <p>“Elegí la FHyCS por su compromiso
- con lo social y su mirada crítica. La formación en Antropología me 
-permitió comprender la diversidad humana y acompañar procesos 
-comunitarios con una perspectiva más justa y reflexiva.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-active" style="width: 574px; margin-right: 24px;" role="group" aria-label="3 / 4" data-swiper-slide-index="2">
-                            <div class="testimonial-box">
-                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
-                                <div class="client-image-title-wp">
-                                    <div class="client-image">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/sergio_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
-                                    </div>
-                                    <div class="client-info">
-                                        <h4 class="h4-title">Sergio Rodríguez</h4>
-                                        <span class="client-profession">Graduado Licenciatura en Trabajo Social</span>
-                                        
-                                    </div>
-                                </div>
-                                <div class="client-review-text">
-                                    <p>“En la FHyCS encontré un espacio 
-de contención y crecimiento que me formó como profesional y persona. 
-Gracias a su acompañamiento académico y social, hoy me desempeño como 
-gerente de Responsabilidad Social en una empresa de energía.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide swiper-slide-next" style="width: 574px; margin-right: 24px;" role="group" aria-label="4 / 4" data-swiper-slide-index="3">
-                            <div class="testimonial-box">
-                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
-                                <div class="client-image-title-wp">
-                                    <div class="client-image">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/patricia_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
-                                    </div>
-                                    <div class="client-info">
-                                        <h4 class="h4-title">Patricia Monzón</h4>
-                                        <span class="client-profession">Graduada del Profesorado en Ciencias Económicas</span>
-                                        
-                                    </div>
-                                </div>
-                                <div class="client-review-text">
-                                    <p>“La FHyCS me brindó una formación
- integral que me permitió transformar ideas en acción. Hoy trabajo en 
-instituciones educativas, impulsando proyectos que integran economía, 
-sostenibilidad y pensamiento crítico.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    <div class="swiper-slide" style="width: 574px; margin-right: 24px;" role="group" aria-label="1 / 4" data-swiper-slide-index="0">
-                            <div class="testimonial-box">
-                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote"></span>
-                                <div class="client-image-title-wp">
-                                    <div class="client-image">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/agustina_AVHt.jpg" width="80" height="80" alt="Testimonial Image">
-                                    </div>
-                                    <div class="client-info">
-                                        <h4 class="h4-title">Agustina Komjati</h4>
-                                        <span class="client-profession">Graduada de Comunicación Social</span>
-                                        
-                                    </div>
-                                </div>
-                                <div class="client-review-text">
-                                    <p>“Elegí la Facultad de Humanidades
- por su mirada crítica y la diversidad de espacios que ofrece. Gracias a
- la formación en la FHyCS hoy trabajo en medios alternativos, en 
-comunicación pública de la ciencia y como investigadora.”</p>
-                                </div>
-                            </div>
-                        </div></div>
-                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                
-            </div>
-        </div>
-    </section>
-    <!-- Testimonial End -->
-
-    <!-- Our Features Start -->
-    <section class="our-features">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="our-features-content wow left-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-                        <div class="sec-title">
-                            <span class="sub-title">Facultad de Humanidades y Ciencias Sociales</span>
-                            <h2 class="h2-title">Impulsá tu carrera</h2>
-                        </div>
-                        <div class="our-features-info">
-                            <div class="our-features-info-box">
-                                
-                                <div class="our-features-info-text">
-                                    <h4 class="h4-title">Docentes destacados</h4>
-                                    <p>Estudiá con referentes y profesionales de trayectoria</p>
-                                </div>
-                            </div>
-                            <div class="our-features-info-box">
-                                
-                                <div class="our-features-info-text">
-                                    <h4 class="h4-title">Formación pública, gratuita y transformadora</h4>
-                                    <p>Formá parte de la universidad más reconocida de la provincia</p>
-                                </div>
-                            </div>
-                            <div class="our-features-info-box">
-                                
-                                <div class="our-features-info-text">
-                                    <h4 class="h4-title">Investigación</h4>
-                                    <p>Participá en proyectos y formate como investigador desde tu carrera</p>
-                                </div>
-                            </div>
-                            <div class="our-features-info-box">
-                                
-                                <div class="our-features-info-text">
-                                    <h4 class="h4-title">Extensión y vinculación comunitaria</h4>
-                                    <p>Sumate a cursos, diplomaturas, congresos y proyectos que conectan la facultad con la comunidad</p>
-                                </div>
-                            </div>
-
-                            <div class="our-features-info-box">
-                                
-                                <div class="our-features-info-text">
-                                    <h4 class="h4-title">Bienestar Estudiantil</h4>
-                                    <p>Accede a becas de albergue, comedor y otros programas de apoyo y acompañamiento</p>
-                                </div>
-                            </div>
-                            
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 align-self-center">
-                    <div class="our-features-image-wp wow right-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
-                        <div class="our-features-image">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-humanidades_AVHt.webp" width="510" height="693" alt="FHyCS - estudiante"><br>
-                          
-                        </div>  <!--<h4 class="h4-title"> Cristian Garrido - Decano FHyCS - UNaM</h4>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Our Features End -->
-
 <!-- FAQ Section Start -->
+    <section class="faq-sec">
     <i class="bi bi-info-circle-fill me-2"></i>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sec-title text-center">
                         <span class="sub-title">Resolvé tus dudas</span>
-                        <h2 class="h2-title">Preguntas frecuentes – Ingreso FHyCS UNaM</h2>
+                        <h2 class="h2-title faq-main-title">Preguntas frecuentes – Ingreso FHyCS UNaM</h2>
                     </div>
                 </div>
             </div>
@@ -1560,7 +1241,21 @@ comunicación pública de la ciencia y como investigadora.”</p>
                                 <div class="pasos-faq">
                                     <div class="paso-faq"><span class="paso-num">1</span><div><h6>Preinscripción Online</h6><p>Ingresá a <a href="https://preinscripcion.sistemas.unam.edu.ar" target="_blank">preinscripcion.sistemas.unam.edu.ar</a>, inscribite a la carrera elegida y registrá todos los datos que te solicitan. Elegí el día y horario en que presentarás la documentación.<br><span class="fecha-badge">13/10 al 30/12/2026</span><span class="fecha-badge">01/02 al 19/02/2027</span></p></div></div>
                                     <div class="paso-faq"><span class="paso-num">2</span><div><h6>Presentar documentación</h6><p>Presentá tu documentación en el día y horario elegidos, en la Dirección General de Alumnado (DGA), Planta Baja del Edificio Central, Tucumán 1946.<br><span class="fecha-badge">10/02 al 26/02/2027</span></p></div></div>
-                                </div></div></div>
+                                </div>
+                                <div class="faq-tutoriales">
+                                    <h3 class="faq-tutoriales-titulo">Mirá los tutoriales según tu situación</h3>
+                                    <div class="inscripcion-videos-grid">
+                                        <div class="inscripcion-video-item">
+                                            <h4 class="inscripcion-video-titulo">Cómo inscribirte si no sos alumno de la UNaM / Usuario nuevo</h4>
+                                            <div class="video-inscripcion"><a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=2-4XFTOqDkQ" data-video-id="2-4XFTOqDkQ" data-video-title="Tutorial de preinscripción online" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Tutorial de preinscripción online"><img src="https://i.ytimg.com/vi/2-4XFTOqDkQ/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a></div>
+                                        </div>
+                                        <div class="inscripcion-video-item">
+                                            <h4 class="inscripcion-video-titulo">Cómo inscribirte si ya sos alumno de la UNaM</h4>
+                                            <div class="video-inscripcion"><a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=YytFhw1h3Rg" data-video-id="YytFhw1h3Rg" data-video-title="Cómo inscribirte si ya sos alumno de la UNaM" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Cómo inscribirte si ya sos alumno de la UNaM"><img src="https://i.ytimg.com/vi/YytFhw1h3Rg/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></div>
                         </div>
                         <div class="accordion-item mb-3 border-0 shadow-sm rounded">
                             <h2 class="accordion-header" id="hI2"><button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#cI2" aria-expanded="false" aria-controls="cI2">¿Hasta cuándo puedo inscribirme?</button></h2>
@@ -1745,8 +1440,211 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 </div>
             </div>
         </div>
+    
+                
+    
     </section>
-    <!-- FAQ Section End -->    
+    <!-- FAQ Section End -->
+
+    <!-- Bienestar Estudiantil: cinta desplazable -->
+    <section class="bienestar-estudiantil-sec sec-space">
+        <div class="container">
+            <div class="bienestar-cinta-header">
+                <div class="sec-title">
+                    <span class="sub-title">Beneficios y acompañamiento</span>
+                    <h2 class="h2-title">Bienestar estudiantil</h2>
+                </div>
+                <div class="bienestar-controls" aria-label="Controles del carrusel de beneficios">
+                    <button type="button" class="bienestar-arrow bienestar-prev" aria-label="Ver beneficios anteriores">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <button type="button" class="bienestar-arrow bienestar-next" aria-label="Ver más beneficios">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="swiper bienestar-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_comedor.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Beca de comedor</h3></div></div>
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_albergue.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Beca de albergue</h3></div></div>
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/gimnasio.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Gimnasio</h3></div></div>
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/salud_mental.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Programa de salud mental</h3></div></div>
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_salud.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Beca de salud</h3></div></div>
+                    <div class="swiper-slide"><div class="bienestar-cinta-item"><div class="bienestar-img-box"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/beca_cuidado.jpg" width="56" height="56" alt="" decoding="async"></div><h3>Beca de cuidado</h3></div></div>
+                </div>
+            </div>
+            <a href="#cB1" id="link-faq-bienestar" class="bienestar-faq-link" title="Preguntas sobre beneficios" target="_self">¿Dudas sobre becas y beneficios? Ver preguntas frecuentes <span aria-hidden="true">→</span></a>
+        </div>
+    </section>
+    <!-- Bienestar Estudiantil End -->
+
+    <!-- Conocé la Facultad: recorridos y características -->
+    <section class="conoce-facultad-sec" id="conoce-la-facultad">
+        <div class="conoce-facultad-intro">
+            <div class="container">
+                <div class="sec-title text-center">
+                    <span class="sub-title">Recorré nuestros espacios</span>
+                    <h2 class="h2-title">Conocé la Facultad</h2>
+                </div>
+                <div class="facultad-videos-grid">
+                    <article class="facultad-video-card">
+                        <h3>Edificio Central - Tucumán 1946</h3>
+                        <div class="facultad-video-frame">
+                            <a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=5fZiE7cIuDM" data-video-id="5fZiE7cIuDM" data-video-title="Recorrido por el Edificio Central de Tucumán 1946" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Recorrido por el Edificio Central de Tucumán 1946"><img src="https://i.ytimg.com/vi/5fZiE7cIuDM/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a>
+                        </div>
+                    </article>
+                    <article class="facultad-video-card">
+                        <h3>Edificio Juan Figueredo</h3>
+                        <div class="facultad-video-frame">
+                            <a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=R4BYffwVs1w" data-video-id="R4BYffwVs1w" data-video-title="Recorrido por el Edificio Juan Figueredo" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Recorrido por el Edificio Juan Figueredo"><img src="https://i.ytimg.com/vi/R4BYffwVs1w/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a>
+                        </div>
+                    </article>
+                    <article class="facultad-video-card">
+                        <h3>Anexo San Lorenzo 2551</h3>
+                        <div class="facultad-video-frame">
+                            <a class="fhycs-video-facade" href="https://www.youtube.com/watch?v=USKD4RXZJIM" data-video-id="USKD4RXZJIM" data-video-title="Recorrido por el Anexo San Lorenzo 2551" target="_blank" rel="noopener noreferrer" aria-label="Reproducir: Recorrido por el Anexo San Lorenzo 2551"><img src="https://i.ytimg.com/vi/USKD4RXZJIM/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async" fetchpriority="low"><span class="fhycs-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="fhycs-video-action" aria-hidden="true">Ver video</span></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    <!-- Características de la Facultad -->
+    <section class="our-features caracteristicas-fhycs-sec" aria-label="Características de la Facultad">
+        <div class="container">
+            <div class="caracteristicas-grid">
+                <article class="caracteristica-item">
+                    <div class="caracteristica-icon" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 12v4.2c0 1.2 2.2 2.8 5 2.8s5-1.6 5-2.8V12"/><path d="M21 10v5"/></svg>
+                    </div>
+                    <div><h3>Docentes destacados</h3><p>Estudiá con referentes y profesionales de trayectoria.</p></div>
+                </article>
+                <article class="caracteristica-item">
+                    <div class="caracteristica-icon" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5M8 8.5h5M8 11.5h5"/></svg>
+                    </div>
+                    <div><h3>Investigación</h3><p>Participá en proyectos y formate como investigador desde tu carrera.</p></div>
+                </article>
+                <article class="caracteristica-item">
+                    <div class="caracteristica-icon" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="7.5" r="2"/><circle cx="17.5" cy="7.5" r="2"/><circle cx="12" cy="17" r="2"/><path d="M8.5 7.5h7M7.8 9.2l2.8 5.8M16.2 9.2l-2.8 5.8"/></svg>
+                    </div>
+                    <div><h3>Extensión y vinculación tecnológica</h3><p>Sumate a propuestas que conectan la facultad con la comunidad y la tecnología.</p></div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- Características End -->
+    </section>
+    <!-- Conocé la Facultad End -->
+
+    <!-- Testimonial Start -->
+    <section class="testimonial-sec sec-space-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center">
+                        <span class="sub-title">Testimonios</span>
+                        <h2 class="h2-title">Estudiantes y Graduados</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-slider-wp wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
+            <div class="container-fluid">
+                <div class="swiper testimonial-slider swiper-initialized swiper-horizontal swiper-backface-hidden">
+                    <div class="swiper-wrapper" id="swiper-wrapper-6e93a1fe3f81c681" aria-live="off" style="transition-duration: 10000ms; transform: translate3d(-598px, 0px, 0px);">
+                        
+                        <div class="swiper-slide swiper-slide-prev" style="width: 574px; margin-right: 24px;" role="group" aria-label="2 / 4" data-swiper-slide-index="1">
+                            <div class="testimonial-box">
+                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote" decoding="async" loading="lazy"></span>
+                                <div class="client-image-title-wp">
+                                    <div class="client-image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/serena_AVHt.jpg" width="80" height="80" alt="Testimonial Image" decoding="async">
+                                    </div>
+                                    <div class="client-info">
+                                        <h4 class="h4-title">Serena Ortellado</h4>
+                                        <span class="client-profession">Graduada de Antropología Social</span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="client-review-text">
+                                    <p>“Elegí la FHyCS por su compromiso
+ con lo social y su mirada crítica. La formación en Antropología me 
+permitió comprender la diversidad humana y acompañar procesos 
+comunitarios con una perspectiva más justa y reflexiva.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" style="width: 574px; margin-right: 24px;" role="group" aria-label="3 / 4" data-swiper-slide-index="2">
+                            <div class="testimonial-box">
+                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote" decoding="async" loading="lazy"></span>
+                                <div class="client-image-title-wp">
+                                    <div class="client-image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/sergio_AVHt.jpg" width="80" height="80" alt="Testimonial Image" decoding="async">
+                                    </div>
+                                    <div class="client-info">
+                                        <h4 class="h4-title">Sergio Rodríguez</h4>
+                                        <span class="client-profession">Graduado Licenciatura en Trabajo Social</span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="client-review-text">
+                                    <p>“En la FHyCS encontré un espacio 
+de contención y crecimiento que me formó como profesional y persona. 
+Gracias a su acompañamiento académico y social, hoy me desempeño como 
+gerente de Responsabilidad Social en una empresa de energía.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-next" style="width: 574px; margin-right: 24px;" role="group" aria-label="4 / 4" data-swiper-slide-index="3">
+                            <div class="testimonial-box">
+                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote" decoding="async" loading="lazy"></span>
+                                <div class="client-image-title-wp">
+                                    <div class="client-image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/patricia_AVHt.jpg" width="80" height="80" alt="Testimonial Image" decoding="async">
+                                    </div>
+                                    <div class="client-info">
+                                        <h4 class="h4-title">Patricia Monzón</h4>
+                                        <span class="client-profession">Graduada del Profesorado en Ciencias Económicas</span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="client-review-text">
+                                    <p>“La FHyCS me brindó una formación
+ integral que me permitió transformar ideas en acción. Hoy trabajo en 
+instituciones educativas, impulsando proyectos que integran economía, 
+sostenibilidad y pensamiento crítico.”</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <div class="swiper-slide" style="width: 574px; margin-right: 24px;" role="group" aria-label="1 / 4" data-swiper-slide-index="0">
+                            <div class="testimonial-box">
+                                <span class="quote-icon"><img width="33" height="24" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/quote-icon_AVHt.svg" alt="Quote" decoding="async" loading="lazy"></span>
+                                <div class="client-image-title-wp">
+                                    <div class="client-image">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/agustina_AVHt.jpg" width="80" height="80" alt="Testimonial Image" decoding="async">
+                                    </div>
+                                    <div class="client-info">
+                                        <h4 class="h4-title">Agustina Komjati</h4>
+                                        <span class="client-profession">Graduada de Comunicación Social</span>
+                                        
+                                    </div>
+                                </div>
+                                <div class="client-review-text">
+                                    <p>“Elegí la Facultad de Humanidades
+ por su mirada crítica y la diversidad de espacios que ofrece. Gracias a
+ la formación en la FHyCS hoy trabajo en medios alternativos, en 
+comunicación pública de la ciencia y como investigadora.”</p>
+                                </div>
+                            </div>
+                        </div></div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial End -->
 
     <!-- Apply Now Start -->
     <section class="apply-now-sec">
@@ -1755,22 +1653,23 @@ comunicación pública de la ciencia y como investigadora.”</p>
                 <div class="col-lg-12">
                     <div class="apply-now-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                         <div class="apply-now-shape animate-this" style="transform: translateX(-20px) translateY(10px);">
-                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/newsletter-bg-shape_AVHt.svg" width="838" height="488" alt="Aplicá en tu Carrera Ideal">
+                            <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/newsletter-bg-shape_AVHt.svg" width="838" height="488" alt="" decoding="async">
                         </div>
                         <div class="apply-now-content">
                             <div class="apply-now-image-box">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_respaldo.png" width="305" height="287" alt="ENCONTRÁ TU CARRERA IDEAL">
+                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/estudiante-final_respaldo.png" width="305" height="287" alt="Estudiante de la FHyCS" decoding="async">
                             </div>
                             <div class="apply-now-text">
-                                <div class="sec-title">
-                                    <span class="sub-title"></span>
-                                    <h3 class="h3-title"> ENCONTRÁ TU CARRERA IDEAL</h3>
+                                <div class="apply-now-btn">
+                                    <div style="background: linear-gradient(135deg, #1a4b8c 0%, #2a6fc7 100%); border-radius: 16px; padding: 32px 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
+                                        <h4 style="color: #fff; font-size: 1.35rem; font-weight: 700; margin-bottom: 10px;">¿Te quedó alguna duda?</h4>
+                                        <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 20px;">Escribinos y te respondemos a la brevedad.</p>
+                                        <a href="contacto.html" title="Ir al formulario de contacto" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white; border: none; border-radius: 10px; padding: 14px 32px; font-size: 1rem; font-weight: 700; text-decoration: none; display: inline-block; box-shadow: 0 6px 20px rgba(255,107,53,0.35);" target="_self">
+                                            Contactanos →
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="apply-now-btn" style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
-                                    <a href="#" data-filtro="profesorados" class="sec-btn btn-carrera-filtro" title="Ver profesorados"><span>Profesorados</span></a>
-                                    <a href="#" data-filtro="carreras-cortas" class="sec-btn btn-carrera-filtro" title="Ver tecnicaturas"><span>Carreras Cortas</span></a>
-                                    <a href="#" data-filtro="licenciaturas" class="sec-btn btn-carrera-filtro" title="Ver licenciaturas"><span>Licenciaturas</span></a>
-                                </div>                        </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -1779,42 +1678,44 @@ comunicación pública de la ciencia y como investigadora.”</p>
 </section>
     <!-- Apply Now End -->
 
+    
+
     <!-- Footer Start -->
     <footer class="site-footer">
         <div class="top-footer">
             <div class="footer-bg-aliment-wp">
                 <div class="bg-aliment-1 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-2 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-3 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-4 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-5 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-6 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-7 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-8 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-9 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-10 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-11 animate-this" style="transform: translateX(-20px) translateY(10px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
                 </div>
             </div>
             <div class="container">
@@ -1822,8 +1723,8 @@ comunicación pública de la ciencia y como investigadora.”</p>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-about">
                             <div class="footer-logo">
-                                <a href="index.html" title="UNAM FHyCS">
-                                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM">
+                                <a href="index.html" title="UNAM FHyCS" target="_self">
+                                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM" decoding="async">
                                 </a>
                             </div>
                             <div class="footer-logo-about-text">
@@ -1835,11 +1736,11 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="social-info">
                                 <h4 class="underline-title">Seguínos en las Redes</h4>
                                 <div class="footer-social-icons">
-                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon"></a>
-                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon"></a>
+                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon" decoding="async"></a>
+                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon" decoding="async"></a>
                                     <!--<a href="https://www.linkedin.com/" title="WhatsApp" target="_blank"><img
                                             src="assets/images/whatsapp-icon.svg" width="13" height="13"
-                                            alt="WhatsApp Icon"></a>-->
+                                            alt="WhatsApp Icon" decoding="async" loading="lazy"></a>-->
                                 </div>
                             </div>
                         </div>
@@ -1864,15 +1765,15 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <div class="our-link-content">
                                 <h4 class="underline-title"><br>Top Carreras</h4>
                                 <ul>
-                                    <li><a href="licenciatura-en-comunicacion-social.html" title="Design &amp; Learn Art">Comunicación Social</a>
+                                    <li><a href="licenciatura-en-comunicacion-social.html" title="Design &amp; Learn Art" target="_self">Comunicación Social</a>
                                     </li>
-                                    <li><a href="licenciatura-en-turismo.html" title="Learn Data Science">Turismo</a>
+                                    <li><a href="licenciatura-en-turismo.html" title="Learn Data Science" target="_self">Turismo</a>
                                     </li>
-                                    <li><a href="profesorado-en-ciencias-economicas.html" title="Business Strategy">Ciencias Económicas</a></li>
-                                    <li><a href="licenciatura-en-historia.html" title="Learn Marketing">Historia</a></li>
-                                    <li><a href="licenciatura-en-letras.html" title="Learn Lifestyle">Letras</a></li>
-                                    <li><a href="licenciatura-en-trabajo-social.html" title="Learn Finance">Trabajo Social</a></li>
-                                    <li><a href="profesorado-en-ciencias-de-la-educacion.html" title="Learn Finance">Educación</a></li>
+                                    <li><a href="profesorado-en-ciencias-economicas.html" title="Business Strategy" target="_self">Ciencias Económicas</a></li>
+                                    <li><a href="licenciatura-en-historia.html" title="Learn Marketing" target="_self">Historia</a></li>
+                                    <li><a href="licenciatura-en-letras.html" title="Learn Lifestyle" target="_self">Letras</a></li>
+                                    <li><a href="licenciatura-en-trabajo-social.html" title="Learn Finance" target="_self">Trabajo Social</a></li>
+                                    <li><a href="profesorado-en-ciencias-de-la-educacion.html" title="Learn Finance" target="_self">Educación</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1883,7 +1784,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                             <ul>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Ubicación">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/location-icon-2_AVHt.svg" width="16" height="18" alt="Ubicación" decoding="async">
                                     </span>
                                     <span class="contact-text">
                                         <a href="https://maps.app.goo.gl/fDiwFeB9pYM4u1Xg7" title="Tucumán 1946, Posadas, Misiones" target="_blank">Tucumán 1946, Posadas, Misiones - CP: N3300BSP</a>
@@ -1891,7 +1792,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                                 </li>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Correo">
+                                        <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/mail-icon_AVHt.svg" width="19" height="13" alt="Correo" decoding="async">
                                     </span>
                                     <span class="contact-text">
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
@@ -1956,44 +1857,6 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
 
     <!-- Back To Top JS Link -->
     <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/back-to-top_AVHt.js"></script>
-    <!-- Palabra rotativa del banner (se pausa sola cuando no la estás mirando) -->
-    <script>
-        (function () {
-            var palabras = [
-                "Comunicación Social", "Turismo", "Trabajo Social", "Historia", "Letras",
-                "Antropología Social", "Bibliotecología", "Ciencias de la Educación",
-                "Ciencias Económicas", "Portugués", "Educación Especial", "LITADIS",
-                "Guía de Turismo", "Tecnicatura en Comunicación"
-            ];
-            var el = document.getElementById('rotator-word');
-            if (!el) return;
-            var i = 0, pos = 0, borrando = false, corriendo = false, visible = true;
-
-            function tick() {
-                if (!visible) { corriendo = false; return; }
-                corriendo = true;
-                var p = palabras[i];
-                if (!borrando) {
-                    pos++;
-                    el.textContent = p.slice(0, pos);
-                    if (pos === p.length) { borrando = true; return setTimeout(tick, 1700); }
-                    return setTimeout(tick, 70);
-                }
-                pos--;
-                el.textContent = p.slice(0, pos);
-                if (pos === 0) { borrando = false; i = (i + 1) % palabras.length; return setTimeout(tick, 400); }
-                return setTimeout(tick, 35);
-            }
-
-            if ('IntersectionObserver' in window) {
-                new IntersectionObserver(function (entries) {
-                    visible = entries[0].isIntersecting;
-                    if (visible && !corriendo) tick();
-                }).observe(el.closest('h1') || el);
-            }
-            tick();
-        })();
-    </script>
          <!-- Botones "Ver preguntas" de Bienestar y Carreras: abren el FAQ y hacen scroll -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -2009,7 +1872,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                         el.classList.add('show');
                     }
                     setTimeout(function () {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        el.scrollIntoView({ behavior: (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'), block: 'center' });
                     }, 350);
                 });
             });
@@ -2029,7 +1892,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                     el.classList.add('show');
                 }
                 setTimeout(function () {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.scrollIntoView({ behavior: (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'), block: 'center' });
                 }, 400);
             });
         });
@@ -2048,7 +1911,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                     el.classList.add('show');
                 }
                 setTimeout(function () {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    el.scrollIntoView({ behavior: (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'), block: 'center' });
                 }, 400);
             });
         });
@@ -2064,7 +1927,7 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                         var dest = document.querySelector(id);
                         if (dest) {
                             e.preventDefault();
-                            dest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            dest.scrollIntoView({ behavior: (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'), block: 'start' });
                         }
                     }
                 });
@@ -2081,11 +1944,236 @@ nace la <b>Facultad de Humanidades y Ciencias Sociales</b>.</p>
                     var filtro = document.querySelector('.top-course-list [data-type="' + tipo + '"]');
                     if (filtro) { filtro.click(); }
                     var seccion = document.querySelector('.top-course-sec');
-                    if (seccion) { seccion.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                    if (seccion) { seccion.scrollIntoView({ behavior: (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'), block: 'start' }); }
                 });
             });
         });
 
         
-    </script>   
+    </script>
+    <!-- Cinta de Bienestar: desplazamiento con flechas -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof Swiper === 'undefined') return;
+
+            new Swiper('.bienestar-slider', {
+                slidesPerView: 1.25,
+                spaceBetween: 12,
+                speed: 280,
+                grabCursor: true,
+                watchOverflow: true,
+                navigation: {
+                    nextEl: '.bienestar-next',
+                    prevEl: '.bienestar-prev'
+                },
+                keyboard: {
+                    enabled: true
+                },
+                breakpoints: {
+                    576: { slidesPerView: 2.2 },
+                    992: { slidesPerView: 3 },
+                    1400: { slidesPerView: 4 }
+                }
+            });
+        });
+    </script>
+    <!-- FAQ compacta: búsqueda global, pestañas y accesos directos -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var accordion = document.getElementById('faqAccordion');
+            if (!accordion || accordion.dataset.compactReady === 'true') return;
+
+            var titles = Array.from(accordion.children).filter(function (node) {
+                return node.classList.contains('faq-category-title');
+            });
+            var items = Array.from(accordion.querySelectorAll('.accordion-item'));
+            if (!titles.length || !items.length) return;
+            accordion.dataset.compactReady = 'true';
+
+            function normalizeText(text) {
+                return (text || '').toLowerCase().normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
+            }
+
+            var shell = document.createElement('div');
+            shell.className = 'faq-compact-shell';
+            shell.innerHTML =
+                '<div class="faq-search-box">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+                        '<circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>' +
+                    '</svg>' +
+                    '<label class="visually-hidden" for="faq-search">Buscar en las preguntas frecuentes</label>' +
+                    '<input class="faq-search-input" id="faq-search" type="search" ' +
+                        'placeholder="¿Qué querés consultar?" autocomplete="off" ' +
+                        'aria-controls="faqAccordion" aria-describedby="faq-search-status">' +
+                '</div>' +
+                '<div class="faq-tabs" role="tablist" aria-label="Categorías de preguntas frecuentes"></div>' +
+                '<p class="faq-search-status" id="faq-search-status" role="status" aria-live="polite"></p>' +
+                '<div class="faq-empty" hidden>No encontramos resultados. Probá con otra palabra.</div>';
+            accordion.parentNode.insertBefore(shell, accordion);
+
+            var input = shell.querySelector('.faq-search-input');
+            var tabList = shell.querySelector('.faq-tabs');
+            var status = shell.querySelector('.faq-search-status');
+            var empty = shell.querySelector('.faq-empty');
+            var panels = [];
+            var tabs = [];
+            var activeIndex = 0;
+            var searching = false;
+
+            items.forEach(function (item) {
+                item.dataset.faqSearch = normalizeText(item.textContent);
+            });
+
+            titles.forEach(function (title, index) {
+                var panel = document.createElement('div');
+                panel.className = 'faq-category-panel';
+                panel.id = 'faq-panel-' + index;
+                panel.setAttribute('role', 'tabpanel');
+                panel.setAttribute('aria-labelledby', 'faq-tab-' + index);
+                panels.push(panel);
+
+                var tab = document.createElement('button');
+                tab.className = 'faq-tab';
+                tab.id = 'faq-tab-' + index;
+                tab.type = 'button';
+                tab.setAttribute('role', 'tab');
+                tab.setAttribute('aria-controls', panel.id);
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1;
+                tab.textContent = title.textContent.trim();
+                tab.addEventListener('click', function () {
+                    activateCategory(index, false);
+                });
+                tab.addEventListener('keydown', function (event) {
+                    var next = index;
+                    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+                    else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+                    else if (event.key === 'Home') next = 0;
+                    else if (event.key === 'End') next = tabs.length - 1;
+                    else return;
+                    event.preventDefault();
+                    activateCategory(next, true);
+                });
+                tabList.appendChild(tab);
+                tabs.push(tab);
+            });
+
+            var originalChildren = Array.from(accordion.children);
+            var panelIndex = -1;
+            originalChildren.forEach(function (node) {
+                if (node.classList.contains('faq-category-title')) {
+                    panelIndex += 1;
+                    panels[panelIndex].appendChild(node);
+                } else if (node.classList.contains('accordion-item') && panelIndex >= 0) {
+                    panels[panelIndex].appendChild(node);
+                }
+            });
+            panels.forEach(function (panel) {
+                accordion.appendChild(panel);
+            });
+            accordion.classList.add('faq-compact-enhanced');
+
+            function activateCategory(index, focusTab) {
+                activeIndex = index;
+                tabs.forEach(function (tab, tabIndex) {
+                    var selected = tabIndex === index;
+                    tab.setAttribute('aria-selected', String(selected));
+                    tab.tabIndex = selected ? 0 : -1;
+                });
+                panels.forEach(function (panel, panelIndex) {
+                    panel.hidden = searching ? !panel.querySelector('.accordion-item:not([hidden])') : panelIndex !== index;
+                    panel.classList.remove('faq-panel-enter');
+                });
+                if (!searching && panels[index]) {
+                    panels[index].classList.add('faq-panel-enter');
+                }
+                if (focusTab) tabs[index].focus();
+            }
+
+            function searchFaq() {
+                var rawQuery = input.value.trim();
+                var query = normalizeText(rawQuery);
+                var terms = query.split(' ').filter(Boolean);
+                searching = terms.length > 0;
+                shell.classList.toggle('is-searching', searching);
+                accordion.classList.toggle('faq-searching', searching);
+
+                if (!searching) {
+                    items.forEach(function (item) { item.hidden = false; });
+                    empty.hidden = true;
+                    status.textContent = '';
+                    activateCategory(activeIndex, false);
+                    return;
+                }
+
+                var resultCount = 0;
+                items.forEach(function (item) {
+                    var matches = terms.every(function (term) {
+                        return item.dataset.faqSearch.indexOf(term) !== -1;
+                    });
+                    item.hidden = !matches;
+                    if (matches) resultCount += 1;
+                });
+                panels.forEach(function (panel) {
+                    panel.hidden = !panel.querySelector('.accordion-item:not([hidden])');
+                    panel.classList.remove('faq-panel-enter');
+                });
+                empty.hidden = resultCount !== 0;
+                status.textContent = resultCount + (resultCount === 1 ? ' resultado' : ' resultados') +
+                    ' para “' + rawQuery + '”.';
+            }
+
+            input.addEventListener('input', searchFaq);
+            input.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && input.value) {
+                    input.value = '';
+                    searchFaq();
+                }
+            });
+
+            function revealTarget(target, openTarget) {
+                if (!target || !accordion.contains(target) || !target.classList.contains('accordion-collapse')) return;
+                if (searching) {
+                    input.value = '';
+                    searchFaq();
+                }
+                var panel = target.closest('.faq-category-panel');
+                var index = panels.indexOf(panel);
+                if (index !== -1) activateCategory(index, false);
+                if (openTarget) {
+                    if (window.bootstrap && bootstrap.Collapse) {
+                        bootstrap.Collapse.getOrCreateInstance(target, { toggle: false }).show();
+                    } else {
+                        target.classList.add('show');
+                    }
+                }
+            }
+
+            function targetFromHash(hash) {
+                if (!hash || hash.charAt(0) !== '#' || hash.length < 2) return null;
+                try {
+                    return document.getElementById(decodeURIComponent(hash.slice(1)));
+                } catch (error) {
+                    return document.getElementById(hash.slice(1));
+                }
+            }
+
+            document.addEventListener('click', function (event) {
+                var link = event.target.closest && event.target.closest('a[href^="#"]');
+                if (!link) return;
+                revealTarget(targetFromHash(link.getAttribute('href')), false);
+            }, true);
+
+            window.addEventListener('hashchange', function () {
+                revealTarget(targetFromHash(window.location.hash), true);
+            });
+
+            activateCategory(0, false);
+            if (targetFromHash(window.location.hash)) {
+                revealTarget(targetFromHash(window.location.hash), true);
+            }
+        });
+    </script>
+    <script defer src="fhycs-optimizacion.js"></script>
 </body></html>

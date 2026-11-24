@@ -30,46 +30,70 @@
     <!-- Main Style CSS Link -->
     <link rel="stylesheet" type="text/css" href="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/style_AVHt.css">
 
-    <!-- Estilos de las tarjetas de contacto -->
+    <link rel="stylesheet" href="fhycs-optimizacion.css">
+
+    <!-- Contacto: misma identidad visual que Inicio y carreras -->
     <style>
-        /* Fuente Roboto (homologada con el resto del sitio) */
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
         body, h1, h2, h3, h4, h5, h6, p, a, button, span, li, div, input, textarea, select { font-family: 'Roboto', sans-serif !important; }
-        @media (max-width: 575px) {
-            .top-header-content-box p { font-size: 12px !important; }
-            .site-branding a img { max-width: 240px; height: auto; }
-        }
-        .contact-us-links-row { padding-top: 45px; }
-                /* Compactar la página de contacto */
-        .inner-banner { padding-bottom: 30px !important; }
-        .contact-us-sec { padding-top: 20px !important; }
-        .contact-us-links-row { padding-top: 20px !important; }
-        .contact-us-link-box {
-            background: #ffffff;
-            border-radius: 14px;
-            box-shadow: 0 8px 30px rgba(27, 110, 194, 0.10);
-            padding: 28px 26px;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            height: 100%;
-            transition: transform .3s ease, box-shadow .3s ease;
-        }
-        .contact-us-link-box:hover { transform: translateY(-4px); box-shadow: 0 14px 38px rgba(27,110,194,.18); }
+        .contacto-hero.inner-banner { padding: 56px 0 60px !important; overflow: hidden; background: #1b6ec2; }
+        .site-footer { overflow: hidden; }
+        .contacto-hero .banner-content { position: relative; z-index: 2; }
+        .contacto-hero .h1-title { color: #ffffff; font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.1; }
+        .contacto-volver { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; margin-top: 20px; padding: 10px 22px 10px 16px; border: 1px solid rgba(255,255,255,.55); border-radius: 50px; background: rgba(255,255,255,.14); color: #ffffff; font-size: 15px; font-weight: 600; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+        .contacto-volver:focus-visible { outline: 3px solid #ff8c42; outline-offset: 4px; }
+        .contact-us-sec.contacto-consultas { padding: 48px 0 64px !important; background: #f5f8fc; }
+        .contacto-form-shell { max-width: 960px; margin: 0 auto; }
+        .contacto-form-heading { max-width: 700px; margin: 0 auto 24px; text-align: center; }
+        .contacto-form-eyebrow { display: block; margin-bottom: 8px; color: #1b6ec2; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+        .contacto-form-heading h2 { margin: 0 0 10px; color: #123a6d; font-size: clamp(1.85rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.2; }
+        .contacto-form-heading p { margin: 0; color: #3d4d63; font-size: 17px; line-height: 1.6; }
+        .contacto-form-card { overflow: hidden; padding: 28px; border: 1px solid #d8e2f0; border-radius: 24px; background: #ffffff; box-shadow: 0 14px 40px rgba(18,58,109,.10); }
+        .contacto-form-card iframe[data-tally-src] { display: block; width: 100%; min-height: 588px; border: 0; background: transparent; }
+        .contacto-form-fallback { margin: 12px 0 0; color: #5b6b7b; font-size: 14px; line-height: 1.5; text-align: center; }
+        .contacto-form-fallback a { display: inline-flex; align-items: center; min-height: 44px; color: #1b6ec2; font-weight: 700; overflow-wrap: anywhere; }
+        .contact-us-links-row.contacto-datos { padding-top: 36px !important; }
+        .contact-us-link-box { display: flex; align-items: center; gap: 18px; height: 100%; min-height: 120px; padding: 24px 26px; border: 1px solid #d8e2f0; border-radius: 18px; background: #ffffff; box-shadow: 0 8px 26px rgba(18,58,109,.08); transition: transform .2s ease, box-shadow .2s ease; }
         .contact-us-link-icon { flex: 0 0 auto; line-height: 0; }
-        .contact-us-text h4 { margin: 0 0 6px; }
-        .contact-us-link-text a { color: #5b6b7b; font-size: 15px; word-break: break-word; }
+        .contact-us-text { min-width: 0; }
+        .contact-us-text h4 { margin: 0 0 4px; color: #123a6d; font-size: 20px; }
+        .contact-us-link-text a { display: inline-flex; align-items: center; min-height: 44px; color: #1b6ec2; font-size: 16px; overflow-wrap: anywhere; text-decoration: none; }
+        .contact-us-link-text a:focus-visible, .contacto-form-fallback a:focus-visible { outline: 3px solid #ff8c42; outline-offset: 3px; }
+        .top-header-content-box p { font-size: 12px !important; }
+        @media (hover: hover) {
+            .contact-us-link-box:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(18,58,109,.13); }
+            .contacto-volver:hover { background: rgba(255,255,255,.24); transform: translateY(-1px); }
+            .contact-us-link-text a:hover { text-decoration: underline; }
+        }
+        @media (max-width: 991px) { .contacto-datos .col-lg-6 + .col-lg-6 { margin-top: 16px; } }
+        @media (max-width: 767px) {
+            .contacto-hero.inner-banner { padding: 36px 0 40px !important; }
+            .contacto-hero .h1-title { font-size: 36px; }
+            .contact-us-sec.contacto-consultas { padding: 32px 0 40px !important; }
+            .contacto-form-heading { margin-bottom: 18px; text-align: left; }
+            .contacto-form-heading h2 { font-size: 28px; }
+            .contacto-form-heading p { font-size: 16px; }
+            .contacto-form-card { padding: 16px; border-radius: 18px; }
+            .contact-us-links-row.contacto-datos { padding-top: 24px !important; }
+            .contact-us-link-box { min-height: 108px; padding: 20px 18px; gap: 14px; border-radius: 16px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .contacto-volver, .contact-us-link-box { transition: none !important; }
+            .contacto-volver:hover, .contact-us-link-box:hover { transform: none !important; }
+        }
     </style>
+    <!-- Google Analytics 4: el ID se configura en fhycs-analytics.js -->
+    <script defer src="fhycs-analytics.js"></script>
 </head>
 
-<body class="" data-new-gr-c-s-check-loaded="14.1335.0" data-gr-ext-installed="">
+<body>
     <!-- Loader Start -->
     <div class="loader-box" style="display: none;">
         <div class="loader-content">
             <div class="loading-container">
                 <div class="loading"></div>
                 <div class="loading-icon">
-                    <img class="main-load" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/loader-image_AVHt.svg" width="56" height="50" alt="Loader image">
+                    <img class="main-load" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/loader-image_AVHt.svg" width="56" height="50" alt="Loader image" decoding="async">
                 </div>
             </div>
         </div>
@@ -95,7 +119,7 @@
                     <div class="col-xxl-3 col-lg-2">
                         <div class="site-branding">
                             <a href="index.html" title="Facultad Humanidades">
-                                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" width="360" height="72" alt="Facultad Humanidades">
+                                <img loading="eager" fetchpriority="low" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo_AVHt.png" width="360" height="72" alt="Facultad Humanidades" decoding="async">
                             </a>
                         </div>
                     </div>
@@ -104,7 +128,7 @@
                             <nav class="main-navigation">
                                 
                                 <div class="header-btn">
-                                    <a href="contacto.html" class="sec-btn" title="Info"><span>Más Información</span></a>
+                                    <a href="index.html" class="sec-btn" title="Inicio"><span>Inicio</span></a>
                                 </div>
                             </nav>
                             <div class="black-shadow"></div>
@@ -118,53 +142,53 @@
 
 
     <!-- Banner Start -->
-    <section class="inner-banner">
+    <section class="inner-banner contacto-hero">
         <div class="main-banner-bg-shape">
             <div class="shape-1"></div>
             <div class="shape-2"></div>
         </div>
         <div class="inner-banner-bg-aliment-wp">
             <div class="bg-aliment-1 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-2 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-02_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-3 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-4 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-5 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-04_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-6 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="44" height="44" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-7 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-8 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-9 zoom-fade-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-10 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-09_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-11 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-12 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-13 rotate-animation">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
             </div>
             <div class="bg-aliment-14 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment" decoding="async">
             </div>
         </div>
         <div class="container">
@@ -172,11 +196,9 @@
                 <div class="col-lg-12">
                     <div class="banner-content text-center">
                         <h1 class="h1-title">Contacto</h1>
-                            <div style="margin-top: 20px;">
-                                <a href="index.html" title="Volver" style="display: inline-flex; align-items: center; gap: 8px; background: #1b6ec2; color: #ffffff; padding: 10px 22px 10px 16px; border-radius: 50px; font-weight: 600; font-size: 15px; text-decoration: none;">
-                                    <svg width="11" height="16" viewBox="0 0 11 16" fill="none" style="display: block;">
-                                        <path d="M9.5 1.5 L2.5 8 L9.5 14.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg> Volver
+                            <div>
+                                <a class="contacto-volver" href="index.html" title="Volver a Inicio">
+                                    <svg width="11" height="16" viewBox="0 0 11 16" fill="none" aria-hidden="true" style="display: block;"><path d="M9.5 1.5 L2.5 8 L9.5 14.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Volver
                                 </a>
                             </div>
                         </div>
@@ -187,17 +209,28 @@
     <!-- Banner End -->
 
     <!-- Contact Us Start -->
-    <section class="contact-us-sec sec-space">
+    <section class="contact-us-sec sec-space contacto-consultas">
         <div class="container">
-            <div class="contact-us-links-row sec-space-bottom">
+            <div class="contact-us-links-row sec-space-bottom contacto-datos">
                 <div class="row justify-content-center">
-                    
-<iframe data-tally-src="https://tally.so/embed/Y5LKzB?hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Consultas ingreso - Facultad Humanidades y Ciencias Sociales "></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+                <div class="contacto-form-shell">
+                    <div class="contacto-form-heading">
+                        <span class="contacto-form-eyebrow">CONSULTAS DE INGRESO</span>
+                        <h2>Escribinos</h2>
+                        <p>Completá el formulario y te respondemos a la brevedad.</p>
+                    </div>
+                    <div class="contacto-form-card">
+                        <iframe data-tally-src="https://tally.so/embed/Y5LKzB?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="588" frameborder="0" marginheight="0" marginwidth="0" title="Consultas ingreso - Facultad Humanidades y Ciencias Sociales"></iframe>
+                        <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+                        <noscript><p class="contacto-form-fallback"><a href="https://tally.so/r/Y5LKzB" target="_blank" rel="noopener noreferrer">Abrir el formulario de consultas</a></p></noscript>
+                    </div>
+                    <p class="contacto-form-fallback">¿Tenés problemas para verlo? <a href="https://tally.so/r/Y5LKzB" target="_blank" rel="noopener noreferrer">Abrilo en una pestaña nueva</a>.</p>
+                </div>
+
                     <div class="col-lg-6 col-md-8">
                         <div class="contact-us-link-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                             <div class="contact-us-link-icon">
-                                <img loading="lazy" src="assets/images/icono-ubicacion.svg" width="50" height="50" alt="Ubicación">
+                                <img loading="lazy" src="assets/images/icono-ubicacion.svg" width="50" height="50" alt="Ubicación" decoding="async">
                             </div>
                             <div class="contact-us-text">
                                 <h4 class="h4-title">FHyCS</h4>
@@ -210,7 +243,7 @@
                     <div class="col-lg-6 col-md-8">
                         <div class="contact-us-link-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: none;">
                             <div class="contact-us-link-icon">
-                                <img loading="lazy" src="assets/images/icono-mail.svg" width="50" height="50" alt="Correo">
+                                <img loading="lazy" src="assets/images/icono-mail.svg" width="50" height="50" alt="Correo" decoding="async">
                             </div>
                             <div class="contact-us-text">
                                 <h4 class="h4-title">Email</h4>
@@ -233,37 +266,37 @@
         <div class="top-footer">
             <div class="footer-bg-aliment-wp">
                 <div class="bg-aliment-1 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-2 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-05_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-3 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-01_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-4 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-07_AVHt.svg" width="38" height="32" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-5 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-06_AVHt.svg" width="19" height="16" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-6 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-7 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="29" height="29" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-8 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-08_AVHt.svg" width="34" height="34" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-9 zoom-fade-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-03_AVHt.svg" width="58" height="58" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-10 rotate-animation">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-11_AVHt.svg" width="30" height="30" alt="Aliment" decoding="async">
                 </div>
                 <div class="bg-aliment-11 animate-this" style="transform: translateX(9.03745px) translateY(6.82543px);">
-                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment">
+                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/aliment-10_AVHt.svg" width="26" height="22" alt="Aliment" decoding="async">
                 </div>
             </div>
             <div class="container">
@@ -272,7 +305,7 @@
                         <div class="footer-about">
                             <div class="footer-logo">
                                 <a href="index.html" title="UNAM">
-                                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM">
+                                    <img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/logo-unam_AVHt.webp" width="192" height="60" alt="UNAM" decoding="async">
                                 </a>
                             </div>
                             <div class="footer-logo-about-text">
@@ -281,11 +314,11 @@
                             <div class="social-info">
                                 <h4 class="underline-title">Seguínos en las Redes</h4>
                                 <div class="footer-social-icons">
-                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon"></a>
-                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon"></a>
+                                    <a href="https://www.facebook.com/boletin.fhycs" title="Facebook" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/facebook-icon_AVHt.svg" width="8" height="15" alt="Facebook Icon" decoding="async"></a>
+                                    <a href="https://www.instagram.com/fhycs.unam/" title="Instagram" target="_blank"><img loading="lazy" src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/instagram-icon_AVHt.svg" width="14" height="14" alt="Instagram Icon" decoding="async"></a>
                                     <!--<a href="https://www.linkedin.com/" title="WhatsApp" target="_blank"><img
                                             src="assets/images/whatsapp-icon.svg" width="13" height="13"
-                                            alt="WhatsApp Icon"></a>-->
+                                            alt="WhatsApp Icon" decoding="async"></a>-->
                                 </div>
                             </div>
                         </div>
@@ -330,7 +363,7 @@
                             <ul>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="assets/images/icono-ubicacion.svg" width="16" height="18" alt="Ubicación">
+                                        <img loading="lazy" src="assets/images/icono-ubicacion.svg" width="16" height="18" alt="Ubicación" decoding="async">
                                     </span>
                                     <span class="contact-text">
                                         <a href="https://maps.app.goo.gl/fDiwFeB9pYM4u1Xg7" title="Tucumán 1946, Posadas, Misiones" target="_blank">Tucumán 1946, Posadas - CP: N3300BSP</a>
@@ -338,7 +371,7 @@
                                 </li>
                                 <li>
                                     <span class="contact-icon">
-                                        <img loading="lazy" src="assets/images/icono-mail.svg" width="19" height="13" alt="Correo">
+                                        <img loading="lazy" src="assets/images/icono-mail.svg" width="19" height="13" alt="Correo" decoding="async">
                                     </span>
                                     <span class="contact-text">
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
@@ -383,7 +416,7 @@
     <!-- Back To Top End -->
 
     <!-- Jquery JS Link -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
+    <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/jquery-3.7.1.min_AVHt.js"></script>
 
     <!-- Bootstrap JS Link -->
     <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/bootstrap.min_AVHt.js"></script>
@@ -404,4 +437,5 @@
     <script defer src="Facultad%20de%20Humanidades%20y%20Ciencias%20Sociales%20-%20UNAM_files/back-to-top_AVHt.js"></script>
 
 
+</body>
 </html>

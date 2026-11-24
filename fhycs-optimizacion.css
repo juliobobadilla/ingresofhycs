@@ -1,0 +1,1115 @@
+/* Optimización integral FHyCS: legibilidad, carga y movimiento responsive */
+img,
+svg,
+video,
+iframe {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+.wow {
+    visibility: visible !important;
+}
+
+.video-inscripcion,
+.facultad-video-frame,
+.video-inscripcion-carrera,
+.video-carrera-short-frame {
+    position: relative;
+}
+
+.fhycs-video-facade,
+.video-inscripcion iframe,
+.facultad-video-frame iframe,
+.video-inscripcion-carrera iframe,
+.video-carrera-short-frame iframe {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.fhycs-video-facade {
+    overflow: hidden;
+    background: #123a6d;
+    color: #ffffff;
+    text-decoration: none;
+    isolation: isolate;
+    touch-action: manipulation;
+}
+
+.fhycs-video-facade::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(10, 42, 77, .04), rgba(10, 42, 77, .48));
+    pointer-events: none;
+}
+
+.fhycs-video-facade > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+
+.fhycs-video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    border: 2px solid rgba(255, 255, 255, .88);
+    border-radius: 50%;
+    background: #ff8c42;
+    box-shadow: 0 8px 24px rgba(10, 42, 77, .28);
+    transform: translate(-50%, -50%);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.fhycs-video-play svg {
+    width: 25px;
+    height: 25px;
+    margin-left: 3px;
+}
+
+.fhycs-video-action {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    z-index: 2;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(10, 42, 77, .82);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.fhycs-video-facade:focus-visible {
+    outline: 4px solid #ff8c42;
+    outline-offset: -4px;
+}
+
+@media (hover: hover) {
+    .fhycs-video-facade:hover > img {
+        transform: scale(1.025);
+    }
+
+    .fhycs-video-facade:hover .fhycs-video-play {
+        background: #ff6b35;
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+}
+
+.carrera-video-sec {
+    padding: 0 0 56px;
+    background: #ffffff;
+}
+
+.carrera-video-box {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.carrera-video-box .course-detail-title {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.carrera-video-box .h3-title {
+    color: #123a6d;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.video-carrera-short-frame {
+    width: min(100%, 320px);
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #123a6d;
+    box-shadow: 0 18px 45px rgba(18, 58, 109, .16);
+}
+
+.site-footer a,
+.chip-contacto,
+.bienestar-faq-link,
+.sec-btn,
+.carrera-hero-inicio > a {
+    overflow-wrap: anywhere;
+}
+
+.footer-social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.site-branding > a {
+    align-items: center;
+    min-height: 44px;
+}
+
+.inscripcion-pasos-sec .category-list-text > a:not(.sec-btn) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+.scroll-to-top,
+.scroll-to-top svg {
+    width: 44px !important;
+    height: 44px !important;
+}
+
+@media (max-width: 767px) {
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    body {
+        font-size: 16px;
+        line-height: 1.55;
+        text-rendering: optimizeLegibility;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .container {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    input,
+    select,
+    textarea,
+    .form-select,
+    .faq-search-input {
+        font-size: 16px !important;
+    }
+
+    button,
+    select,
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .wow,
+    .animate-this,
+    .rotate-animation,
+    .zoom-fade-animation,
+    .move-element-animation-1 {
+        opacity: 1 !important;
+        visibility: visible !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .animate-this,
+    .rotate-animation,
+    .zoom-fade-animation,
+    .move-element-animation-1 {
+        transform: none !important;
+    }
+
+    .main-banner-bg-aliment-wp,
+    .inner-banner-bg-aliment-wp,
+    .footer-bg-aliment-wp,
+    .apply-now-shape,
+    .banner-image-shape {
+        display: none !important;
+    }
+
+    .top-header-content-box {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .top-header-content-box p {
+        margin: 0;
+        font-size: 12px !important;
+        line-height: 1.4;
+    }
+
+    .bottom-header .site-branding {
+        gap: 8px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .site-branding img {
+        width: auto !important;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .site-branding img[alt="UNaM"] {
+        max-width: 30%;
+        height: 30px !important;
+    }
+
+    .site-branding a img[alt="Facultad Humanidades"] {
+        max-width: 66%;
+        height: 34px !important;
+    }
+
+    .site-branding > a {
+        min-width: 0;
+    }
+
+    .main-banner .banner-content .sub-title br {
+        display: none;
+    }
+
+    .main-banner .h1-title {
+        font-size: clamp(2rem, 9vw, 2.75rem) !important;
+        line-height: 1.08 !important;
+        letter-spacing: -.035em;
+    }
+
+    .main-banner .banner-image-content {
+        width: min(100%, 360px);
+        margin: 24px auto 0;
+    }
+
+    .main-banner .banner-image img {
+        width: 100%;
+        height: auto;
+        max-height: 440px;
+        object-fit: contain;
+    }
+
+    .main-banner .congra-box {
+        display: none;
+    }
+
+    .main-banner .certification-box-wp {
+        transform: translateY(-55px) scale(.78) !important;
+        transform-origin: center center;
+    }
+
+    .banner-beneficios {
+        gap: 6px;
+        margin-top: 16px;
+        padding: 7px;
+        border-radius: 16px;
+        box-shadow: 0 8px 22px rgba(18, 58, 109, .14);
+    }
+
+    .banner-beneficio {
+        min-height: 44px;
+        padding: 6px 10px;
+        font-size: 12px;
+        opacity: 1;
+        animation: none;
+    }
+
+    .banner-beneficio-icono {
+        flex-basis: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .buscador-carreras-sec {
+        min-height: 0 !important;
+        margin-top: -18px !important;
+        border-radius: 22px 22px 0 0;
+        box-shadow: 0 -8px 26px rgba(10, 42, 77, .18);
+    }
+
+    .buscador-carreras-sec > .container > .row {
+        min-height: 0 !important;
+    }
+
+    .buscador-carreras-sec .col-lg-7.py-5 {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+
+    .buscador-carreras-sec .col-lg-7.py-5 > div:first-child {
+        margin-bottom: 20px !important;
+    }
+
+    .buscador-carreras-sec h2 {
+        font-size: clamp(1.85rem, 8vw, 2.2rem) !important;
+        line-height: 1.12 !important;
+    }
+
+    .buscador-carreras-sec h2 + p {
+        max-width: 100% !important;
+        font-size: 1rem !important;
+        line-height: 1.5;
+    }
+
+    .buscador-panel {
+        padding: 18px !important;
+        border-radius: 18px !important;
+        box-shadow: 0 12px 30px rgba(10, 42, 77, .18) !important;
+        backdrop-filter: none;
+    }
+
+    .buscador-panel label {
+        margin-bottom: 6px !important;
+    }
+
+    .buscador-panel .form-select {
+        min-height: 52px;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+        line-height: 1.35;
+    }
+
+    .buscador-carreras-sec #btn-buscar-carrera {
+        min-height: 52px;
+        padding: 13px 16px !important;
+        font-size: 1rem !important;
+        line-height: 1.35;
+    }
+
+    .marquee-fhycs {
+        padding: 14px 0;
+        font-size: 18px;
+    }
+
+    .marquee-fhycs .mq-item {
+        padding: 0 20px;
+    }
+
+    .top-category-list-sec.sec-space {
+        padding-top: 38px !important;
+    }
+
+    .inscripcion-pasos-sec .top-category-list-row {
+        --bs-gutter-y: 18px;
+    }
+
+    .inscripcion-pasos-sec .category-list-box {
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 7px 22px rgba(18, 58, 109, .08);
+    }
+
+    .inscripcion-pasos-sec .h4-title {
+        font-size: 22px;
+        line-height: 1.25;
+    }
+
+    .inscripcion-pasos-sec .category-list-text > p {
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .paso-inscripcion-num {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 14px;
+    }
+
+    .fechas-inscripcion {
+        gap: 7px;
+        margin: 16px 0 20px;
+    }
+
+    .fecha-inscripcion-item {
+        padding: 9px 12px;
+    }
+
+    .inscripcion-cierre {
+        gap: 18px;
+        margin-top: 24px;
+        padding: 22px 20px;
+        border-radius: 18px;
+    }
+
+    .inscripcion-cierre h3 {
+        font-size: 1.25rem;
+    }
+
+    .inscripcion-cta-btn,
+    .paso-inscribite-btn {
+        min-height: 50px;
+    }
+
+    .faq-main-title {
+        font-size: clamp(1.25rem, 5.6vw, 1.65rem) !important;
+        line-height: 1.25 !important;
+        white-space: normal;
+    }
+
+    .faq-compact-shell {
+        margin-top: 18px;
+    }
+
+    .faq-search-box {
+        margin-bottom: 12px;
+    }
+
+    .faq-search-input {
+        min-height: 50px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .faq-tabs {
+        gap: 7px;
+        padding-bottom: 6px;
+        scroll-padding-inline: 14px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .faq-tab {
+        min-height: 44px;
+        padding: 9px 14px;
+    }
+
+    .faq-compact-enhanced .accordion-button {
+        min-height: 52px;
+        padding: 14px 44px 14px 16px;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .faq-compact-enhanced .accordion-body,
+    .faq-sec .accordion-body {
+        padding: 18px 16px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .faq-compact-enhanced .accordion-item {
+        margin-bottom: 8px !important;
+    }
+
+    .paso-faq {
+        gap: 10px;
+        padding: 11px 12px;
+    }
+
+    .tabla-crono {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .chip-contacto {
+        min-height: 44px;
+        padding: 8px 13px;
+    }
+
+    .bienestar-estudiantil-sec {
+        padding: 32px 0 !important;
+    }
+
+    .bienestar-cinta-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .bienestar-cinta-header .h2-title {
+        font-size: clamp(1.3rem, 6vw, 1.6rem);
+        line-height: 1.2;
+    }
+
+    .bienestar-controls {
+        gap: 8px;
+    }
+
+    .bienestar-cinta-item {
+        min-height: 82px;
+        padding: 12px 14px;
+    }
+
+    .bienestar-cinta-item h3 {
+        font-size: 15px;
+    }
+
+    .conoce-facultad-intro {
+        padding-top: 32px;
+    }
+
+    .conoce-facultad-intro .sec-title {
+        margin-bottom: 20px;
+    }
+
+    .facultad-videos-grid {
+        gap: 20px;
+    }
+
+    .facultad-video-card h3 {
+        margin-bottom: 9px;
+        font-size: 16px;
+    }
+
+    .facultad-video-frame,
+    .video-inscripcion,
+    .video-inscripcion-carrera {
+        border-radius: 14px;
+        box-shadow: 0 7px 20px rgba(18, 58, 109, .12);
+    }
+
+    .caracteristicas-fhycs-sec {
+        padding: 28px 0 32px;
+    }
+
+    .caracteristicas-grid {
+        gap: 12px;
+    }
+
+    .caracteristica-item {
+        gap: 14px;
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .caracteristica-icon {
+        flex-basis: 48px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .caracteristica-icon svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .caracteristica-item h3 {
+        font-size: 16px;
+    }
+
+    .caracteristica-item p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .testimonial-sec {
+        padding-bottom: 32px !important;
+    }
+
+    .testimonial-sec .h2-title {
+        font-size: clamp(1.5rem, 7vw, 1.9rem);
+        line-height: 1.2;
+    }
+
+    .testimonial-slider-wp {
+        overflow: hidden;
+    }
+
+    .testimonial-slider .swiper-slide {
+        height: auto;
+    }
+
+    .testimonial-box {
+        height: 100%;
+        padding: 22px 18px;
+    }
+
+    .client-review-text p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .client-info .h4-title {
+        font-size: 20px;
+    }
+
+    .client-profession {
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .apply-now-sec {
+        padding: 24px 0 !important;
+    }
+
+    .apply-now-box {
+        overflow: hidden;
+    }
+
+    .apply-now-sec .apply-now-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .apply-now-sec .apply-now-image-box {
+        flex: 0 1 auto;
+    }
+
+    .apply-now-image-box img {
+        max-width: 180px !important;
+    }
+
+    .apply-now-sec .apply-now-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .apply-now-sec .apply-now-btn > div {
+        padding: 24px 20px !important;
+    }
+
+    .apply-now-sec .apply-now-btn a,
+    .apply-now-sec .sec-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+    }
+
+    .site-footer .top-footer {
+        padding: 38px 0 24px !important;
+    }
+
+    .site-footer .footer-logo-about-text p,
+    .site-footer .our-link-content,
+    .site-footer .contact-info-box,
+    .site-footer .copy-right {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .site-footer .our-link-content li > a,
+    .site-footer .contact-info-box li > a,
+    .site-footer .contact-text > a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        line-height: 1.4;
+    }
+
+    .site-footer .contact-info-box li {
+        align-items: flex-start;
+    }
+
+    .site-footer .contact-icon {
+        padding-top: 12px;
+    }
+
+    .scroll-to-top {
+        right: 14px;
+        bottom: 14px;
+    }
+
+    /* Páginas de carrera */
+    .inner-banner.carrera-hero {
+        padding: 26px 0 28px;
+    }
+
+    .carrera-hero .row {
+        row-gap: 24px;
+    }
+
+    .carrera-hero-facultad {
+        margin-bottom: 14px;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .carrera-hero-inicio {
+        margin-bottom: 18px;
+    }
+
+    .carrera-hero-inicio > a {
+        min-height: 44px;
+        padding-top: 9px !important;
+        padding-bottom: 9px !important;
+    }
+
+    .carrera-hero .h1-title {
+        margin-bottom: 16px;
+        font-size: clamp(1.9rem, 8.5vw, 2.5rem) !important;
+        line-height: 1.12 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .carrera-hero-modalidad {
+        gap: 8px 12px;
+        margin-bottom: 18px;
+        font-size: 15px;
+    }
+
+    .carrera-modalidad-valor {
+        padding: 4px 11px 4px 4px;
+    }
+
+    .carrera-hero-datos {
+        gap: 8px;
+    }
+
+    .carrera-hero-dato {
+        gap: 10px;
+        min-height: 52px;
+        padding: 8px 10px;
+        border-radius: 13px;
+        font-size: 15px;
+        line-height: 1.45;
+    }
+
+    .carrera-icono {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+    }
+
+    .carrera-icono svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .carrera-hero-plan {
+        margin-top: 20px;
+    }
+
+    .carrera-plan-btn {
+        min-height: 50px;
+    }
+
+    .carrera-plan-btn span {
+        font-size: 15px;
+    }
+
+    .carrera-hero-photo {
+        margin-top: 0;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(10, 48, 91, .22);
+    }
+
+    .course-detail-sec.sec-space {
+        padding-top: 24px !important;
+        padding-bottom: 32px !important;
+    }
+
+    .course-detail-description-text p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .carrera-acordeon {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .carrera-acordeon .accordion-item {
+        border-radius: 14px !important;
+        box-shadow: 0 5px 18px rgba(18, 58, 109, .06);
+    }
+
+    .carrera-acordeon .accordion-button {
+        min-height: 54px;
+        padding: 15px 44px 15px 16px;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .carrera-acordeon .accordion-body {
+        padding: 18px 16px;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .course-detail-feature-box li {
+        padding-left: 26px !important;
+        font-size: 16px;
+        line-height: 1.55;
+    }
+
+    .common-list-style ul li::before {
+        top: 7px;
+    }
+
+    .inscripcion-carrera-cta {
+        margin-top: 18px;
+    }
+
+    .inscribite-carrera-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 50px;
+    }
+
+    .carrera-video-sec {
+        padding-bottom: 40px;
+    }
+
+    .carrera-video-box .course-detail-title {
+        margin-bottom: 18px;
+        padding: 0 8px;
+    }
+
+    .carrera-video-box .h3-title {
+        font-size: 24px;
+    }
+
+    .video-carrera-short-frame {
+        width: min(100%, 300px);
+        border-radius: 16px;
+        box-shadow: 0 10px 28px rgba(18, 58, 109, .14);
+    }
+}
+
+@media (max-width: 359px) {
+    .container {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .buscador-panel {
+        padding: 15px !important;
+    }
+
+    .bienestar-cinta-header .h2-title {
+        font-size: 1.25rem;
+    }
+
+    .bienestar-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    .carrera-hero .h1-title {
+        font-size: 1.85rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .wow,
+    .banner-beneficio,
+    .animate-this {
+        opacity: 1 !important;
+        visibility: visible !important;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .marquee-fhycs {
+        white-space: normal;
+    }
+
+    .marquee-fhycs-track {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .fhycs-video-facade > img {
+        transform: none !important;
+    }
+}
+
+
+/* Tutoriales de inscripción para nuevos ingresantes y alumnos UNaM */
+.inscripcion-video-item {
+    min-width: 0;
+}
+
+.inscripcion-video-titulo {
+    margin: 0 0 10px;
+    color: #123a6d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.inscripcion-videos-index {
+    display: grid;
+    width: 100%;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.inscripcion-videos-index .video-inscripcion {
+    margin-bottom: 0;
+}
+
+.inscripcion-videos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.inscripcion-videos-grid .inscripcion-video-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.inscripcion-videos-grid .inscripcion-video-titulo {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: flex-end;
+}
+
+.inscripcion-videos-grid .video-inscripcion-carrera {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.video-inscripcion-pendiente {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    border: 2px dashed #9db9d7;
+    background: linear-gradient(135deg, #f4f8fd 0%, #e7f0fa 100%);
+    color: #1b6ec2;
+    text-align: center;
+    box-shadow: none;
+}
+
+.video-inscripcion-pendiente-icono {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(18, 58, 109, .10);
+}
+
+.video-inscripcion-pendiente-icono svg {
+    width: 25px;
+    height: 25px;
+}
+
+.video-inscripcion-pendiente > span {
+    color: #3d4d63;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.carrera-hero-modalidad > .carrera-gratuita-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, .38);
+    border-radius: 999px;
+    background: #ff8c42;
+    color: #123a6d;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 1;
+    box-shadow: 0 6px 16px rgba(10, 42, 77, .14);
+}
+
+.carrera-gratuita-badge svg {
+    flex: 0 0 17px;
+    width: 17px;
+    height: 17px;
+}
+
+@media (max-width: 767px) {
+    .inscripcion-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .inscripcion-videos-grid .inscripcion-video-titulo {
+        display: block;
+        flex: none;
+    }
+
+    .inscripcion-video-titulo {
+        font-size: 16px;
+    }
+
+    .carrera-hero-modalidad > .carrera-gratuita-badge {
+        min-height: 32px;
+        padding: 5px 11px;
+    }
+}
+
+
+/* Tutoriales dentro de la respuesta ¿Cómo me inscribo? */
+.faq-tutoriales {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid #d8e2f0;
+}
+
+.faq-tutoriales-titulo {
+    margin: 0 0 16px;
+    color: #123a6d;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.inscripcion-videos-grid .video-inscripcion {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+
+/* Enlaces entre carreras y su formación complementaria */
+.carrera-formacion-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: #ffffff !important;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, .60);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.carrera-formacion-link:hover {
+    color: #ffffff !important;
+    text-decoration-color: #ff8c42;
+    text-decoration-thickness: 2px;
+}
+
+.carrera-formacion-link:focus-visible {
+    border-radius: 4px;
+    outline: 3px solid #ff8c42;
+    outline-offset: 3px;
+}
