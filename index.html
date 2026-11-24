@@ -554,11 +554,50 @@
         /* Acortar el espacio entre Inscripción y Bienestar */
         .top-category-list-sec { padding-bottom: 25px !important; }
                 /* ===== ARREGLOS PARA CELU ===== */
+        @media (max-width: 767px) {
+            /* Diseño original: ambos logos juntos, más grandes y sin recortes */
+            body .bottom-header { height: 90px !important; }
+            .bottom-header .site-branding {
+                position: static !important;
+                left: auto !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                width: 100% !important;
+                height: 90px !important;
+                min-height: 0;
+                margin: 0;
+                padding: 10px 0 !important;
+                overflow: visible !important;
+                transform: translateY(0px) !important;
+            }
+            .bottom-header .site-branding > a {
+                display: flex !important;
+                flex: 0 0 auto;
+                align-items: center;
+                width: auto;
+                min-width: 0;
+                max-width: none;
+            }
+            .bottom-header .site-branding img[alt="UNaM"],
+            .bottom-header .site-branding a img[alt="Facultad Humanidades"] {
+                display: block;
+                flex: 0 0 auto;
+                width: auto !important;
+                max-width: none;
+                object-fit: contain;
+            }
+            .bottom-header .site-branding img[alt="UNaM"] {
+                height: clamp(30px, 9.5vw, 44px) !important;
+            }
+            .bottom-header .site-branding a img[alt="Facultad Humanidades"] {
+                height: clamp(34px, 10.8vw, 48px) !important;
+            }
+        }
         @media (max-width: 575px) {
-            /* Header: que entren los dos logos */
-            .site-branding { gap: 8px !important; }
-            .site-branding img[alt="UNaM"] { height: 34px !important; }
-            .site-branding a img[alt="Facultad Humanidades"] { height: 38px !important; }
             /* Banda superior más chica */
             .top-header-content-box p { font-size: 12px !important; }
         }
