@@ -36,7 +36,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
         body, h1, h2, h3, h4, h5, h6, p, a, button, span, li, div, input, textarea, select { font-family: 'Roboto', sans-serif !important; }
+        .contacto-header { position: relative !important; }
+        .contacto-header .bottom-header { background: #ffffff !important; }
+        .contacto-header .site-branding img { max-width: min(360px, 78vw); height: auto; }
         .contacto-hero.inner-banner { padding: 56px 0 60px !important; overflow: hidden; background: #1b6ec2; }
+        .contacto-hero .main-banner-bg-shape,
+        .contacto-hero .inner-banner-bg-aliment-wp { display: none !important; }
         .site-footer { overflow: hidden; }
         .contacto-hero .banner-content { position: relative; z-index: 2; }
         .contacto-hero .h1-title { color: #ffffff; font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.1; }
@@ -57,7 +62,9 @@
         .contact-us-link-icon { flex: 0 0 auto; line-height: 0; }
         .contact-us-text { min-width: 0; }
         .contact-us-text h4 { margin: 0 0 4px; color: #123a6d; font-size: 20px; }
-        .contact-us-link-text a { display: inline-flex; align-items: center; min-height: 44px; color: #1b6ec2; font-size: 16px; overflow-wrap: anywhere; text-decoration: none; }
+        .contact-us-link-text a { display: flex; align-items: center; min-height: 44px; color: #1b6ec2; font-size: 16px; overflow-wrap: anywhere; text-decoration: none; }
+        .contact-us-link-text a + a { margin-top: 2px; }
+        .contacto-phone-icon { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #1b6ec2; color: #ffffff; font-size: 22px; }
         .contact-us-link-text a:focus-visible, .contacto-form-fallback a:focus-visible { outline: 3px solid #ff8c42; outline-offset: 3px; }
         .top-header-content-box p { font-size: 12px !important; }
         @media (hover: hover) {
@@ -65,7 +72,7 @@
             .contacto-volver:hover { background: rgba(255,255,255,.24); transform: translateY(-1px); }
             .contact-us-link-text a:hover { text-decoration: underline; }
         }
-        @media (max-width: 991px) { .contacto-datos .col-lg-6 + .col-lg-6 { margin-top: 16px; } }
+        @media (max-width: 991px) { .contacto-datos .col-lg-4 + .col-lg-4 { margin-top: 16px; } }
         @media (max-width: 767px) {
             .contacto-hero.inner-banner { padding: 36px 0 40px !important; }
             .contacto-hero .h1-title { font-size: 36px; }
@@ -101,7 +108,7 @@
     <!-- Loader End -->
 
     <!-- Header Start -->
-    <header class="site-header">
+    <header class="site-header contacto-header">
         <div class="top-header">
             <div class="container">
                 <div class="row">
@@ -125,12 +132,7 @@
                     </div>
                     <div class="col-xxl-9 col-lg-10">
                         <div class="header-menu">
-                            <nav class="main-navigation">
-                                
-                                <div class="header-btn">
-                                    <a href="index.html" class="sec-btn" title="Inicio"><span>Inicio</span></a>
-                                </div>
-                            </nav>
+                            <nav class="main-navigation" aria-label="Navegación de contacto"></nav>
                             <div class="black-shadow"></div>
                         </div>
                     </div>
@@ -213,7 +215,7 @@
         <div class="container">
             <div class="contact-us-links-row sec-space-bottom contacto-datos">
                 <div class="row justify-content-center">
-                <div class="contacto-form-shell">
+                <div class="contacto-form-shell" id="formulario-consultas">
                     <div class="contacto-form-heading">
                         <span class="contacto-form-eyebrow">CONSULTAS DE INGRESO</span>
                         <h2>Escribinos</h2>
@@ -227,7 +229,7 @@
                     <p class="contacto-form-fallback">¿Tenés problemas para verlo? <a href="https://tally.so/r/Y5LKzB" target="_blank" rel="noopener noreferrer">Abrilo en una pestaña nueva</a>.</p>
                 </div>
 
-                    <div class="col-lg-6 col-md-8">
+                    <div class="col-lg-4 col-md-8">
                         <div class="contact-us-link-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.2s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.2s; animation-name: none;">
                             <div class="contact-us-link-icon">
                                 <img loading="lazy" src="assets/images/icono-ubicacion.svg" width="50" height="50" alt="Ubicación" decoding="async">
@@ -240,7 +242,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-8">
+                    <div class="col-lg-4 col-md-8">
                         <div class="contact-us-link-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.4s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.4s; animation-name: none;">
                             <div class="contact-us-link-icon">
                                 <img loading="lazy" src="assets/images/icono-mail.svg" width="50" height="50" alt="Correo" decoding="async">
@@ -248,7 +250,21 @@
                             <div class="contact-us-text">
                                 <h4 class="h4-title">Email</h4>
                                 <div class="contact-us-link-text">
-                                        <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
+                                    <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
+                                    <a href="mailto:marketing@fhycs.unam.edu.ar" title="marketing@fhycs.unam.edu.ar">marketing@fhycs.unam.edu.ar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-8">
+                        <div class="contact-us-link-box wow fadeup-animation" data-wow-duration="0.8s" data-wow-delay="0.6s" style="visibility: hidden; animation-duration: 0.8s; animation-delay: 0.6s; animation-name: none;">
+                            <div class="contact-us-link-icon contacto-phone-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true" style="display:block;width:1em;height:1em"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </div>
+                            <div class="contact-us-text">
+                                <h4 class="h4-title">WhatsApp</h4>
+                                <div class="contact-us-link-text">
+                                    <a href="https://wa.me/5493764815202" title="Enviar un mensaje por WhatsApp" target="_blank" rel="noopener noreferrer">+54 9 3764 81-5202</a>
                                 </div>
                             </div>
                         </div>
@@ -377,6 +393,16 @@
                                         <a href="mailto:promocarreras.fhycs@fhycs.unam.edu.ar" title="promocarreras.fhycs@fhycs.unam.edu.ar">promocarreras.fhycs@fhycs.unam.edu.ar</a>
                                        
                                     </span>
+                                </li>
+                                <li>
+                                    <span class="contact-icon">
+                                        <img loading="lazy" src="assets/images/icono-mail.svg" width="19" height="13" alt="Correo" decoding="async">
+                                    </span>
+                                    <span class="contact-text"><a href="mailto:marketing@fhycs.unam.edu.ar" title="marketing@fhycs.unam.edu.ar" target="_self">marketing@fhycs.unam.edu.ar</a></span>
+                                </li>
+                                <li>
+                                    <span class="contact-icon contact-phone-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true" style="display:block;width:1em;height:1em"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.05-.52-.099-.148-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+                                    <span class="contact-text"><a href="https://wa.me/5493764815202" title="Enviar un mensaje por WhatsApp" target="_blank" rel="noopener noreferrer">+54 9 3764 81-5202</a></span>
                                 </li>
                             </ul>
                         </div>

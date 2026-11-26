@@ -1113,3 +1113,201 @@ img {
     outline: 3px solid #ff8c42;
     outline-offset: 3px;
 }
+
+/* Botones principales unificados con el estilo naranja de Inscribite */
+.sec-btn,
+.inscripcion-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px !important;
+    padding: 14px 34px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%) !important;
+    background-size: 100% 100% !important;
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none !important;
+    text-transform: none;
+    box-shadow: 0 8px 25px rgba(255, 107, 53, .35);
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease !important;
+}
+
+.sec-btn span,
+.inscripcion-cta-btn {
+    font-size: 15px !important;
+    font-weight: 700;
+}
+
+.sec-btn::after,
+.sec-btn::before,
+.sec-btn span::after {
+    content: none !important;
+    display: none !important;
+    animation: none !important;
+}
+
+.sec-btn:hover,
+.inscripcion-cta-btn:hover {
+    transform: translateY(-3px);
+    background-position: left center !important;
+    color: #ffffff !important;
+    box-shadow: 0 12px 30px rgba(255, 107, 53, .45);
+}
+
+.sec-btn:active,
+.inscripcion-cta-btn:active {
+    transform: translateY(-1px);
+}
+
+.sec-btn:focus-visible,
+.inscripcion-cta-btn:focus-visible {
+    outline: 3px solid #123a6d;
+    outline-offset: 3px;
+}
+
+.faq-consulta-accion {
+    margin-top: 18px;
+}
+
+.contact-phone-icon {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    /* El logo institucional queda dentro del pie, sin invadir la foto anterior */
+    .site-footer .footer-about,
+    .site-footer .footer-logo {
+        position: static !important;
+        inset: auto !important;
+        margin-top: 0 !important;
+        transform: none !important;
+    }
+
+    .site-footer .footer-logo {
+        margin-bottom: 24px !important;
+    }
+
+    .site-footer .footer-logo a {
+        display: inline-flex !important;
+    }
+
+    .site-footer .footer-logo img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .faq-consulta-accion .sec-btn {
+        width: 100%;
+    }
+}
+
+/* Recuadro final compacto en escritorio: solo la foto y la acción necesarias */
+@media (min-width: 768px) {
+    body .apply-now-sec .apply-now-box {
+        width: 100%;
+        max-width: 760px !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        padding: 24px 32px 0 !important;
+    }
+
+    body .apply-now-sec .apply-now-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        width: 100%;
+    }
+
+    body .apply-now-sec .apply-now-image-box {
+        flex: 0 0 220px;
+        width: 220px;
+        max-width: 42%;
+        margin: 0 !important;
+    }
+
+    body .apply-now-sec .apply-now-image-box img {
+        display: block;
+        width: 100% !important;
+        max-width: 220px !important;
+        height: auto !important;
+    }
+
+    body .apply-now-sec .apply-now-text {
+        flex: 0 1 auto;
+        width: auto;
+        margin: 0 !important;
+        transform: none !important;
+    }
+
+    body .apply-now-sec .apply-now-btn {
+        width: auto;
+        margin-top: 0 !important;
+    }
+
+    body .apply-now-sec .apply-now-btn > div {
+        width: auto;
+        max-width: 360px !important;
+        padding: 24px 28px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Se anula el solapamiento heredado entre el bloque final y el pie */
+    body .apply-now-sec {
+        margin-bottom: 0 !important;
+        padding-bottom: 32px !important;
+    }
+
+    body .apply-now-sec .apply-now-box {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        transform: none !important;
+    }
+
+    body .site-footer,
+    body .site-footer .top-footer {
+        margin-top: 0 !important;
+    }
+
+    body .site-footer {
+        position: relative;
+        z-index: 0;
+        clear: both;
+    }
+
+    body .site-footer .top-footer {
+        padding-top: 48px !important;
+    }
+
+    body .site-footer .footer-logo img {
+        position: static !important;
+        inset: auto !important;
+        margin: 0 !important;
+        transform: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sec-btn,
+    .inscripcion-cta-btn {
+        transition: none !important;
+    }
+
+    .sec-btn:hover,
+    .inscripcion-cta-btn:hover,
+    .sec-btn:active,
+    .inscripcion-cta-btn:active {
+        transform: none;
+    }
+}
